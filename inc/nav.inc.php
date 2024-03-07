@@ -12,24 +12,24 @@
             <a class="nav-link active" href="#">Home</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#dogs">Dogs</a>
+            <a class="nav-link" href="#dogs">Dogs</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#cats">Cats</a>
+            <a class="nav-link" href="#cats">Cats</a>
+        </li>
         <li class="nav-item">
-        <a class="nav-link" href="../register.php">Register</a>
+            <a class="nav-link" href="../register.php">Register</a>
+        </li>
         <li class="nav-item">
-        <a class="nav-link" href="../login.php">Login here</a>
-        <ul class="navbar-nav">
-    <!-- Your other list items here... -->
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="../logout.php">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-        </li> -->
-        </ul>
+            <a class="nav-link" href="../login.php">Login here</a>
+        </li>
+        <li class="nav-item">
+            <form action="/process_search.php" method="post">
+                <input maxlength="55" type="text" class="form-control" id="search" name="search" placeholder="Search for keywords">
+                <button type="submit">Submit</button>
+            </form>
         </li>
         </ul>
         </div>
         </div>
-        </nav>
+    </nav>

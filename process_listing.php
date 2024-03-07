@@ -17,37 +17,49 @@
 include "inc/nav.inc.php";
 ?>
 <?php
-$uname = $errorMsg = "";
 $success = true;
+$errorMsg = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (empty($_POST["uname"])) {
-        $errorMsg .= "Username is required.<br>";
+    $filename = $_FILES['pimage']['name'];
+    $filetmpname = $_FILES['pimage']['tmp_name'];
+    $filetype = $_FILES['pimage']['type'];
+    $filesize = $_FILES['pimage']['size'];
+    $folder = "./images/" . $filename;
+
+    if (empty($_POST["pname"])) {
+        $errorMsg .= "Product name is required.<br>";
         $success = false;
     } else {
-        $uname = sanitize_input($_POST["uname"]);
+        $pname = sanitize_input($_POST["pname"]);
     }
 
-    if (empty($_POST["pwd"])) {
-        $errorMsg .= "Password is required.<br>";
+    if (empty($_POST["price"])) {
+        $errorMsg .= "Price is required.<br>";
         $success = false;
     } else {
-        $password = $_POST["pwd"];
+        $price = sanitize_input($_POST["price"]);
     }
 
-    if ($success) {
-        $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
-        authenticateUser();
-        
+    if(isset($_FILES['pimage'])) {
+        $errors= array();
+        $file_name = $_FILES['pimage']['name'];
+        $file_size = $_FILES['pimage']['size'];
+        $file_tmp = $_FILES['pimage']['tmp_name'];
+        $file_type = $_FILES['pimage']['type'];
+        $folder = "./images/" . $filename;
+    } else{
+        $errorMsg .= "Please upload an image.<br>";
+        $success = false;
     }
 
+    placeListing($folder, $file_tmp, $file_name, $pname, $price, $errorMsg, $success);
 }
 if ($success)
 {
 
 echo '<form action="index.php" method="post">';
-echo "<h4>Login successful!</h4>";
-echo "<p>Welcome back, " . $uname;
+echo "<h4>Listing Successful!</h4>";
 echo '<button type="submit" class="btn btn-success">Return to Home</button>';
 echo "<br>  ";    
 }
@@ -59,17 +71,20 @@ echo "<h4>The following input errors were detected:</h4>";
 echo "<p>" . $errorMsg . "</p>";
 echo '<button type="submit" class="btn btn-warning">Return to Login</button>';
 }
+
 /*
-* Helper function to authenticate the login.
+* Helper function to place the listing.
 */
-function authenticateUser()
+function placeListing($folder, $tmpname, $pimage, $pname, $price, $errorMsg, $success)
 {
-global $uname, $pwd_hashed, $errorMsg, $success;
+    
+//global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
 // Create database connection.
 $config = parse_ini_file('/var/www/private/db-config.ini');
 if (!$config)
 {
 $errorMsg = "Failed to read database config file.";
+echo "<h4>bad thign</h4>";
 $success = false;
 }
 else
@@ -88,34 +103,43 @@ $success = false;
 }
 else
 {
+
+?>
+<script type="text/javascript">
+    console.log("Connected to database");
+</script>
+
+<?php
 // Prepare the statement:
-$stmt = $conn->prepare("SELECT * FROM user_table WHERE username=?");
+$sql = "INSERT INTO product_table
+(product_name, product_image, price) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql);
+
 // Bind & execute the query statement:
-$stmt->bind_param("s", $uname);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->num_rows > 0){
-// Note that email field is unique, so should only have
-// one row in the result set.
-$row = $result->fetch_assoc();
-$pwd_hashed = $row["password"];
-// Check if the password matches:
-if (!password_verify($_POST["pwd"], $pwd_hashed)){
-// Don't be too specific with the error message - hackers don't
-// need to know which one they got right or wrong. :)
-$errorMsg = "Email not found or password doesn't match...";
-$success = false;
-}
-else{
-// Start the session:
-$_SESSION['loggedin'] = true;
-}
-}
-else
+$stmt->bind_param("sss", $pname, $pimage, $price);
+?>
+
+<script type="text/javascript">
+    console.log("Executed statement");
+</script>
+<?php
+if (!$stmt->execute())
+
 {
-$errorMsg = "Email not found or password doesn't match...";
+$errorMsg = "Execute failed: (" . $stmt->errno . ") " .
+$stmt->error;
 $success = false;
 }
+
+if (!(move_uploaded_file($tmpname, $folder))) {
+    $errorMsg = "Failed to upload image";
+    $success = false;
+}
+?>
+<script type="text/javascript">
+    console.log("Idk what but there's some error here");
+</script>
+<?php
 $stmt->close();
 }
 $conn->close();

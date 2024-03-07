@@ -17,7 +17,7 @@ include "inc/nav.inc.php";
     <p>
         Upload a new listing here!
     </p>
-        <form action="process_login.php" method="post">
+        <form action="process_listing.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <label for="pname" class="form-label">Product Name</label>
@@ -31,7 +31,7 @@ include "inc/nav.inc.php";
                 </div>
                 <div class="col-sm-12">
                     <label for="pimage" class="form-label">Upload a picture here</label>
-                    <input type="file" class="form-control" id="file" name="file">
+                    <input type="file" class="form-control" id="pimage" name="pimage">
                 </div>
                     <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary">List it!</button>
