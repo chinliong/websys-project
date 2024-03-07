@@ -17,7 +17,7 @@ include "inc/nav.inc.php";
 For existing members, please go to the
 <a href="#">Sign In page btw this link is broken. will fix soon</a>.
 </p>
-<form action="process_register.php" method="post">
+    <form action="process_register.php" method="post">
 <div class="col-md-3">
 <label for="uname" class="form-label">Username</label>
 <input maxlength="45" type="text" class="form-control" id="uname" name="uname"
