@@ -22,11 +22,11 @@
         <a class="nav-link" href="../login.php">Login here</a>
         <ul class="navbar-nav">
     <!-- Your other list items here... -->
-        <!-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="../logout.php">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
-        </li> -->
+        </li>
         </ul>
         </li>
         </ul>
