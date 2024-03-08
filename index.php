@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shoe-sellers</title>
+<title>Shoe-seller</title>
     <?php 
         include 'inc/head.inc.php';
     ?>
