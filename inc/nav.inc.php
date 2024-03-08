@@ -8,13 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link active" href="../index.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#dogs">Dogs</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#cats">Cats</a>
+            <a class="nav-link" href="../new_listing.php">New Listing</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../register.php">Register</a>
