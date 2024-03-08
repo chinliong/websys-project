@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shoe-seller</title>
+<title>Shoe-sellers</title>
     <?php 
         include 'inc/head.inc.php';
     ?>
@@ -19,6 +19,6 @@
             
     <main class="container">
            <?php include 'inc/footer.inc.php'; ?>
-        </main>
+    </main>
 </body>
 </html>
