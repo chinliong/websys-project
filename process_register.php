@@ -128,24 +128,13 @@ $stmt = $conn->prepare($sql);
 
 // Bind & execute the query statement:
 $stmt->bind_param("sss", $uname, $email, $pwd_hashed);
-?>
-<script type="text/javascript">
-    console.log("Executed statement");
-</script>
-<?php
 if (!$stmt->execute())
-
 {
 $errorMsg = "Execute failed: (" . $stmt->errno . ") " .
 $stmt->error;
 $success = false;
-
 }
-?>
-<script type="text/javascript">
-    console.log("Idk what but there's some error here");
-</script>
-<?php
+
 $stmt->close();
 }
 $conn->close();

@@ -108,7 +108,9 @@ $success = false;
 }
 else{
 // Start the session:
+session_start();
 $_SESSION['loggedin'] = true;
+$_SESSION['userid'] = $row["user_id"];
 }
 }
 else
