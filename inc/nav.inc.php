@@ -13,6 +13,9 @@
             <a class="nav-link" href="../new_listing.php">New Listing</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="../profile.php">Profile</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="../register.php">Register</a>
         </li>
         <li class="nav-item">
