@@ -14,7 +14,7 @@
 <body>
 <main>
 <?php
-include "inc/nav.inc.php";
+    include "inc/nav.inc.php";
 ?>
 <?php
 $email = $errorMsg = "";
@@ -71,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "<h4>Registration successful!</h4>";
     echo "<p>Email: " . $email;
     echo "<br>  ";
-    echo "Thank you for signing up ". $fname;
     }
 }
 else
@@ -122,12 +121,13 @@ else
 </script>
 <?php
 // Prepare the statement:
+$user_role = 'u';
 $sql = "INSERT INTO user_table 
-(username, email, password) VALUES (?, ?, ?)";
+(username, email, user_role, password) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 // Bind & execute the query statement:
-$stmt->bind_param("sss", $uname, $email, $pwd_hashed);
+$stmt->bind_param("ssss", $uname, $email, $user_role, $pwd_hashed);
 if (!$stmt->execute())
 {
 $errorMsg = "Execute failed: (" . $stmt->errno . ") " .

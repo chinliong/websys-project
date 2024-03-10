@@ -4,6 +4,7 @@
 <title>Ferris wheel</title>
     <?php
         include 'inc/head.inc.php';
+        include 'inc/init.inc.php'
     ?>
 </head>
 

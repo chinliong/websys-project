@@ -111,6 +111,7 @@ else{
 session_start();
 $_SESSION['loggedin'] = true;
 $_SESSION['userid'] = $row["user_id"];
+$_SESSION['username'] = $row["username"];
 }
 }
 else

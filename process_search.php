@@ -58,13 +58,15 @@
         $success = false;
 
         }
+
+        //[Front-end] display search results
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             echo '<article class="col-md-4">';
             echo '<img src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '" class="img-fluid">';
             echo '<h3>' . $row["product_name"] . '</h3>';
-            echo '<p>' . $row["price"] . '</p>';
-            echo '<p>' . $row["seller_name"] . '</p>';
+            echo '<p>$' . $row["price"] . '</p>';
+            echo '<p>Seller: ' . $row["seller_name"] . '</p>';
             echo '</article>';
         }
     $stmt->close();

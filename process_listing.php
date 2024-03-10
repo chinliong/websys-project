@@ -9,6 +9,7 @@
     ?>
     <?php 
         include 'inc/head.inc.php';
+        include 'inc/init.inc.php';
     ?>
 </head>
 <body>
@@ -111,12 +112,13 @@ else
 
 <?php
 // Prepare the statement:
+$seller_name = $_SESSION['username'];
 $sql = "INSERT INTO product_table
-(product_name, product_image, price) VALUES (?, ?, ?)";
+(product_name, product_image, price, seller_name) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 // Bind & execute the query statement:
-$stmt->bind_param("sss", $pname, $pimage, $price);
+$stmt->bind_param("ssss", $pname, $pimage, $price, $seller_name);
 ?>
 
 <script type="text/javascript">
