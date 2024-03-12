@@ -70,6 +70,10 @@ $conn->close();
                 <input type="email" id="email" name="email" required>
                 <input type="submit" value="Update Profile">
             </form>
+            <!-- Profile Deletion Button -->
+            <form action="delete_profile.php" method="post">
+                <input type="submit" value="Delete Profile" style="background-color: red; color: white; border: none; padding: 10px 20px; margin-top: 10px; cursor: pointer;">
+            </form>
         </section>
         <?php include 'inc/footer.inc.php'; ?>
     </main>

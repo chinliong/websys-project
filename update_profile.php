@@ -7,19 +7,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-// Database connection settings
-$host = 'localhost'; // or your host
-$dbUsername = 'your_username'; // your database username
-$dbPassword = 'your_password'; // your database password
-$dbName = 'your_database_name'; // your database name
+// // Database connection settings
+// $host = 'localhost'; // or your host
+// $dbUsername = 'your_username'; // your database username
+// $dbPassword = 'your_password'; // your database password
+// $dbName = 'your_database_name'; // your database name
 
-// Create a new MySQLi connection
-$mysqli = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+// // Create a new MySQLi connection
+// $mysqli = new mysqli($host, $dbUsername, $dbPassword, $dbName);
 
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
+// // Check connection
+// if ($mysqli->connect_error) {
+//     die("Connection failed: " . $mysqli->connect_error);
+// }
 
 // Initialize variables
 $errorMsg = '';
