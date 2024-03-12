@@ -54,36 +54,6 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
 <head>
     <title>User Profile</title>
     <?php include 'inc/head.inc.php'; ?>
-    <style>
-        body {
-            padding-top: 20px;
-        }
-
-        .card-header {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .profile-icon {
-            width: 24px;
-            margin-right: 10px;
-        }
-
-        .btn-custom {
-            background-color: #0069d9;
-            color: white;
-        }
-
-        .btn-custom:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-
-        #editProfileForm {
-            margin-top: 20px;
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
