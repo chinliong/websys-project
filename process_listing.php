@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $filesize = $_FILES['pimage']['size'];
     $folder = "./images/" . $filename;
 
+    $cat = sanitize_input($_POST["cat"]);
     if (empty($_POST["pname"])) {
         $errorMsg .= "Product name is required.<br>";
         $success = false;
@@ -54,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $success = false;
     }
 
-    placeListing($folder, $file_tmp, $file_name, $pname, $price, $errorMsg, $success);
+    placeListing($cat, $folder, $file_tmp, $file_name, $pname, $price, $errorMsg, $success);
 }
 if ($success)
 {
@@ -76,7 +77,7 @@ echo '<button type="submit" class="btn btn-warning">Return to Login</button>';
 /*
 * Helper function to place the listing.
 */
-function placeListing($folder, $tmpname, $pimage, $pname, $price, $errorMsg, $success)
+function placeListing($cat, $folder, $tmpname, $pimage, $pname, $price, $errorMsg, $success)
 {
     
 //global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
@@ -114,11 +115,11 @@ else
 // Prepare the statement:
 $seller_name = $_SESSION['username'];
 $sql = "INSERT INTO product_table
-(product_name, product_image, price, seller_name) VALUES (?, ?, ?, ?)";
+(product_name, product_image, price, seller_name, cat_id) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 // Bind & execute the query statement:
-$stmt->bind_param("ssss", $pname, $pimage, $price, $seller_name);
+$stmt->bind_param("ssssi", $pname, $pimage, $price, $seller_name, $cat);
 ?>
 
 <script type="text/javascript">

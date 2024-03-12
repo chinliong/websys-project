@@ -30,11 +30,38 @@ include "inc/nav.inc.php";
                     <input type="price" class="form-control" id="price" name="price"
                     placeholder="How much does this sell for?">
                 </div>
-                <div class="col-sm-12">
+                <div class="col-md-6 col-sm-12">
                     <label for="pimage" class="form-label">Upload a picture here</label>
                     <input type="file" class="form-control" id="pimage" name="pimage">
                 </div>
-                    <div class="col-sm-12">
+                <div class="col-md-6 col-sm-12">
+                    <label for="cat" class="form-label">Category</label>
+                    <select class="form-control" id="cat" name="cat">
+                    <?php
+                    // Replace with your actual database connection and query
+                    $config = parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli(
+                        $config['servername'],
+                        $config['username'],
+                        $config['password'],
+                        $config['dbname']
+                    );
+                    $stmt = $conn->prepare("SELECT * from product_category");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row["cat_id"] . "'>" . $row["cat_name"] . "</option>";
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $conn->close();
+                    ?>
+                    </select>
+                </div>
+                <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary">List it!</button>
                 </div>
             </div>
