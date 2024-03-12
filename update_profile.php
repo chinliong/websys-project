@@ -2,68 +2,72 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    echo '<h1>You are not logged in.</h1>';
-    echo '<p><a href="login.php">Login here</a></p>';
+session_start(); 
+if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)) {
+    header('Location: login.php');
     exit;
 }
 
-$errorMsg = '';
-$successMsg = '';
-
 $config = parse_ini_file('/var/www/private/db-config.ini');
 if (!$config) {
-    $errorMsg = "Failed to read database config file.";
-} else {
-    $conn = new mysqli(
-        $config['servername'],
-        $config['username'],
-        $config['password'],
-        $config['dbname']
-    );
+    $_SESSION['error_msg'] = "Failed to read database config file.";
+    header('Location: profile.php');
+    exit;
+}
 
-    if ($conn->connect_error) {
-        $errorMsg = "Connection failed: " . $conn->connect_error;
-    } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
-        $username = $conn->real_escape_string(trim($_POST["username"]));
-        $email = $conn->real_escape_string(trim($_POST["email"]));
+$conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+if ($conn->connect_error) {
+    $_SESSION['error_msg'] = "Connection failed: " . $conn->connect_error;
+    header('Location: profile.php');
+    exit;
+}
+
+$userId = $_SESSION['userid'];
+// Fetch user details for comparison or other logic as needed
+$sql = "SELECT username, email FROM user_table WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->num_rows > 0 ? $result->fetch_assoc() : null;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $oldPassword = $_POST['old_password'];
+    $newUsername = $_POST['username'];
+    $newEmail = $_POST['email'];
+    $newPassword = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
+
+    // Fetch the current password hash from the database
+    $stmt = $conn->prepare("SELECT password FROM user_table WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
     
-        $sql = "UPDATE user_table SET username = ?, email = ? WHERE user_id = ?";
+    if ($user && password_verify($oldPassword, $user['password'])) {
+        // Proceed with updating the user's profile
+        $query = "UPDATE user_table SET username = ?, email = ?".($newPassword ? ", password = ?" : "")." WHERE user_id = ?";
+        $stmt = $conn->prepare($query);
         
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("ssi", $username, $email, $_SESSION['userid']);
-            
-            if ($stmt->execute()) {
-                $successMsg = "Profile updated successfully.";
-            } else {
-                $errorMsg = "Oops! Something went wrong. Please try again later.";
-            }
-            
-            $stmt->close();
+        if ($newPassword) {
+            $stmt->bind_param("sssi", $newUsername, $newEmail, $newPassword, $userId);
+        } else {
+            $stmt->bind_param("ssi", $newUsername, $newEmail, $userId);
         }
+        
+        if ($stmt->execute()) {
+            $_SESSION['success_msg'] = "Profile updated successfully.";
+        } else {
+            $_SESSION['error_msg'] = "Error updating profile.";
+        }
+    } else {
+        $_SESSION['error_msg'] = "Incorrect old password.";
     }
 
-    $conn->close();
+    $stmt->close();
+    header('Location: profile.php'); // Redirect back to profile.php
+    exit;
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Update Profile</title>
-</head>
-<body>
-    <?php if ($errorMsg) echo "<p>Error: $errorMsg</p>"; ?>
-    <?php if ($successMsg) echo "<p>$successMsg</p>"; ?>
-    <!-- Form for updating profile -->
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <input type="submit" name="update_profile" value="Update Profile">
-    </form>
-</body>
-</html>
+$conn->close();
+?>

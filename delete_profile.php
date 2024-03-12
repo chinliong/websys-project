@@ -4,77 +4,68 @@ error_reporting(E_ALL);
 
 session_start();
 
+// Redirect to login if not logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header('Location: login.php');
     exit;
 }
 
-// Database connection settings
-global $errorMsg, $success;
-// Create database connection.
+// Attempt to read database configuration
 $config = parse_ini_file('/var/www/private/db-config.ini');
 if (!$config) {
-    $errorMsg = "Failed to read database config file.";
-    $success = false;
-} else {
-    $conn = new mysqli(
-        $config['servername'],
-        $config['username'],
-        $config['password'],
-        $config['dbname']
-    );
-    // Check connection
-    if ($conn->connect_error) {
-        $errorMsg = "Connection failed: " . $conn->connect_error;
-        $success = false;
-    } else if (isset($_POST['confirm_deletion'])) {
-        // User confirmed deletion
-        $userId = $_SESSION['userid'];
+    $_SESSION['error_msg'] = "Failed to read database config file.";
+    header('Location: profile.php');
+    exit;
+}
 
-        // Replace 'user_table' with your actual table name
-        $sql = "DELETE FROM user_table WHERE user_id = ?";
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("i", $userId);
-            if ($stmt->execute()) {
-                // Successfully deleted user
-                
-                // Logout and destroy session
-                $_SESSION = array();
-                session_destroy();
-                
-                // If you're using session cookies, consider also deleting the session cookie
-                if (ini_get("session.use_cookies")) {
-                    $params = session_get_cookie_params();
-                    setcookie(session_name(), '', time() - 42000,
-                        $params["path"], $params["domain"],
-                        $params["secure"], $params["httponly"]
-                    );
+// Attempt to establish a database connection
+$conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+if ($conn->connect_error) {
+    $_SESSION['error_msg'] = "Connection failed: " . $conn->connect_error;
+    header('Location: profile.php');
+    exit;
+}
+
+// Check if the deletion form was submitted and password was provided
+if (isset($_POST['confirm_deletion']) && isset($_POST['password'])) {
+    $password = $_POST['password'];
+    $userId = $_SESSION['userid'];
+
+    // Fetch the hashed password from the database for verification
+    $stmt = $conn->prepare("SELECT password FROM user_table WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($user = $result->fetch_assoc()) {
+        if (password_verify($password, $user['password'])) {
+            // Password is correct; proceed with user account deletion
+            $deleteSql = "DELETE FROM user_table WHERE user_id = ?";
+            if ($deleteStmt = $conn->prepare($deleteSql)) {
+                $deleteStmt->bind_param("i", $userId);
+                if ($deleteStmt->execute()) {
+                    // Deletion successful; logout and redirect to login page
+                    session_destroy();
+                    header('Location: login.php?account_deleted=true');
+                    exit;
+                } else {
+                    $_SESSION['error_msg'] = "Error deleting profile.";
                 }
-
-                // Redirect to login page
-                header('Location: login.php');
-                exit;
+                $deleteStmt->close();
             } else {
-                $errorMsg = "Error deleting profile.";
+                $_SESSION['error_msg'] = "Could not prepare statement for deletion.";
             }
-            $stmt->close();
         } else {
-            // This else block can help identify issues with the preparation of the SQL statement
-            $errorMsg = "Could not prepare statement: " . $conn->error;
+            $_SESSION['error_msg'] = "Incorrect password.";
         }
-        $conn->close();
     } else {
-        // Show confirmation message
-        echo '<h2>Are you sure you want to delete your profile?</h2>';
-        echo '<form method="post">';
-        echo '<input type="hidden" name="confirm_deletion" value="yes">';
-        echo '<input type="submit" value="Yes, delete my profile" style="background-color: red; color: white; border: none; padding: 10px 20px; cursor: pointer;">';
-        echo '</form>';
-        echo '<p><a href="profile.php">Cancel</a></p>';
+        $_SESSION['error_msg'] = "User not found.";
     }
+    $stmt->close();
+    $conn->close();
+    header('Location: profile.php');
+    exit;
 }
 
-if ($errorMsg) {
-    echo "<p>$errorMsg</p>";
-}
+// Redirect back if accessed directly without form submission
+header('Location: profile.php');
 ?>
