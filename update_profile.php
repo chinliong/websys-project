@@ -1,57 +1,52 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
-// Ensure the user is logged in
+
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     echo '<h1>You are not logged in.</h1>';
     echo '<p><a href="login.php">Login here</a></p>';
     exit;
 }
 
-// // Database connection settings
-// $host = 'localhost'; // or your host
-// $dbUsername = 'your_username'; // your database username
-// $dbPassword = 'your_password'; // your database password
-// $dbName = 'your_database_name'; // your database name
-
-// // Create a new MySQLi connection
-// $mysqli = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-
-// // Check connection
-// if ($mysqli->connect_error) {
-//     die("Connection failed: " . $mysqli->connect_error);
-// }
-
-// Initialize variables
 $errorMsg = '';
 $successMsg = '';
 
-// Check if the form is submitted for profile update
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
-    // Extract and sanitize input
-    $username = $mysqli->real_escape_string(trim($_POST["username"]));
-    $email = $mysqli->real_escape_string(trim($_POST["email"]));
-    
-    // Prepare an update statement
-    $sql = "UPDATE user_table SET username = ?, email = ? WHERE user_id = ?";
-    
-    if ($stmt = $mysqli->prepare($sql)) {
-        // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("ssi", $username, $email, $_SESSION['userid']);
-        
-        // Attempt to execute the prepared statement
-        if ($stmt->execute()) {
-            $successMsg = "Profile updated successfully.";
-        } else {
-            $errorMsg = "Oops! Something went wrong. Please try again later.";
-        }
-        
-        // Close statement
-        $stmt->close();
-    }
-}
+$config = parse_ini_file('/var/www/private/db-config.ini');
+if (!$config) {
+    $errorMsg = "Failed to read database config file.";
+} else {
+    $conn = new mysqli(
+        $config['servername'],
+        $config['username'],
+        $config['password'],
+        $config['dbname']
+    );
 
-// Close database connection
-$mysqli->close();
+    if ($conn->connect_error) {
+        $errorMsg = "Connection failed: " . $conn->connect_error;
+    } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
+        $username = $conn->real_escape_string(trim($_POST["username"]));
+        $email = $conn->real_escape_string(trim($_POST["email"]));
+    
+        $sql = "UPDATE user_table SET username = ?, email = ? WHERE user_id = ?";
+        
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param("ssi", $username, $email, $_SESSION['userid']);
+            
+            if ($stmt->execute()) {
+                $successMsg = "Profile updated successfully.";
+            } else {
+                $errorMsg = "Oops! Something went wrong. Please try again later.";
+            }
+            
+            $stmt->close();
+        }
+    }
+
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
