@@ -43,10 +43,10 @@
 
                         $stmt = $conn->prepare("SELECT * FROM product_category");
                         $stmt->execute();
-                        $result = $stmt->get_result();
-                        if($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-                                echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
+                        $navigation_menu_categories_results = $stmt->get_result();
+                        if($navigation_menu_categories_results->num_rows > 0) {
+                            while($navigation_row_results_options = $navigation_menu_categories_results->fetch_assoc()) {
+                                echo "<option value='".$navigation_row_results_options['cat_id']."'>".$navigation_row_results_options['cat_name']."</option>";
                             }
                         } else{
                             echo "<option value=''>No categories found</option>";

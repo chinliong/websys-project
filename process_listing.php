@@ -113,7 +113,8 @@ else
 
 <?php
 // Prepare the statement:
-$seller_name = $_SESSION['username'];
+
+$seller_name = $_SESSION['username']; //FIX THIS SHIT. IT SHOULDNT BE DONE LIKE THIS
 $sql = "INSERT INTO product_table
 (product_name, product_image, price, seller_name, cat_id) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
