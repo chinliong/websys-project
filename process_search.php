@@ -66,6 +66,7 @@
             echo '<img src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '" class="img-fluid">';
             echo '<h3>' . $row["product_name"] . '</h3>';
             echo '<p>$' . $row["price"] . '</p>';
+            echo '<p>Category: ' . $row["cat_id"] . '</p>';
             echo '<p>Seller: ' . $row["seller_name"] . '</p>';
             echo '</article>';
         }
