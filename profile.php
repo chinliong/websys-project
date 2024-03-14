@@ -48,10 +48,13 @@ $errorMsg = isset($_SESSION['error_msg']) ? $_SESSION['error_msg'] : '';
 // Clear the messages from the session to avoid displaying them again on refresh
 unset($_SESSION['success_msg'], $_SESSION['error_msg']);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <title>User Profile</title>
     <?php include 'inc/head.inc.php'; ?>
 </head>
@@ -78,6 +81,7 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
                     <h4 class="mb-0">Profile Information</h4>
                 </div>
                 <ul class="list-group list-group-flush">
+
                     <li class="list-group-item"><i class="fas fa-user profile-icon"></i>Username: <strong><?= htmlspecialchars($row['username']); ?></strong></li>
                     <li class="list-group-item"><i class="fas fa-envelope profile-icon"></i>Email: <strong><?= htmlspecialchars($row['email']); ?></strong></li>
                 </ul>
