@@ -7,6 +7,10 @@
     } else {
         $_SESSION = array();
         session_destroy();
+
+        // Redirect to index.php
+        header("Location: index.php");
+        exit; // Ensure the script stops executing after redirection
     }
 ?>
 
