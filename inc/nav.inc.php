@@ -15,7 +15,7 @@ session_start();
         <ul class="navbar-nav ms-auto">
             <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
                 <li class="nav-item">
-                <a class="nav-link" href="../new_listing.php">New Listing</a>
+                <a class="nav-link" href="../new_listing.php">New Listings</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link" href="../profile.php"><i class="fas fa-user"></i> <?php echo htmlspecialchars($_SESSION['username']); ?></a>
