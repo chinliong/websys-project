@@ -112,3 +112,42 @@ body {
     margin-top: 20px;
     display: none;
 }
+
+.content h1 {
+    animation: animate-title 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes animate-title {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+  }
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+.btn-primary {
+    background-color: #388E3C; /* Change this to your desired color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+.btn-primary:hover {
+    background-color: #2E602F; /* Change this to your desired hover color */
+  }
+
+#Photo { 
+    width: 200px;
+    height: 200px;
+    align-content: center;
+
+}
