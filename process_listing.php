@@ -18,7 +18,7 @@
 include "inc/nav.inc.php";
 ?>
 <?php
-$success = true;
+$success = false;
 $errorMsg = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
