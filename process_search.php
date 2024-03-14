@@ -26,20 +26,23 @@
     $cat = $_POST["cat"];
     $search = sanitize_input($search);
     $cat = sanitize_input($cat);
-    $config = parse_ini_file('/var/www/private/db-config.ini');
-    if (!$config)
-    {
-    $errorMsg = "Failed to read database config file.";
-    $success = false;
-    }
-    else
-    {
-    $conn = new mysqli(
-    $config['servername'],
-    $config['username'],
-    $config['password'],
-    $config['dbname']
-    );
+
+    include "db_con.php";
+
+    // $config = parse_ini_file('/var/www/private/db-config.ini');
+    // if (!$config)
+    // {
+    // $errorMsg = "Failed to read database config file.";
+    // $success = false;
+    // }
+    // else
+    // {
+    // $conn = new mysqli(
+    // $config['servername'],
+    // $config['username'],
+    // $config['password'],
+    // $config['dbname']
+    // );
 
     // Check connection
     if ($conn->connect_error)
@@ -74,8 +77,10 @@
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             echo '<article class="col-md-4">';
+            echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
             echo '<img src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '" class="img-fluid">';
             echo '<h3>' . $row["product_name"] . '</h3>';
+            echo '</a>';
             echo '<p>$' . $row["price"] . '</p>';
             echo '<p>Category: ' . $row["cat_name"] . '</p>';
             echo '<p>Seller: ' . $row["seller_name"] . '</p>';
@@ -84,7 +89,7 @@
     $stmt->close();
     }
     $conn->close();
-    }
+    
     function sanitize_input($data)
     {
     $data = trim($data);

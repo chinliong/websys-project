@@ -39,13 +39,14 @@ include "inc/nav.inc.php";
                     <select class="form-control" id="cat" name="cat">
                     <?php
                     // Replace with your actual database connection and query
-                    $config = parse_ini_file('/var/www/private/db-config.ini');
-                    $conn = new mysqli(
-                        $config['servername'],
-                        $config['username'],
-                        $config['password'],
-                        $config['dbname']
-                    );
+                    // include "db_con.php";
+                    // $config = parse_ini_file('/var/www/private/db-config.ini');
+                    // $conn = new mysqli(
+                    //     $config['servername'],
+                    //     $config['username'],
+                    //     $config['password'],
+                    //     $config['dbname']
+                    // );
                     $stmt = $conn->prepare("SELECT * from product_category");
                     $stmt->execute();
                     $result = $stmt->get_result();
