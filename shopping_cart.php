@@ -51,7 +51,9 @@
     else
     {
         $user_id_cart_name = $_SESSION['userid'];
-        $stmt = $conn->prepare("SELECT * FROM product_table WHERE product_name LIKE ?");
+        $stmt = $conn->prepare("SELECT cart_table.*, product_table.* FROM cart_table 
+        RIGHT JOIN product ON product_table.cat_id = product_category.cat_id 
+        WHERE product_name LIKE ? AND product_table.cat_id = ?");
         $stmt->bind_param("i", $user_id_cart_name);
 
         if (!$stmt->execute())
