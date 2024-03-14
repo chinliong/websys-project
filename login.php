@@ -7,6 +7,9 @@
 ?>
 </head>
 <body>
+<?php
+  include 'inc/nav.inc.php';
+?>
 
 <div class="login-container d-flex justify-content-center align-items-center min-vh-100">
   <div class="login-form card p-4">
