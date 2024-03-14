@@ -33,13 +33,15 @@
                 <select name="cat">
                     <option value="all_cats_in_db">All categories</option>
                     <?php
-                        $config = parse_ini_file('/var/www/private/db-config.ini');
-                        $conn = new mysqli(
-                            $config['servername'],
-                            $config['username'],
-                            $config['password'],
-                            $config['dbname']
-                        );
+                        include "db_con.php";
+
+                        // $config = parse_ini_file('/var/www/private/db-config.ini');
+                        // $conn = new mysqli(
+                        //     $config['servername'],
+                        //     $config['username'],
+                        //     $config['password'],
+                        //     $config['dbname']
+                        // );
 
                         $stmt = $conn->prepare("SELECT * FROM product_category");
                         $stmt->execute();
