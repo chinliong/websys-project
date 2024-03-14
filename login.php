@@ -24,7 +24,6 @@
         <label for="pwd" class="form-label">Password</label>
         <input type="password" class="form-control" id="pwd" name="pwd"
                placeholder="Enter your password" required>
-        <a href="#" id="show-password" class="show-password">Show Password</a>
       </div>
       <div class="form-check mb-3">
         <input type="checkbox" class="form-check-input" id="remember-me" name="remember_me">
