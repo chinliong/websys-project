@@ -52,8 +52,8 @@
     {
         $user_id_cart_name = $_SESSION['userid'];
         $stmt = $conn->prepare("SELECT cart_table.*, product_table.* FROM cart_table 
-        RIGHT JOIN product ON product_table.cat_id = product_category.cat_id 
-        WHERE product_name LIKE ? AND product_table.cat_id = ?");
+        RIGHT JOIN product_table ON product_table.product_id = cart_table.product_id 
+        WHERE user_id = ?;");
         $stmt->bind_param("i", $user_id_cart_name);
 
         if (!$stmt->execute())
@@ -66,15 +66,16 @@
 
         //[Front-end] display search results
         $result = $stmt->get_result();
+        echo '<section class="shopping-cart">';
         while ($row = $result->fetch_assoc()) {
-            echo '<article class="col-md-4">';
-            echo '<img src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '" class="img-fluid">';
-            echo '<h3>' . $row["product_name"] . '</h3>';
-            echo '<p>$' . $row["price"] . '</p>';
-            echo '<p>Category: ' . $row["cat_id"] . '</p>';
-            echo '<p>Seller: ' . $row["seller_name"] . '</p>';
+            echo '<article class="product">';
+            echo '<h2 class="product-title">' . $row["product_name"] . '</h2>';
+            echo '<p class="product-price">Price: $' . $row["price"] . '</p>';
+            echo '<p class="product-category">Category: ' . $row["cat_id"] . '</p>';
+            echo '<p class="product-seller">Seller: ' . $row["seller_name"] . '</p>';
             echo '</article>';
         }
+        echo '</section>';
     $stmt->close();
     }
     $conn->close();
