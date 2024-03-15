@@ -70,8 +70,9 @@
             echo '<p>$' . $row["price"] . '</p>';
             echo '<p>Category: ' . $row["cat_name"] . '</p>';
             echo '<p>Seller: ' . $row["seller_name"] . '</p>';
-            
-            echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+                echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+            }
             echo '</article>';
         }
     $stmt->close();

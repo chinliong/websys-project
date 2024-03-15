@@ -1,8 +1,7 @@
 <?php
     session_start();
     if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
-        echo '<h1> You are not logged in. </h1>';
-        echo '<p> <a href="login.php">Login here</a> </p>';
+        //echo '<script> alert("You are not logged in. Please login to access this page."); </script>';
         header('Location: ../login.php');
         exit;
     }
