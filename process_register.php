@@ -58,8 +58,15 @@
             }
 
             if ($success) {
+                session_start();
                 echo "<h4>Registration successful!</h4>";
                 echo "<p>Email: " . $email . "</p>";
+                // Registration success
+                $_SESSION['email'] = $email; // Set session variables
+                $_SESSION['username'] = $uname;
+                $_SESSION['loggedin'] = true; // Important: Set logged in status
+                // Back to home button
+                echo '<div><a href="index.php" class="btn btn-primary">Back to Home</a></div>';
             } else {
                 echo "<h3>Oops!</h3>";
                 echo "<h4>The following input errors were detected:</h4>";
