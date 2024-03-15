@@ -8,22 +8,3 @@ $(document).ready(function(){
         });
     });
 });
-
-
-let addToCartBtn = document.querySelector(".add-to-cart");
-
-let opt = {
-  initialText: "Add to Cart",
-  textOnClick: "Item Added",
-  interval: 1000,
-};
-
-let setAddToCartText = () => {
-  addToCartBtn.innerHTML = opt.textOnClick;
-  let reinit = () => {
-    addToCartBtn.innerHTML = opt.initialText;
-  };
-  setTimeout(reinit, opt.interval);
-};
-
-addToCartBtn.addEventListener("click", setAddToCartText);
