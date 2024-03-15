@@ -16,11 +16,11 @@
     include "inc/nav.inc.php";
     ?>
 
-<main class = "container">
+<main class="container">
 
     <section id="search-results">
     <h2>Search Results</h2>
-    <div class = "row">
+    <div class="row">
     <?php 
     $search = $_POST["search"];
     $cat = $_POST["cat"];
@@ -69,7 +69,7 @@
             echo '<p>$' . $row["price"] . '</p>';
             echo '<p>Category: ' . $row["cat_name"] . '</p>';
             echo '<p>Seller: ' . $row["seller_name"] . '</p>';
-            
+            echo '<button type="submit" class="btn btn-primary">Add to Cart</button>';
             echo '</article>';
         }
     $stmt->close();
