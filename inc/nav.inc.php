@@ -27,6 +27,9 @@
         <li class="nav-item">
             <a class="nav-link" href="../new_listing.php">new_listing</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../shopping_cart.php">shopping cart</a>
+        </li>
         <li class="nav-item">   
             <form action="../process_search.php" method="post">
                 <input maxlength="55" type="text" class="form-control" id="search" name="search" placeholder="Search for keywords">
