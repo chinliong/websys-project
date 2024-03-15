@@ -10,6 +10,7 @@
     <?php 
     include 'inc/head.inc.php';
     ?>
+    <script src="js/async.js" async></script>
 </head>
 <body>    
     <?php
@@ -69,7 +70,8 @@
             echo '<p>$' . $row["price"] . '</p>';
             echo '<p>Category: ' . $row["cat_name"] . '</p>';
             echo '<p>Seller: ' . $row["seller_name"] . '</p>';
-            echo '<button type="submit" class="btn btn-primary">Add to Cart</button>';
+            
+            echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
             echo '</article>';
         }
     $stmt->close();
