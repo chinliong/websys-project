@@ -102,6 +102,7 @@ include 'inc/paypal.inc.php';
 
                                             <hr> <!-- Add a horizontal line -->
                                             <h4>Payment Method</h4>
+                                            <div id="paypal-button-container"></div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="paymentMethod" id="cashondelivery" value="cashondelivery">
                                                 <label class="form-check-label" for="cashondelivery">
