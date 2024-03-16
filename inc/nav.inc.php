@@ -35,7 +35,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
             </ul>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="../shopping_cart.php"> Shopping Cart </a>
+          <a class="nav-link" href="../shopping_cart.php">Shopping Bag</a>
           </li>
 
         <?php else : ?>

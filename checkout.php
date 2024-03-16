@@ -1,5 +1,6 @@
 <?php
 include 'inc/head.init.php';
+include 'inc/paypal.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +120,7 @@ include 'inc/head.init.php';
                                     Credit Card/Debit Card
                                 </label>
                             </div>
-
+                            <div id="paypal-button-container"></div>
                             <!-- Modal -->
                             <div class="modal fade" id="cardDetailsModal" tabindex="-1" role="dialog" aria-labelledby="cardDetailsModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -145,6 +146,7 @@ include 'inc/head.init.php';
                                                     <label for="cardCVV">CVV</label>
                                                     <input type="text" class="form-control" id="cardCVV" placeholder="123">
                                                 </div>
+                                                
                                                 <div class="form-group">
                                                     <label for="cardName">Name on Card</label>
                                                     <input type="text" class="form-control" id="cardName" placeholder="John Doe">
