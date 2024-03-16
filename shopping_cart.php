@@ -70,7 +70,7 @@ include 'inc/init.php';
                                 $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                 $item_count++;
                                 echo '<tr>';
-                                echo '<td><img src="' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
                                 echo '<td>$' . $row["price"] . '</td>';
                                 echo '<td>' . $row["cat_id"] . '</td>';
                                 echo '<td>' . $row["seller_name"] . '</td>';

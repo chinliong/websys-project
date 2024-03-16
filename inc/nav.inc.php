@@ -25,9 +25,6 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
           <li class="nav-item">
             <a class="nav-link" href="../new_listing.php">New Listings</a>
           </li>
-          <li class="nav-item">
-          <a class="nav-link" href="../shopping_cart.php"> Shopping Cart </a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-user"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
@@ -39,7 +36,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
 
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="../shopping_cart.php"> Shopping Cart </a>
+          <a class="nav-link" href="../shopping_cart.php"> Shopping Bag </a>
           </li>
 
         <?php else : ?>

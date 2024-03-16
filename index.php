@@ -25,7 +25,7 @@
 
         <div class="row mt-4">
             <!-- Products Section -->
-            <h2 class="w-100">Featured Products</h2>
+            <h2 class="w-100">Featured Products Testing1</h2>
             <!-- Product Item -->
             <div class="col-md-4">
                 <div class="card">
