@@ -21,9 +21,12 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
 
       <ul class="navbar-nav ms-auto">
 
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
+        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?> 
           <li class="nav-item">
             <a class="nav-link" href="../new_listing.php">New Listings</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="../shopping_cart.php"> Shopping Cart </a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,6 +36,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
               <li><a class="dropdown-item" href="../profile.php">Profile</a></li>
               <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
             </ul>
+
           </li>
 
         <?php else : ?>
@@ -53,9 +57,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
           <a class="nav-link" href="../aboutus.php"><i class="fas fa-solid fa-book-open"></i> About Us </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="../shopping_cart.php"><i class="fas fa-solid fa-book-open"></i> Shopping Cart </a>
-        </li>
+        
 
 
 

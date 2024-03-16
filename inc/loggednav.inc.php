@@ -20,9 +20,6 @@
         <a class="nav-link" href="../register.php">Register</a>
         <li class="nav-item">
         <a class="nav-link" href="../login.php">Login here</a>
-        <li class="nav-item">
-            <a class="nav-link" href="../shopping_cart.php">shopping cart</a>
-        </li>
         <ul class="navbar-nav">
     <!-- Your other list items here... -->
         <li class="nav-item">
