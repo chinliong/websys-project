@@ -38,6 +38,9 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
             </ul>
 
           </li>
+          <li class="nav-item">
+          <a class="nav-link" href="../shopping_cart.php"> Shopping Cart </a>
+          </li>
 
         <?php else : ?>
           <li class="nav-item">
@@ -63,7 +66,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
 
         <li class="nav-item d-flex">
           <form action="../process_search.php" method="post" class="d-flex">
-            <input maxlength="55" type="text" class="form-control me-2" id="search" name="search" placeholder="Search for keywords">
+            <input maxlength="55" type="text" class="form-control me-2" id="search" name="search" placeholder="Search something...  ">
             <select name="cat" class="form-select">
               <option value="all_cats_in_db">All Categories</option>
               <?php
