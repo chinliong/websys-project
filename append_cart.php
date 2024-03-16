@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if (isset($_POST['product_id']) && isset($_SESSION['userid'])) {
         $product_id = $_POST['product_id'];
         $user_id = $_SESSION['userid'];
