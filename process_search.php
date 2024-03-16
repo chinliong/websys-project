@@ -10,6 +10,7 @@
     <?php 
     include 'inc/head.inc.php';
     ?>
+    <script src="js/async.js" async></script>
 </head>
 <body>    
     <?php
@@ -28,21 +29,6 @@
     $cat = sanitize_input($cat);
 
     include "db_con.php";
-
-    // $config = parse_ini_file('/var/www/private/db-config.ini');
-    // if (!$config)
-    // {
-    // $errorMsg = "Failed to read database config file.";
-    // $success = false;
-    // }
-    // else
-    // {
-    // $conn = new mysqli(
-    // $config['servername'],
-    // $config['username'],
-    // $config['password'],
-    // $config['dbname']
-    // );
 
     // Check connection
     if ($conn->connect_error)
@@ -84,7 +70,9 @@
             echo '<p>$' . $row["price"] . '</p>';
             echo '<p>Category: ' . $row["cat_name"] . '</p>';
             echo '<p>Seller: ' . $row["seller_name"] . '</p>';
-            echo '<button type="submit" class="btn btn-primary">Add to Cart</button>';
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+                echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+            }
             echo '</article>';
         }
     $stmt->close();

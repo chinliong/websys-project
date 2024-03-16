@@ -1,6 +1,7 @@
 <?php
-include 'inc/head.init.php';
+include 'inc/init.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@ include 'inc/head.init.php';
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     ?>
-    <?php 
+    <?php
     include 'inc/head.inc.php';
     ?>
 </head>

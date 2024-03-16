@@ -39,7 +39,7 @@ include "inc/nav.inc.php";
                     <select class="form-control" id="cat" name="cat">
                     <?php
                     // Replace with your actual database connection and query
-                    // include "db_con.php";
+                    include "db_con.php";
                     // $config = parse_ini_file('/var/www/private/db-config.ini');
                     // $conn = new mysqli(
                     //     $config['servername'],
