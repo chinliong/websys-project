@@ -1,5 +1,6 @@
 <?php
 include 'inc/head.init.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +11,11 @@ include 'inc/head.init.php';
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     ?>
-    <?php 
+    <?php
     include 'inc/head.inc.php';
     ?>
+    <script src="inc/paypal.js" defer></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYEJbRmndALsBis5z1i7r-e2ArjbQIFwRqHlfvsH9l3xg0w_T1xSsDHt9Mp033tMR0ZSV8FgezaaK4ir&currency=USD"></script>
     </head>
     <body>
         <?php
@@ -69,7 +72,7 @@ include 'inc/head.init.php';
                                             $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                             $item_count++;
                                             echo '<tr>';
-                                            echo '<td><img src="' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                            echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
                                             echo '<td>$' . $row["price"] . '</td>';
                                             echo '<td>' . $row["cat_id"] . '</td>';
                                             echo '<td>' . $row["seller_name"] . '</td>';
@@ -99,8 +102,18 @@ include 'inc/head.init.php';
                                 </select>
                             </div>
 
-                            <hr> <!-- Add a horizontal line -->
-                            <h4>Payment Method</h4>
+
+
+
+                            <!-- [NOTICE] Just gonna hide this for the time being :-) ~ Lucas -->
+                            
+
+
+
+
+
+                            <!-- <hr> Add a horizontal line -->
+                            <!-- <h4>Payment Method</h4>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="paymentMethod" id="payNow" value="payNow">
                                 <label class="form-check-label" for="payNow">
@@ -118,10 +131,10 @@ include 'inc/head.init.php';
                                 <label class="form-check-label" for="creditDebitCard">
                                     Credit Card/Debit Card
                                 </label>
-                            </div>
+                            </div> -->
 
                             <!-- Modal -->
-                            <div class="modal fade" id="cardDetailsModal" tabindex="-1" role="dialog" aria-labelledby="cardDetailsModalLabel" aria-hidden="true">
+                            <!-- <div class="modal fade" id="cardDetailsModal" tabindex="-1" role="dialog" aria-labelledby="cardDetailsModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -165,7 +178,7 @@ include 'inc/head.init.php';
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <script>
                                 // Listen for change event on the radio button
@@ -179,12 +192,15 @@ include 'inc/head.init.php';
                                     $('#cardDetailsModal').modal('hide');
                                 });
                             </script>
-                            <hr> <!-- Add a horizontal line -->
+                            <!-- <hr> Add a horizontal line -->
                             <div style="text-align: right;">
                                 <div style="display: inline-block;">
                                     <p>Subtotal (<?php echo $item_count; ?> items): $<?php echo $subtotal; ?></p> <!-- Display the subtotal -->
-                                    <a href="checkout.php" class="btn btn-primary">Place Order</a>
+                                    <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
                                 </div>
+                            </div>
+                            
+
                             </div>
                             <?php
                             $stmt->close();
@@ -197,5 +213,31 @@ include 'inc/head.init.php';
                         <?php
                         include "inc/footer.inc.php";
                         ?>
+                        <script>
+paypal.Buttons({
+
+    onClick(){
+        
+    },
+    createOrder: function(data, actions) {
+        // This function sets up the details of the transaction, including the amount and line item details.
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '<?= strval($subtotal) ?>' // Replace this with the actual amount
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        // This function captures the funds from the transaction.
+        return actions.order.capture().then(function(details) {
+            // This function shows a transaction success message to your buyer.
+            alert('Transaction completed by ');
+        });
+    }
+}).render('#paypal-button-container'); // This function displays Smart Payment Buttons on your web page
+
+</script>
                         </body>
                         </html>
