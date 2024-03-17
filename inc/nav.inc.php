@@ -31,6 +31,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="../profile.php">Profile</a></li>
+              <li><a class="dropdown-item" href="../finance.php">Wallet</a></li>
               <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
             </ul>
 
