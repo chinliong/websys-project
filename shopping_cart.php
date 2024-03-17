@@ -39,10 +39,23 @@ include 'inc/init.php';
             $errorMsg = "Connection failed: " . $conn->connect_error;
             $success = false;
         } else {
-            $user_id_cart_name = $_SESSION['userid'];
-            $stmt = $conn->prepare("SELECT cart_table.*, product_table.* FROM cart_table 
-            RIGHT JOIN product_table ON product_table.product_id = cart_table.product_id 
-            WHERE user_id = ?;");
+            $user_id_cart_name = $_SESSION['userid' ];
+                $stmt = $conn->prepare("SELECT
+                pt.product_name,
+                ut.username AS seller_name,
+                pt.product_image,
+                pt.price,
+                pc.cat_name AS cat_name
+            FROM
+                cart_table c
+            JOIN
+                product_table pt ON c.product_id = pt.product_id
+            JOIN
+                user_table ut ON pt.user_id = ut.user_id
+            JOIN
+                product_category pc ON pt.cat_id = pc.cat_id
+            WHERE
+                c.user_id = ?");
             $stmt->bind_param("i", $user_id_cart_name);
 
             if (!$stmt->execute()) {
@@ -72,7 +85,7 @@ include 'inc/init.php';
                                 echo '<tr>';
                                 echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
                                 echo '<td>$' . $row["price"] . '</td>';
-                                echo '<td>' . $row["cat_id"] . '</td>';
+                                echo '<td>' . $row["cat_name"] . '</td>';
                                 echo '<td>' . $row["seller_name"] . '</td>';
                                 echo '<td>1</td>'; // Replace this with actual quantity
                                 echo '</tr>';

@@ -88,7 +88,7 @@ error_reporting(E_ALL);
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: deposit 
+                        value: deposit
                     }
                 }]
             });

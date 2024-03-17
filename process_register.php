@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,27 +92,30 @@
                 $errorMsg = "Connection failed: " . $conn->connect_error;
                 return false;
             }
-
+            echo "<script>console.log('before checking if username exists!');</script>";
             // Check if username or email already exists
             if ($stmt = $conn->prepare("SELECT * FROM user_table WHERE username=? OR email=?")) {
                 $stmt->bind_param("ss", $uname, $email);
                 $stmt->execute();
+                echo "<script>console.log('After fetching from db to check for username');</script>";
                 $result = $stmt->get_result();
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     if ($row['username'] == $uname) {
                         $errorMsg .= "Username already exists.<br>";
+                        echo "<script>console.log('username exists');</script>";
                     }
                     if ($row['email'] == $email) {
                         $errorMsg .= "Email already exists.<br>";
+                        echo "<script>console.log('email exists');</script>";
                     }
                     $stmt->close();
                     $conn->close();
                     return false;
                 }
                 $stmt->close();
+                echo "<script>console.log('closing the fetch connection and statement.');</script>";
             }
-
             $sql = "INSERT INTO user_table (username, email, user_role, password) VALUES (?, ?, 'u', ?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sss", $uname, $email, $pwd_hashed);
