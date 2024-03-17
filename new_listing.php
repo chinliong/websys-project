@@ -40,13 +40,6 @@ include "inc/nav.inc.php";
                     <?php
                     // Replace with your actual database connection and query
                     include "db_con.php";
-                    // $config = parse_ini_file('/var/www/private/db-config.ini');
-                    // $conn = new mysqli(
-                    //     $config['servername'],
-                    //     $config['username'],
-                    //     $config['password'],
-                    //     $config['dbname']
-                    // );
                     $stmt = $conn->prepare("SELECT * from product_category");
                     $stmt->execute();
                     $result = $stmt->get_result();

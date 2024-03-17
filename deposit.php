@@ -33,8 +33,6 @@
 
         $stmt->close();
         $conn->close();
-
-        echo json_encode(['success' => 'Deposit made successfully']);
     } else {
         echo json_encode(['error' => 'Deposit or user ID not set']);
     }

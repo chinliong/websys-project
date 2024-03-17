@@ -114,13 +114,13 @@ else
 <?php
 // Prepare the statement:
 
-$seller_name = $_SESSION['username']; //FIX THIS SHIT. IT SHOULDNT BE DONE LIKE THIS
+$seller_id = $_SESSION['userid'];
 $sql = "INSERT INTO product_table
 (product_name, product_image, price, seller_name, cat_id) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 // Bind & execute the query statement:
-$stmt->bind_param("ssssi", $pname, $pimage, $price, $seller_name, $cat);
+$stmt->bind_param("sssii", $pname, $pimage, $price, $seller_id, $cat);
 ?>
 
 <script type="text/javascript">

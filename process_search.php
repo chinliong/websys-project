@@ -10,7 +10,7 @@
     <?php 
     include 'inc/head.inc.php';
     ?>
-    <script src="js/async.js" async></script>
+    <script src="js/async.js"></script>
 </head>
 <body>    
     <?php
@@ -39,15 +39,39 @@
     else
     {
     if ($cat == "all_cats_in_db"){
-        $stmt = $conn->prepare("SELECT product_table.*, product_category.cat_name FROM product_table 
-                                LEFT JOIN product_category ON product_table.cat_id = product_category.cat_id 
-                                WHERE product_name LIKE ?");
+        $stmt = $conn->prepare("SELECT
+                                p.product_id,
+                                p.product_name, 
+                                u.username AS seller_name, 
+                                p.price, 
+                                p.product_image, 
+                                c.cat_name AS cat_name
+                                FROM 
+                                    product_table p
+                                JOIN 
+                                    user_table u ON p.user_id = u.user_id
+                                JOIN 
+                                    product_category c ON p.cat_id = c.cat_id
+                                WHERE p.product_name LIKE ?");
         $search_value = "%" . $search ."%";
         $stmt->bind_param("s", $search_value);
     } else{
-        $stmt = $conn->prepare("SELECT product_table.*, product_category.cat_name FROM product_table 
-                                LEFT JOIN product_category ON product_table.cat_id = product_category.cat_id 
-                                WHERE product_name LIKE ? AND product_table.cat_id = ?");
+        $stmt = $conn->prepare("SELECT
+                            p.product_id,
+                            p.product_name, 
+                            u.username AS seller_name, 
+                            p.price, 
+                            p.product_image, 
+                            c.cat_name AS cat_name
+                            FROM 
+                                product_table p
+                            JOIN 
+                                user_table u ON p.user_id = u.user_id
+                            JOIN 
+                                product_category c ON p.cat_id = c.cat_id
+                            WHERE 
+                                p.cat_id = ?
+                                AND p.product_name LIKE ?");
         $search_value = "%" . $search ."%";
         $stmt->bind_param("si", $search_value, $cat);
     }
