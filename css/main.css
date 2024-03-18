@@ -146,6 +146,21 @@ body {
   }
 
 
+#wallet {
+    padding: 20px;
+}
+
+#current-balance{
+    text-align: center;
+}
+
 #paypal-button-container{
-    
+    padding-top: 15px;
+}
+
+#Deposit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

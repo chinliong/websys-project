@@ -1,5 +1,4 @@
 <?php
-session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ?>
@@ -9,7 +8,7 @@ error_reporting(E_ALL);
 <head>
     <title>User Profile</title>
     <?php include 'inc/head.inc.php'; ?>
-    <script src="https://www.paypal.com/sdk/js?client-id=AYEJbRmndALsBis5z1i7r-e2ArjbQIFwRqHlfvsH9l3xg0w_T1xSsDHt9Mp033tMR0ZSV8FgezaaK4ir&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYEJbRmndALsBis5z1i7r-e2ArjbQIFwRqHlfvsH9l3xg0w_T1xSsDHt9Mp033tMR0ZSV8FgezaaK4ir&currency=SGD"></script>
 </head>
 
 <body>
@@ -17,7 +16,7 @@ error_reporting(E_ALL);
     <?php include 'inc/header.inc.php'; ?>
 
     <main class="container">
-        <section id="User Profile">
+        
             <!-- Success and Error Messages -->
             <?php
                 $config = parse_ini_file('/var/www/private/db-config.ini');
@@ -63,13 +62,21 @@ error_reporting(E_ALL);
                 $conn->close();
                 }
             ?>
-
-            <p>Funds: <?php echo $funds; ?></p>
-                <label for="deposit">Deposit Amount:</label>
-                <input type="text" id="deposit" name="deposit" min="0" required>
-                <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
-            
+        <section id="wallet">
+            <div class="row">
+                <article id="balance" class="col-sm-12">
+                    <h3 id="current-balance"><i class="fas fa-wallet"></i> Current Wallet Balance: &dollar;<?php echo $funds; ?></h3>
+                    </article>
+                <article id="Deposit" class="col-sm-12">
+                    <h2>Deposit Funds Here</h2>
+                        <label for="deposit">Deposit Amount:</label>
+                        <input type="text" id="deposit" name="deposit" min="0" placeholder="Enter an amount">
+                        <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
+                </article>
+            </div>
         </section>
+       
+        
         <?php include 'inc/footer.inc.php'; ?>
     </main>
     <script>
