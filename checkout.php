@@ -207,7 +207,6 @@ include 'inc/head.init.php';
                             <div style="text-align: right;">
                                 <div style="display: inline-block;">
                                     <p>Subtotal (<?php echo $item_count; ?> items): $<?php echo $subtotal; ?></p> <!-- Display the subtotal -->
-                                    <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
                                     <form action="payment.php" method="post">
                                     <input type="hidden" name="amount" value="<?php echo $subtotal; ?>">
                                     <button type="submit" name="pay">Pay with Funds</button>
