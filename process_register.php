@@ -116,7 +116,7 @@ error_reporting(E_ALL);
                 $stmt->close();
                 echo "<script>console.log('closing the fetch connection and statement.');</script>";
             }
-            $sql = "INSERT INTO user_table (username, email, user_role, password) VALUES (?, ?, 'u', ?)";
+            $sql = "INSERT INTO user_table (username, email, user_role, password, funds) VALUES (?, ?, 'u', ?, 0.00)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sss", $uname, $email, $pwd_hashed);
             if (!$stmt->execute()) {
