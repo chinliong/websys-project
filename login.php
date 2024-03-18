@@ -5,20 +5,22 @@
 <?php
   include 'inc/head.inc.php';
 ?>
+<script src="scripts.js" defer></script>
 </head>
 <body>
 <?php
   include 'inc/nav.inc.php';
 ?>
-
+<main>
 <div class="login-container d-flex justify-content-center align-items-center min-vh-100">
+  <section>
   <div class="login-form card p-4">
     <h2 class="text-center mb-4">Login to Your Account</h2>
     <form action="process_login.php" method="post">
       <div class="form-group">
-        <label for="uname" class="form-label">Username or Email</label>
-        <input type="text" class="form-control" id="uname" name="uname"
-               placeholder="Enter username or email" required>
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email"
+               placeholder="Enter email" required>
       </div>
       <div class="form-group">
         <label for="pwd" class="form-label">Password</label>
@@ -33,6 +35,7 @@
       <a href="#" class="forgot-password">Forgot Password?</a>
     </form>
     <p class="mt-3 text-center">Don't have an account? <a href="register.php">Sign Up</a></p>
+</section>
   </div>
 </div>
 
@@ -40,6 +43,7 @@
   include 'inc/footer.inc.php';
 ?>
 
-<script src="scripts.js"></script>
+
+</main>
 </body>
 </html

@@ -21,11 +21,15 @@ $uname = $errorMsg = "";
 $success = true;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (empty($_POST["uname"])) {
-        $errorMsg .= "Username is required.<br>";
+    if (empty($_POST["email"])) {
+        $errorMsg .= "Email is required.<br>";
         $success = false;
     } else {
-        $uname = sanitize_input($_POST["uname"]);
+        $uname = sanitize_input($_POST["email"]);
+        if (!filter_var($uname, FILTER_VALIDATE_EMAIL)) {
+            $errorMsg .= "Invalid email format.<br>";
+            $success = false;
+        }
     }
 
     if (empty($_POST["pwd"])) {
@@ -53,11 +57,13 @@ echo "<br>  ";
 }
 else
 {
+echo '<section id="error-section">';
 echo '<form action="login.php" method="post">';
-echo "<h3>Oops!</h3>";
-echo "<h4>The following input errors were detected:</h4>";
-echo "<p>" . $errorMsg . "</p>";
-echo '<button type="submit" class="btn btn-warning">Return to Login</button>';
+echo "<h3 id='error-h3'>Oops!</h3>";
+echo "<h4 id='error-h4'>Here's what went wrong: </h4>";
+echo "<p id='error-p'>" . $errorMsg . "</p>";
+echo '<button id="login-return-button" type="submit" class="btn btn-warning">Return to Login</button>';
+echo '</section>';
 }
 /*
 * Helper function to authenticate the login.
@@ -89,7 +95,7 @@ $success = false;
 else
 {
 // Prepare the statement:
-$stmt = $conn->prepare("SELECT * FROM user_table WHERE username=?");
+$stmt = $conn->prepare("SELECT * FROM user_table WHERE email=?");
 // Bind & execute the query statement:
 $stmt->bind_param("s", $uname);
 $stmt->execute();
@@ -109,7 +115,7 @@ $success = false;
 else{
 $_SESSION['loggedin'] = true;
 $_SESSION['userid'] = $row["user_id"];
-$_SESSION['role'] = $row["user_role"];       //FIX THIS SHIT. IT SHOULDNT BE DONE LIKE THIS
+$_SESSION['role'] = $row["user_role"];
 }
 }
 else
