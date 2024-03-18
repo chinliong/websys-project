@@ -14,8 +14,6 @@ include 'inc/head.init.php';
     <?php
     include 'inc/head.inc.php';
     ?>
-    <script src="inc/paypal.js" defer></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AYEJbRmndALsBis5z1i7r-e2ArjbQIFwRqHlfvsH9l3xg0w_T1xSsDHt9Mp033tMR0ZSV8FgezaaK4ir&currency=USD"></script>
     </head>
     <body>
         <?php
