@@ -109,7 +109,7 @@ $success = false;
 else{
 $_SESSION['loggedin'] = true;
 $_SESSION['userid'] = $row["user_id"];
-$_SESSION['username'] = $row["username"];       //FIX THIS SHIT. IT SHOULDNT BE DONE LIKE THIS
+$_SESSION['role'] = $row["user_role"];       //FIX THIS SHIT. IT SHOULDNT BE DONE LIKE THIS
 }
 }
 else
