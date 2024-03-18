@@ -2,44 +2,43 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // Adjust the path as needed
+require 'vendor/autoload.php';
+
+\Dotenv\Dotenv::createImmutable(__DIR__)->load();
+// $dotenv->load();
 
 $mail = new PHPMailer(true); // Create a new PHPMailer instance
-
-try {
-    // Server settings
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'LittleHavenShopee@gmail.com'; // SMTP username
-    $mail->Password = 'qiab iuws qfjt fveh'; // SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = 587;
-
-    // Sender and recipient settings
-    $mail->setFrom('yourgmail@gmail.com', 'Your Name');
-    $mail->addReplyTo($_POST['email'], $_POST['name']);
-    $mail->addAddress('yourgmail@gmail.com', 'Your Name'); // Where you want the contact messages to be sent
-
-    // Message content
-    $mail->isHTML(true);
-    $mail->Subject = 'New contact from ' . $_POST['name'];
-    $mail->Body = nl2br(e('Name: ' . $_POST['name'] . "\n" .
-                          'Email: ' . $_POST['email'] . "\n" .
-                          'Message: ' . $_POST['message']));
-
-    // Send the message and check for success
-    if ($mail->send()) {
-        echo 'Message has been sent';
-    } else {
-        echo 'Message could not be sent.';
-    }
-} catch (Exception $e) {
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-}
-
-// A simple helper function to safely encode user input
 function e($string) {
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
-?>
+
+if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
+    try {
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = $_ENV['SMTP_Host'];
+        $mail->SMTPAuth = true;
+        $mail->Username = $_ENV['SMTP_Username'];
+        $mail->Password = $_ENV['SMTP_Password'];
+        $mail->SMTPSecure = $_ENV['SMTP_Secure'];
+        $mail->Port = $_ENV['SMTP_Port'];
+
+        // Sender and recipient settings
+        $mail->setFrom($_POST['email'], $_POST['name']);
+        $mail->addReplyTo($_POST['email'], $_POST['name']);
+        $mail->addAddress($_ENV['SMTP_Username'], 'Admin'); // Where you want the contact messages to be sent
+
+        // Message content
+        $mail->isHTML(true);
+        $mail->Subject = ' Query from ' . $_POST['name'];
+        $mail->Body = nl2br(e('Name: ' . $_POST['name'] . "\n" .
+                            'Email: ' . $_POST['email'] . "\n" .
+                            'Message: ' . $_POST['message']));
+        $mail->send();
+
+        echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
+        }catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => 'Mailer Error: ' . $mail->ErrorInfo]);
+        }
+    }
+    
