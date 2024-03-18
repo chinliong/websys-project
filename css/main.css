@@ -165,6 +165,23 @@ body {
     justify-content: center;
 }
 
+#login-welcome-banner{
+    text-align: center;
+}
+
+#login-welcome-message-with-name{
+    text-align: center;
+}
+
+#success-section{
+    padding-bottom: 10px;
+}
+
+#return-home-button{
+    display: block;
+    margin: auto;
+}
+
 #error-h3{
     text-align: center;
 }
