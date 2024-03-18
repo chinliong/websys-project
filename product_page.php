@@ -2,12 +2,12 @@
 include 'db_con.php';
 
 $product_id = $_GET['id'];
-$sql = $db->prepare("SELECT product_name, product_image, price, seller_name FROM product_table WHERE product_id = ?");
+echo "<script>console.log('we are down');</script>";
+$sql = $conn->prepare("SELECT product_name, product_image, price, user_id FROM product_table WHERE product_id = ?");
 $sql->bind_param("i", $product_id); 
 $sql->execute();
-$result = $conn->query($sql);
+$result = $sql->get_result();
 
-$product_details = array();
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $products[] = $row;
@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
         echo "<h2>" . htmlspecialchars($product['product_name']) . "</h2>";
         echo "<img src='/images/" . htmlspecialchars($product['product_image']) . "' alt='" . htmlspecialchars($product['product_name']) . "' />";
         echo "<p>Price: $" . htmlspecialchars($product['price']) . "</p>";
-        echo "<p>Seller: " . htmlspecialchars($product['seller_name']) . "</p>";
+        echo "<p>Seller: " . htmlspecialchars($product['user_id']) . "</p>";
         echo "</div>";
     }
 } else {

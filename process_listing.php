@@ -116,7 +116,7 @@ else
 
 $seller_id = $_SESSION['userid'];
 $sql = "INSERT INTO product_table
-(product_name, product_image, price, seller_name, cat_id) VALUES (?, ?, ?, ?, ?)";
+(product_name, product_image, price, user_id, cat_id) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 // Bind & execute the query statement:

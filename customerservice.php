@@ -27,7 +27,7 @@
         <div class="service-option">
           <i class="fas fa-envelope"></i> <h3>Email Support</h3>
           <p>Send us an email and we'll get back to you as soon as possible.</p>
-          <a href="mailto:support@littlehavenshopee.com" class="btn btn-secondary">Send Email</a>
+          <a href="email_support.php" class="btn btn-secondary">Send Email</a>
         </div>
       </div>
     </div>
