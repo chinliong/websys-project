@@ -205,3 +205,14 @@ body {
 .product{
     padding-top: 20px;
 }
+
+
+#listing-button{
+    display:block;
+    margin: auto;
+    width: 85%;
+}
+
+.listing-field{
+    padding-bottom: 10px;
+}
