@@ -1,5 +1,19 @@
 <?php
 session_start();
+if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
+  include 'db_con.php';
+
+  $stmt = $conn->prepare("SELECT username FROM user_table WHERE user_id = ?");
+  $stmt->bind_param("i", $_SESSION['userid']);
+  $stmt->execute();
+
+  $uname_results_fetched = $stmt->get_result();
+  $uname_row = $uname_results_fetched->fetch_assoc();
+  $current_logged_in_username = $uname_row['username'];
+  echo "<script>console.log($current_logged_in_username);</script>";
+  $stmt->close();
+  $conn->close();
+}
 ?>
 <nav
 class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -27,7 +41,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
+              <i class="fas fa-user"></i> <?php echo htmlspecialchars($current_logged_in_username); ?>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="../profile.php">Profile</a></li>
