@@ -81,8 +81,7 @@ error_reporting(E_ALL);
                 </article>
             </div>
         </section>
-       
-        
+
         <?php include 'inc/footer.inc.php'; ?>
     </main>
 </body>
