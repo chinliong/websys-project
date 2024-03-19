@@ -1,5 +1,4 @@
 <?php
-session_start();
 if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
   include 'db_con.php';
 
@@ -35,23 +34,33 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
 
       <ul class="navbar-nav ms-auto">
 
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?> 
+        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
           <li class="nav-item">
-            <a class="nav-link" href="../new_listing.php">New Listings</a>
+            <a class="nav-link" href="../listings.php"><i class="fa fa-book" aria-hidden="true"></i> Manage Listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../new_listing.php"><i class="fas fa-plus-circle"></i> New Listing</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-user"></i> <?php echo htmlspecialchars($current_logged_in_username); ?>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="../profile.php">Profile</a></li>
-              <li><a class="dropdown-item" href="../finance.php">Wallet</a></li>
-              <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
+              <li><a class="dropdown-item" href="../profile.php"><i class="fa fa-address-card" aria-hidden="true"></i> Profile</a></li>
+              <?php
+              if (($_SESSION['role'] == 'a')) {
+                echo "<li><a class='dropdown-item' href='../console.php'><i class='fa fa-terminal' aria-hidden='true'></i> Dashboard</a></li>";
+              } else{
+                echo '<li><a class="dropdown-item" href="../finance.php"><i class="fa fa-university" aria-hidden="true"></i> Balance</a></li>';
+              }
+              ?>
+              
+              <li><a class="dropdown-item" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
             </ul>
 
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="../shopping_cart.php"> Shopping Bag </a>
+          <a class="nav-link" href="../shopping_cart.php"><i class="fas fa-shopping-cart"></i> Shopping Bag </a>
           </li>
 
         <?php else : ?>

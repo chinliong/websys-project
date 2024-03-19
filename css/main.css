@@ -151,6 +151,10 @@ body {
     padding-top: 15px;
 }
 
+#deposit{
+    width: 10%;
+}
+
 #Deposit {
     display: flex;
     flex-direction: column;
@@ -173,6 +177,7 @@ body {
 #return-home-button{
     display: block;
     margin: auto;
+    width: 10%;
 }
 
 #error-h3{
@@ -190,6 +195,7 @@ body {
 #login-return-button {
     display: block;
     margin: auto;
+    width: 10%;
 }
 
 #error-section{
@@ -215,6 +221,27 @@ body {
 
 .listing-field{
     padding-bottom: 10px;
+}
+
+.listing-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.product-name{
+    font-size: 120%;
+    text-align: center;
+}
+
+th{
+    font-size: 160%;
+    text-align: center;
+}
+
+.product-management{
+    width: 60%;
+    margin: auto;
 }
 
 section#contact {

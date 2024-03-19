@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+    header("location: login.php");
+    exit;
+}
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ?>
@@ -13,7 +18,8 @@ error_reporting(E_ALL);
 </head>
 
 <body>
-    <?php include 'inc/nav.inc.php'; ?>
+    <?php include 'inc/nav.inc.php'; 
+    ?>
     <?php include 'inc/header.inc.php'; ?>
 
     <main class="container">
@@ -71,13 +77,12 @@ error_reporting(E_ALL);
                 <article id="Deposit" class="col-sm-12">
                     <h2>Deposit Funds Here</h2>
                         <label for="deposit">Deposit Amount:</label>
-                        <input type="text" id="deposit" name="deposit" min="0" placeholder="Enter an amount">
+                        <input type="text" id="deposit" name="deposit" min="0" placeholder="S&dollar; Deposit">
                         <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
                 </article>
             </div>
         </section>
-       
-        
+
         <?php include 'inc/footer.inc.php'; ?>
     </main>
 </body>
