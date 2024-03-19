@@ -37,7 +37,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
 
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?> 
           <li class="nav-item">
-            <a class="nav-link" href="../new_listing.php">New Listings</a>
+            <a class="nav-link" href="../new_listing.php"><i class="fas fa-plus-circle"></i> New Listings</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,7 +51,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
 
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="../shopping_cart.php"> Shopping Bag </a>
+          <a class="nav-link" href="../shopping_cart.php"><i class="fas fa-shopping-cart"></i> Shopping Bag </a>
           </li>
 
         <?php else : ?>
