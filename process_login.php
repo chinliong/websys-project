@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +110,7 @@
                             // need to know which one they got right or wrong. :)
                             $errorMsg = "Email not found or password doesn't match...";
                             $success = false;
-                        } else {
+                        } else {   
                             $_SESSION['loggedin'] = true;
                             $_SESSION['userid'] = $row["user_id"];
                             $_SESSION['role'] = $row["user_role"];

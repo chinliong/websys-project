@@ -68,7 +68,6 @@ error_reporting(E_ALL);
                 echo "<p>Email: " . $email . "</p>";
                 // Registration success
                 $_SESSION['email'] = $email; // Set session variables
-                $_SESSION['username'] = $uname;
                 $_SESSION['loggedin'] = true; // Important: Set logged in status
                 // Back to home button
                 echo '<div><a href="index.php" class="btn btn-primary">Back to Home</a></div>';

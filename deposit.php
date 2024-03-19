@@ -1,6 +1,10 @@
 <?php
     session_start();
 
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+        header("location: error.php");
+        exit;
+    }
     if (isset($_POST['deposit']) && isset($_SESSION['userid'])) {
         $deposit = $_POST['deposit'];
         $user_id = $_SESSION['userid'];
