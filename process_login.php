@@ -46,28 +46,23 @@
         }
 
         if ($success) {
-            echo '<script>
-            if (!window.location.hash) {
-                window.location = window.location + "#loaded";
-                window.location.reload();
-            }
-            </script>';
             echo '<section id="success-section">';
             echo '<article">';
-            echo '<form action="index.php" method="post">';
+           // echo '<form action="index.php" method="post">';
             echo "<h4 id='login-welcome-banner'>Login successful!</h4>";
             echo "<p id='login-welcome-message-with-name'>Welcome back, " . $uname . "</p>";
-            echo '<button id="return-home-button" type="submit" class="btn btn-success">Return to Home</button>';
+            echo '<a id="return-home-button" href="index.php" class="btn btn-success">Return to Home</a>';
             echo '</article>';
             echo '</section>';
         } else {
             echo '<section id="error-section">';
             echo '<article">';
-            echo '<form action="login.php" method="post">';
+           // echo '<form action="login.php" method="post">';
             echo "<h3 id='error-h3'>Oops!</h3>";
             echo "<h4 id='error-h4'>Here's what went wrong: </h4>";
             echo "<p id='error-p'>" . $errorMsg . "</p>";
-            echo '<button id="login-return-button" type="submit" class="btn btn-warning">Return to Login</button>';
+           // echo '<button id="login-return-button" type="submit" class="btn btn-warning">Return to Login</button>';
+            echo '<a id="login-return-button" href="login.php" type="submit" class="btn btn-warning">Return to Login</a>';
             echo '</article>';
             echo '</section>';
         }

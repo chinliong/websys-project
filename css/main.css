@@ -173,6 +173,7 @@ body {
 #return-home-button{
     display: block;
     margin: auto;
+    width: 10%;
 }
 
 #error-h3{
@@ -190,6 +191,7 @@ body {
 #login-return-button {
     display: block;
     margin: auto;
+    width: 10%;
 }
 
 #error-section{
