@@ -13,7 +13,12 @@ error_reporting(E_ALL);
 </head>
 
 <body>
-    <?php include 'inc/nav.inc.php'; ?>
+    <?php include 'inc/nav.inc.php'; 
+        if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+            header("location: login.php");
+            exit;
+        }
+    ?>
     <?php include 'inc/header.inc.php'; ?>
 
     <main class="container">

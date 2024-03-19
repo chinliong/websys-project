@@ -20,14 +20,23 @@
 <main class="container">
 
     <section id="search-results">
-    <h2>Search Results</h2>
+    <?php
+
+        $search = $_POST["search"];
+        $search = sanitize_input($search);     
+        $cat = $_POST["cat"];
+        $cat = sanitize_input($cat);
+
+        if ($search ==""){
+            echo '<h2>Producing Results for "All Products"</h2>';
+        } else{
+            echo '<h2>Producing Results for "' . $search . '"</h2>';
+        }
+        
+    ?>
+    <
     <div class="row">
     <?php 
-    $search = $_POST["search"];
-    $cat = $_POST["cat"];
-    $search = sanitize_input($search);
-    $cat = sanitize_input($cat);
-
     include "db_con.php";
 
     // Check connection

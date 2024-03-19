@@ -34,7 +34,7 @@
       </div>
     </form>
   </section>
-
+  <script src="js/send_email.js"></script>
   <?php include 'inc/footer.inc.php'; ?>
 </body>
 </html>
