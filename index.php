@@ -10,11 +10,12 @@
 
     <?php 
         include 'inc/nav.inc.php'; 
-    ?>
-
-
-    <?php 
+        include 'db_con.php';
         include 'inc/header.inc.php'; 
+
+        $sql = $conn->prepare("SELECT product_name, product_image, price FROM ferris_wheel.product_table");
+        $sql->execute();
+        $result = $sql->get_result();
     ?>
   <div class="container">
     
@@ -22,22 +23,22 @@
     <div class="content mt-5">
         <h1>Welcome To Our<br><span>Little Haven Shoppe</span><br>Online Store</h1>
         <a href="#" class="btn btn-primary mt-3">Join Us</a>
-
+        <div class="container">
         <div class="row mt-4">
-            <!-- Products Section -->
-            <h2 class="w-100">Featured Products Testing1</h2>
-            <!-- Product Item -->
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product1.jpg" class="card-img-top" alt="Product 1">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 1</h3>
-                        <p class="card-text">$19.99</p>
+            <?php while($product = $result->fetch_assoc()): ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                        <div class="card-body">
+                            <h3 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h3>
+                            <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-4">
+            <?php endwhile; ?>
+        </div>
+    </div>
+            <!-- <div class="col-md-4">
                 <div class="card">
                     <img src="path/to/product2.jpg" class="card-img-top" alt="Product 2">
                     <div class="card-body">
@@ -109,11 +110,11 @@
                         <p class="card-text">$19.99</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Repeat for other products, adjusting col-md-4 as necessary for your design -->
-        </div>
+        <!-- </div>
     </div>
-</div>
+</div> -->
 <script>
     window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
