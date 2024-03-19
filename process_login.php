@@ -46,6 +46,12 @@
         }
 
         if ($success) {
+            echo '<script>
+            if (!window.location.hash) {
+                window.location = window.location + "#loaded";
+                window.location.reload();
+            }
+            </script>';
             echo '<section id="success-section">';
             echo '<article">';
             echo '<form action="index.php" method="post">';

@@ -45,7 +45,14 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="../profile.php">Profile</a></li>
-              <li><a class="dropdown-item" href="../finance.php">Wallet</a></li>
+              <?php
+              if (($_SESSION['role'] == 'a')) {
+                echo "<li><a class='dropdown-item' href='../console.php'>Dashboard</a></li>";
+              } else{
+                echo '<li><a class="dropdown-item" href="../finance.php">Wallet</a></li>';
+              }
+              ?>
+              
               <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
             </ul>
 
