@@ -151,6 +151,10 @@ body {
     padding-top: 15px;
 }
 
+#deposit{
+    width: 10%;
+}
+
 #Deposit {
     display: flex;
     flex-direction: column;

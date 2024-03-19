@@ -76,7 +76,7 @@ error_reporting(E_ALL);
                 <article id="Deposit" class="col-sm-12">
                     <h2>Deposit Funds Here</h2>
                         <label for="deposit">Deposit Amount:</label>
-                        <input type="text" id="deposit" name="deposit" min="0" placeholder="Enter an amount">
+                        <input type="text" id="deposit" name="deposit" min="0" placeholder="S&dollar; Deposit">
                         <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
                 </article>
             </div>
