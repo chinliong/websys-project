@@ -56,7 +56,7 @@
                     echo "<tr>";
                     echo "<td class='product-name'>" . $product['product_name'] . "</td>";
                     echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
-                    echo "<td>" . $product['price'] . "</td>";
+                    echo "<td>&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
                     echo "<td><a href='edit_product.php?product_name=" . $product['product_name'] . "'>Edit</a> | <a href='delete_product.php?product_name=" . $product['product_name'] . "'>Delete</a></td>";
                     echo "</tr>";
