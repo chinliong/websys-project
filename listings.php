@@ -8,7 +8,7 @@
     include 'db_con.php';
 
     $have_products = false;
-    $stmt = $conn->prepare("SELECT product_name, product_image, price, cat_name FROM product_table INNER JOIN product_category ON product_table.cat_id = product_category.cat_id where user_id = ?");
+    $stmt = $conn->prepare("SELECT product_id, product_name, product_image, price, cat_name FROM product_table INNER JOIN product_category ON product_table.cat_id = product_category.cat_id where user_id = ?");
     $stmt->bind_param("i", $_SESSION['userid']);
     $stmt->execute();
     $products_of_viewing_user_table = $stmt->get_result();
@@ -58,7 +58,14 @@
                     echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
                     echo "<td>&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
-                    echo "<td><a href='edit_product.php?product_name=" . $product['product_name'] . "'>Edit</a> | <a href='delete_product.php?product_name=" . $product['product_name'] . "'>Delete</a></td>";
+                    echo "<td>";
+                    echo "<form action='delete_listing.php' method='post'>
+                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
+                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
+                            <button type='submit'>Delete</button>
+                        </form>";
+                    echo "</td>";
+                   // echo "<td><a href='edit_product.php?product_name=" . $product['product_name'] . "'>Edit</a> | <a href='delete_listing.php?product_name=" . $product['product_name'] . "'>Delete</a></td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";
