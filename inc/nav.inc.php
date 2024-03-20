@@ -49,13 +49,13 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
               <li><a class="dropdown-item" href="../profile.php"><i class="fa fa-address-card" aria-hidden="true"></i> Profile</a></li>
               <?php
               if (($_SESSION['role'] == 'a')) {
-                echo "<li><a class='dropdown-item' href='../console.php'><i class='fa fa-terminal' aria-hidden='true'></i> Dashboard</a></li>";
+                echo "<li><a class='dropdown-item' href='../console.php'><i class='fa fa-cog' aria-hidden='true'></i> Dashboard</a></li>";
               } else{
                 echo '<li><a class="dropdown-item" href="../finance.php"><i class="fa fa-university" aria-hidden="true"></i> Balance</a></li>';
               }
               ?>
               
-              <li><a class="dropdown-item" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+              <li><a class="dropdown-item" href="../logout.php"> Logout</a></li>
             </ul>
 
           </li>
