@@ -21,6 +21,14 @@
     } else {
         echo "<h1>Error fetching product table</h1>";
     }
+    $categories = [];
+    $counts = [];
+    foreach ($products_of_viewing_user as $product) {
+        if (!isset($categories[$product['cat_name']])) {
+            $categories[$product['cat_name']] = 0;
+        }
+        $categories[$product['cat_name']]++;
+    }
     $stmt->close();  
 ?>
 <!DOCTYPE html>
@@ -37,6 +45,7 @@
         <h1> Manage My Listings </h1>
         <section>
         <?php
+            echo "<div class='flex-container'>";
             if($have_products){
                 echo "<h2> You have no products listed. </h2>";
             } else {
@@ -55,7 +64,8 @@
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
                     echo "<td class='product-name'>" . $product['product_name'] . "</td>";
-                    echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
+                   //echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
+                    echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
                     echo "<td>&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
                     echo "<td>";
@@ -73,6 +83,44 @@
                 echo "</div>";
             }
         ?>
+        <div class="chart-container" style="position: relative; height:80; width:120">
+            <canvas id="chart"></canvas>
+        </div>
+        <script>
+            // Initialize the chart
+            var ctx = document.getElementById('chart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: <?php echo json_encode(array_keys($categories)); ?>,
+                    datasets: [{
+                        data: <?php echo json_encode(array_values($categories)); ?>,
+                        backgroundColor: [
+                            // Add colors for each category
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        </script>
         </section>  
     </main>
 </body>
