@@ -53,17 +53,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if(isset($_FILES['pimage'])) {
         $errors= array();
+        $random1 = rand(10,100);
+        $random2 = rand(10,150);
         $file_name = $_FILES['pimage']['name'];
         $file_size = $_FILES['pimage']['size'];
         $file_tmp = $_FILES['pimage']['tmp_name'];
-        $file_type = $_FILES['pimage']['type'];
-        $folder = "./images/" . $filename;
+        $file_type = $_FILES['pimage']['type'];        
+        $random_file_name = $random1 . "$_SESSION[userid]" . $random2. $file_name;
+        $folder = "./images/" . $random_file_name;
+        
     } else{
         $errorMsg .= "Please upload an image.<br>";
         $success = false;
     }
 
-    placeListing($cat, $folder, $file_tmp, $file_name, $pname, $price, $errorMsg, $success);
+    placeListing($cat, $folder, $file_tmp, $random_file_name, $pname, $price, $errorMsg, $success);
 }
 if ($success)
 {
@@ -142,7 +146,7 @@ $errorMsg = "Execute failed: (" . $stmt->errno . ") " .
 $stmt->error;
 $success = false;
 }
-
+echo "<script>console.log('".$tmpname."');</script>";
 if (!(move_uploaded_file($tmpname, $folder))) {
     $errorMsg = "Failed to upload image";
     $success = false;

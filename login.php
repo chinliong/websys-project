@@ -33,7 +33,9 @@
         <input type="checkbox" class="form-check-input" id="remember-me" name="remember_me">
         <label for="remember-me" class="form-check-label">Remember Me</label>
       </div>
-      <div class="g-recaptcha" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
+    
+      <!-- I comment this out to test first. u can uncomment it anytime to implement captcha.  ~lucas -->
+      <!-- <div class="g-recaptcha" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div> -->
 
       <button type="submit" class="btn btn-primary">Login</button>
       <a href="#" class="forgot-password">Forgot Password?</a>
