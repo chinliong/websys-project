@@ -151,10 +151,15 @@
     <script>
         var prices = <?php echo $jsonPrices; ?>;
         var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Sort the price labels (keys) in ascending order
+        var sortedPrices = Object.keys(prices).sort(function(a, b) {
+        return a - b;
+        });
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: Object.keys(prices),
+                labels: sortedPrices,
                 datasets: [{
                     label: 'Price Distribution',
                     data: Object.values(prices),
@@ -170,14 +175,14 @@
                             display: true,
                             text: 'Price'
                         },
-                        //beginAtZero: true
+                        beginAtZero: true
                     },
                     y: {
                         title:{
                             display: true,
-                            text: 'Number of Products sold on this price'
+                            text: 'Number of Products sold at this price'
                         },
-                        //beginAtZero: true
+                        beginAtZero: true
                         
                     }
                 }
