@@ -7,6 +7,10 @@
 
     include 'db_con.php';
 
+    $stmt = $conn->prepare("SELECT * from product_category");
+    $stmt->execute();
+    $category_results = $stmt->get_result();
+
     $have_products = false;
     $stmt = $conn->prepare("SELECT product_id, product_name, product_image, price, cat_name FROM product_table INNER JOIN product_category ON product_table.cat_id = product_category.cat_id where user_id = ?");
     $stmt->bind_param("i", $_SESSION['userid']);
@@ -30,6 +34,7 @@
         $categories[$product['cat_name']]++;
     }
     $stmt->close();  
+    $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,11 +79,32 @@
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
                             <button type='submit'>Delete</button>
                         </form>";
-                    echo "<form action='edit_listing.php' method='post'>
-                        <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Edit " . $product['product_id'] . "</label>
-                        <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                        <button type='submit'>Delete</button>
-                    </form>";
+                    echo "<button id='editListingBtn' class='btn btn-custom'>Edit Listing</button>";
+                    echo  '<div id="editListingForm">
+                                <form action="edit_listing.php" method="post" class="card p-3">
+                                    <div class="form-group">
+                                        <label for="Product Name">Product Name:</label>
+                                        <input type="text" class="form-control" id="pname" name="pname" value="'.htmlspecialchars($product['product_name']).'">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Price:</label>
+                                        <input type="text" class="form-control" id="price" name="price" value="'.htmlspecialchars($product['price']).'">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cat" class="form-label">Category:</label>
+                                        <select class="form-control" id="cat" name="cat">
+                                        ';
+                                        if ($category_results->num_rows > 0) {
+                                            // output data of each row
+                                            while($category_listing_rows = $result->fetch_assoc()) {
+                                                echo "<option value='" . $category_listing_rows["cat_id"] . "'>" . $category_listing_rows["cat_name"] . "</option>";
+                                            }
+                                        }
+                                        
+                            echo ' </div>
+                                    <button type="submit" class="btn btn-custom">Update Listing</button>
+                                </form>
+                            </div>';
                     echo "</td>";
                     echo "</tr>";
                 }
