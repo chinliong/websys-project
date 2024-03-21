@@ -24,6 +24,18 @@
         $success = true;
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            // reCAPTCHA validation
+            if (isset($_POST['g-recaptcha-response'])) {
+                $captcha = $_POST['g-recaptcha-response'];
+                $secretKey = "6LfQNJ8pAAAAABQjhymhCcvEdy-tTgf0INPDf-ys";
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$captcha&remoteip=$ip");
+                $responseKeys = json_decode($response, true);
+                if (intval($responseKeys["success"]) !== 1) {
+                    $errorMsg .= "CAPTCHA validation failed.<br>";
+                    $success = false;
+                }
+            }
             if (empty($_POST["email"])) {
                 $errorMsg .= "Email is required.<br>";
                 $success = false;
