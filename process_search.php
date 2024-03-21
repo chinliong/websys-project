@@ -28,8 +28,7 @@
 
         $search = $_POST["search"];
         $search = sanitize_input($search);     
-        $cat = $_POST["cat"];
-        $cat = sanitize_input($cat);
+
 
         if ($search ==""){
             echo '<h2>Producing Results for "All Products"</h2>';
@@ -42,7 +41,9 @@
     <div class="row">
     <?php 
     include "db_con.php";
-
+    $cat = $_POST["cat"];
+    $cat = sanitize_input($cat);
+    echo "<script>console.log($cat);</script>";
     // Check connection
     if ($conn->connect_error)
     {
@@ -69,6 +70,7 @@
         $search_value = "%" . $search ."%";
         $stmt->bind_param("s", $search_value);
     } else{
+        echo "<script>console.log($cat);</script>";
         $stmt = $conn->prepare("SELECT
                             p.product_id,
                             p.product_name, 
@@ -86,7 +88,7 @@
                                 p.cat_id = ?
                                 AND p.product_name LIKE ?");
         $search_value = "%" . $search ."%";
-        $stmt->bind_param("si", $search_value, $cat);
+        $stmt->bind_param("is", $cat, $search_value);
     }
         if (!$stmt->execute())
         {
