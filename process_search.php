@@ -87,6 +87,24 @@
                                 AND p.product_name LIKE ?");
         $search_value = "%" . $search ."%";
         $stmt->bind_param("si", $search_value, $cat);
+
+        
+
+        //[Front-end] display search results
+        $result = $stmt->get_result();
+        
+        //get values for the chart
+        //x-axis is the prices
+        //y-axis is the frequencies
+        $prices = [];
+        while ($row = $result->fetch_assoc()) {
+            $prices[] = $row['price'];
+        }
+
+        $frequencies = array_count_values($prices);
+        ksort($frequencies);
+
+        $prices = array_keys($frequencies);
     }
         if (!$stmt->execute())
         {
@@ -95,9 +113,6 @@
         $success = false;
 
         }
-
-        //[Front-end] display search results
-        $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             echo '<article class="col-md-4 product">';
             echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
@@ -112,6 +127,7 @@
             }
             echo '</article>';
         }
+
     $stmt->close();
     }
     $conn->close();
@@ -125,6 +141,31 @@
     }
     ?>
     </div>
+    <div class="chart-container" style="position: relative; height:80; width:120">
+            <canvas id="chart"></canvas>
+        </div>
+    <script>
+
+    // Initialize the chart
+    var ctx = document.getElementById('chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($prices); ?>,
+            datasets: [{
+                data: <?php echo json_encode($frequencies); ?>,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
+
     </section>
     <?php
         include "inc/footer.inc.php";
