@@ -16,7 +16,7 @@
         include 'db_con.php';
         include 'inc/header.inc.php'; 
 
-        $sql = $conn->prepare("SELECT product_name, product_image, price FROM ferris_wheel.product_table");
+        $sql = $conn->prepare("SELECT product_id, product_name, product_image, price FROM ferris_wheel.product_table");
         $sql->execute();
         $result = $sql->get_result();
     ?>
@@ -31,9 +31,11 @@
             <?php while($product = $result->fetch_assoc()): ?>
                 <div class="col-md-4">
                     <div class="card">
+                        <a href="product_page.php?id=<?php echo htmlspecialchars($product['product_id']); ?>">
                         <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                         <div class="card-body">
                             <h3 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h3>
+                        </a>
                             <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
                         </div>
                     </div>
