@@ -144,14 +144,6 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
         </section>
         <?php include 'inc/footer.inc.php'; ?>
     </main>
-
-    <script>
-        $(document).ready(function() {
-            $("#editProfileBtn").click(function() {
-                $("#editProfileForm").slideToggle();
-            });
-        });
-    </script>
 </body>
 
 </html>

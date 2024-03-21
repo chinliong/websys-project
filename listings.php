@@ -74,8 +74,12 @@
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
                             <button type='submit'>Delete</button>
                         </form>";
+                    echo "<form action='edit_listing.php' method='post'>
+                        <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Edit " . $product['product_id'] . "</label>
+                        <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
+                        <button type='submit'>Delete</button>
+                    </form>";
                     echo "</td>";
-                   // echo "<td><a href='edit_product.php?product_name=" . $product['product_name'] . "'>Edit</a> | <a href='delete_listing.php?product_name=" . $product['product_name'] . "'>Delete</a></td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";

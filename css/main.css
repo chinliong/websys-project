@@ -309,23 +309,33 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0069d9;
 }
-.faq-container {
-    width: 80%;
-    margin: 0 auto;
-  }
-.faq {
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-.faq-question {
-    font-weight: bold;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-.faq-answer {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: none;
-  }
+
+.product h2
+{
+    top: 20%;
+    
+}
+
+.product img
+{
+    text-align: left;
+    width: 450px;
+    height: 450px;
+    padding-left: 5%;
+    border: 10px;
+}
+
+.product_price
+{
+    font-size: 20px;
+    float: right;
+    padding-right: 40%;
+}
+
+.product_seller
+{
+    font-size: 20px;
+    float: right;
+    padding-right: 40%;
+    padding-bottom: 30%;
+}
