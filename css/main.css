@@ -224,8 +224,8 @@ body {
 }
 
 .listing-img{
-    width: 250px;
-    height: 250px;
+    width: 10px;
+    height: 10px;
     border-radius: 5px;
 }
 
@@ -237,6 +237,18 @@ body {
 th{
     font-size: 160%;
     text-align: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .product-management{
@@ -296,4 +308,4 @@ input[type="submit"] {
   
 input[type="submit"]:hover {
     background-color: #0069d9;
-  }
+}

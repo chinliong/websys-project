@@ -6,6 +6,8 @@
   include 'inc/head.inc.php';
 ?>
 <script src="scripts.js" defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+>
 </head>
 <body>
 <?php
@@ -31,6 +33,8 @@
         <input type="checkbox" class="form-check-input" id="remember-me" name="remember_me">
         <label for="remember-me" class="form-check-label">Remember Me</label>
       </div>
+      <div class="g-recaptcha" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
+
       <button type="submit" class="btn btn-primary">Login</button>
       <a href="#" class="forgot-password">Forgot Password?</a>
     </form>
@@ -38,6 +42,13 @@
 </section>
   </div>
 </div>
+
+<script>
+  // Define onSubmit function to handle reCAPTCHA verification
+  function onSubmit(token) {
+    document.querySelector('form').submit(); // Submit the form
+  }
+</script>
 
 <?php
   include 'inc/footer.inc.php';
