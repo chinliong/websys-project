@@ -1,4 +1,7 @@
 <?php
+    session_start();
+?>
+<?php
 $latitude = 1.3778101623320074; // latitude
 $longitude = 103.84886987401006; //longitude
 
