@@ -24,8 +24,11 @@
     
     
     <div class="content mt-5">
-        <h1>Welcome To Our<br><span>Little Haven Shoppe</span><br>Online Store</h1>
-        <a href="#" class="btn btn-primary mt-3">Join Us</a>
+    <h1>Welcome To Our Little Haven Shopee Online Store</h1>
+    <h4>Featured Products</h4>
+
+
+
         <div class="container">
         <div class="row mt-4">
             <?php while($product = $result->fetch_assoc()): ?>
