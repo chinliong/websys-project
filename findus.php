@@ -1,26 +1,30 @@
 <?php
-$latitude = 1.3778101623320074; // Replace with your desired latitude
-$longitude = 103.84886987401006; // Replace with your desired longitude
+$latitude = 1.3778101623320074; // latitude
+$longitude = 103.84886987401006; //longitude
 
-$api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; // Replace with your actual Google Maps API key
+$api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; //Google Maps API key
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>Find Us - [Your Business Name]</title>
+<title>Find Us - Little Haven Shoppe </title>
   <style>
     #map {
-      height: 400px;
+      height: 600px;
       width: 100%;
     }
   </style>
 <body>
 <?php
+  include 'inc/head.inc.php';
+?>
+</head>
+<body>
+<?php
   include 'inc/nav.inc.php';
 ?>
 
-  <h1>Find Us - [Your Business Name]</h1>
+  <h1>Find Us - Little Haven Shoppe </h1>
   <div id="map"></div>
   <script>
     function initMap() {
@@ -33,7 +37,7 @@ $api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; // Replace with your actua
         position: { lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?> },
         map: map,
         infoWindow: new google.maps.InfoWindow({
-          content: '[Your Business Address] <br> Phone: [Your Phone Number] <br> Open hours: [Your Opening Hours]'
+          content: '172A Ang Mo Kio Avenue 8, Singapore 567739 <br> Phone:+65 65921189 <br> Open hours: Monday to Friday 0700-1700'
         })
       });
 
@@ -45,8 +49,8 @@ $api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; // Replace with your actua
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&callback=initMap">
   </script>
-  <p>[Your Business Address]</p>
-  <p>Phone: [Your Phone Number]</p>
-  <p>Open hours: [Your Opening Hours]</p>
+  <p>172A Ang Mo Kio Avenue 8, Singapore 567739</p>
+  <p>Phone:+65 65921189</p>
+  <p>Open hours: Monday to Friday 0700-1700</p>
 </body>
 </html>
