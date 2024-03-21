@@ -81,6 +81,12 @@ class="navbar navbar-expand-sm bg-dark navbar-dark">
           <a class="nav-link" href="../aboutus.php"><i class="fas fa-solid fa-book-open"></i> About Us </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="../findus.php"><i class="fas fa-regular fa-map"></i> Find Us </a>
+        </li>
+
+
+
         
 
 
