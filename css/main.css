@@ -340,3 +340,34 @@ input[type="submit"]:hover {
     padding-bottom: 30%;
 }
 
+h1 {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  /* FAQ container styles */
+.faq-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* FAQ question styles */
+.faq {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+.faq:hover {
+    background-color: #f1f1f1;
+  }
+  
+.faq-question {
+    font-weight: bold;
+  }
+  
+
