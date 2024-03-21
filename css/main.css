@@ -78,7 +78,9 @@ footer {
 }
 
 body {
+    background-color: rgb(161, 209, 221);
     padding-top: 20px;
+
 }
 
 .card-header {
@@ -342,9 +344,15 @@ input[type="submit"]:hover {
 
 h1 {
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
   }
-  
+
+h4 {
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: underline;
+  }
+
   /* FAQ container styles */
 .faq-container {
     width: 70%;
