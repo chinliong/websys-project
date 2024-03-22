@@ -64,9 +64,3 @@ $(document).ready(function() {
         $("#editProfileForm").slideToggle();
     });
 });
-
-$(document).ready(function() {
-    $("#editListingBtn").click(function() {
-        $("#editListingForm").slideToggle();
-    });
-});

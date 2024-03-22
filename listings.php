@@ -82,8 +82,8 @@
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
                             <button type='submit'>Delete</button>
                         </form>";
-                    echo "<button id='editListingBtn' class='btn btn-custom'>Edit Listing (not working yet)</button>";
-                    echo  '<div id="editListingForm">
+                    echo "<button id='editListingBtn' class='btn btn-custom' data-toggle='collapse' data-target='#editListingForm'>Edit Listing</button>";
+                    echo  '<div id="editListingForm" class="collapse">
                                 <form action="edit_listing.php" method="post" class="card p-3">
                                     <div class="form-group">
                                         <label for="Product Name">Product Name:</label>
