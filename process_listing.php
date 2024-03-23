@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $filetype = $_FILES['pimage']['type'];
     $filesize = $_FILES['pimage']['size'];
     $folder = "./images/" . $filename;
-
+   // echo "<script>console.log('filename is ' . $filename);</script>";
     $cat = sanitize_input($_POST["cat"]);
     if (empty($_POST["pname"])) {
         $errorMsg .= "Product name is required.<br>";
@@ -51,7 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $price = sanitize_input($_POST["price"]);
     }
 
-    if(isset($_FILES['pimage'])) {
+    if(isset($_FILES['pimage']) && $filename != "") {
+       // echo "<script>console.log('The filename is ' . $filename);</script>";
         $errors= array();
         $random1 = rand(10,100);
         $random2 = rand(10,150);
@@ -61,29 +62,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $file_type = $_FILES['pimage']['type'];        
         $random_file_name = $random1 . "$_SESSION[userid]" . $random2. $file_name;
         $folder = "./images/" . $random_file_name;
+        placeListing($cat, $folder, $file_tmp, $random_file_name, $pname, $price, $errorMsg, $success);
         
     } else{
         $errorMsg .= "Please upload an image.<br>";
         $success = false;
     }
 
-    placeListing($cat, $folder, $file_tmp, $random_file_name, $pname, $price, $errorMsg, $success);
+    
 }
 if ($success)
 {
 
-echo '<form action="index.php" method="post">';
-echo "<h4>Listing Successful!</h4>";
-echo '<button type="submit" class="btn btn-success">Return to Home</button>';
-echo "<br>  ";    
+    echo '<section id="success-section">';
+    echo '<article">';
+    echo "<h4 id='login-welcome-banner'>Listing successful&#33;</h4>";
+    echo '<a id="return-home-button" href="index.php" class="btn btn-success">Return to Home</a>';
+    echo '</article>';
+    echo '</section>';
 }
 else
 {
-echo '<form action="login.php" method="post">';
-echo "<h3>Oops!</h3>";
-echo "<h4>The following input errors were detected:</h4>";
-echo "<p>" . $errorMsg . "</p>";
-echo '<button type="submit" class="btn btn-warning">Return to Login</button>';
+    echo '<section id="error-section">';
+    echo '<article">';
+   // echo '<form action="login.php" method="post">';
+    echo "<h3 id='error-h3'>Oops&#33;</h3>";
+    echo "<h4 id='error-h4'>Here's what went wrong&#58; </h4>";
+    echo "<p id='error-p'>" . $errorMsg . "</p>";
+   // echo '<button id="login-return-button" type="submit" class="btn btn-warning">Return to Login</button>';
+    echo '<a id="login-return-button" href="new_listing.php" type="submit" class="btn btn-warning">Try again&#63;</a>';
+    echo '</article>';
+    echo '</section>';
 }
 
 /*
