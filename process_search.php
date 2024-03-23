@@ -104,32 +104,36 @@
 
         //[Front-end] display search results
         $result = $stmt->get_result();
-        while ($row = $result->fetch_assoc()) {
-            echo '<article class="col-sm-4 product">';
-            echo '<div class="card">';
-            echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
-            echo '<img class="card-img-top" src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '">';    
-            echo '<div class="card-body">';
-            echo '<h5 class="card-title">' . $row["product_name"] . '</h5>';
-            echo '</a>';
-            echo '<p class="card-text">$' . $row["price"] . '</p>';
-            echo '<p class="card-text">Category: ' . $row["cat_name"] . '</p>';
-            echo '<p class="card-text">Seller: ' . $row["seller_name"] . '</p>';
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<article class="col-sm-4 product">';
+                echo '<div class="card">';
+                echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
+                echo '<img class="card-img-top" src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '">';    
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $row["product_name"] . '</h5>';
+                echo '</a>';
+                echo '<p class="card-text">$' . $row["price"] . '</p>';
+                echo '<p class="card-text">Category: ' . $row["cat_name"] . '</p>';
+                echo '<p class="card-text">Seller: ' . $row["seller_name"] . '</p>';
 
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-                echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
-            }
-            echo '</div>';
-            echo '</div>';
-            echo '</article>';
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+                    echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+                }
+                echo '</div>';
+                echo '</div>';
+                echo '</article>';
 
-            //collect price data for chart
-            $price = $row["price"];
-            if (!isset($prices[$price])) {
-                $prices[$price] = 0;
+                //collect price data for chart
+                $price = $row["price"];
+                if (!isset($prices[$price])) {
+                    $prices[$price] = 0;
+                }
+                $prices[$price]++;
             }
-            $prices[$price]++;
-        }
+     } else {
+        echo "<h3 class='warning-messages'>No results found</h3>";
+     }
         $stmt->close();
         $jsonPrices = json_encode($prices);
         echo "<script>console.log($jsonPrices);</script>";

@@ -33,6 +33,10 @@ footer {
     z-index: 1000;
 }
 
+.warning-messages{
+    text-align: center;
+}
+
 .caption {
     color: #fff;
     margin-top: 10px;
