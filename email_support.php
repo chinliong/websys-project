@@ -10,7 +10,7 @@
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <form method="POST" action="send_email.php" id="contact-form">
+    <form method="POST" id="contact-form">
       <fieldset>
         <legend>Your Information</legend>
         <div class="form-group">

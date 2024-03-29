@@ -78,10 +78,23 @@ error_reporting(E_ALL);
         $stmt->close();
         $conn->close();
 
+        session_start();
+                echo "<h4>Registration successful!</h4>";
+                echo "<p>Email: " . $email . "</p>";
+                // Registration success
+                $otp = rand(000000,999999); //generate random 6 digit numbers
+                $_SESSION['otp'] = $otp;
+                $_SESSION['email'] = $email; // Set session variables
+                include 'otp_register.php';
+                echo '<script>
+                    alert("Register Successfully, OTP sent to ' . $email . '");
+                    window.location.replace("otp_verify.php");
+                  </script>'; // sends user to verification page
+
         // Set session variables
         $_SESSION['userid'] = $user_result_row['user_id']; 
         $_SESSION['role'] = $user_result_row["user_role"];
-        $_SESSION['loggedin'] = true; // Important: Set logged in status
+        // $_SESSION['loggedin'] = true; // Important: Set logged in status
 
         echo '<section id="success-section">';
         echo '<article">';
@@ -131,7 +144,7 @@ error_reporting(E_ALL);
             }
             $stmt->close();
         }
-        $sql = "INSERT INTO user_table (username, email, user_role, password, funds) VALUES (?, ?, 'u', ?, 0.00)";
+        $sql = "INSERT INTO user_table (username, email, user_role, password, funds, status) VALUES (?, ?, 'u', ?, 0.00, 0)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $uname, $email, $pwd_hashed);
         if (!$stmt->execute()) {
