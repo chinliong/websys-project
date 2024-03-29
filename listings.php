@@ -7,8 +7,9 @@
 
     include 'db_con.php';
 
+
     $have_products = false;
-    $stmt = $conn->prepare("SELECT product_id, product_name, product_image, price, cat_name FROM product_table INNER JOIN product_category ON product_table.cat_id = product_category.cat_id where user_id = ?");
+    $stmt = $conn->prepare("SELECT product_table.cat_id, product_id, product_name, product_image, price, cat_name FROM product_table INNER JOIN product_category ON product_table.cat_id = product_category.cat_id where user_id = ?");
     $stmt->bind_param("i", $_SESSION['userid']);
     $stmt->execute();
     $products_of_viewing_user_table = $stmt->get_result();
@@ -28,8 +29,15 @@
             $categories[$product['cat_name']] = 0;
         }
         $categories[$product['cat_name']]++;
+        $categories[$product['cat_id']]++;
     }
-    $stmt->close();  
+
+    $stmt = $conn->prepare("SELECT * from product_category");
+    $stmt->execute();
+    $category_results = $stmt->get_result();
+
+    $stmt->close();
+    $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,11 +82,35 @@
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
                             <button type='submit'>Delete</button>
                         </form>";
-                    echo "<form action='edit_listing.php' method='post'>
-                        <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Edit " . $product['product_id'] . "</label>
-                        <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                        <button type='submit'>Delete</button>
-                    </form>";
+                    echo "<button id='editListingBtn' class='btn btn-custom' data-toggle='collapse' data-target='#editListingForm'>Edit Listing (work in progress)</button>";
+                    echo  '<div id="editListingForm" class="collapse">
+                                <form action="edit_listing.php" method="post" class="card p-3">
+                                    <div class="form-group">
+                                        <label for="Product Name">Product Name:</label>
+                                        <input type="text" class="form-control" id="pname" name="pname" value="'.htmlspecialchars($product['product_name']).'">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Price (&dollar;):</label>
+                                        <input type="text" class="form-control" id="price" name="price" value="'.htmlspecialchars($product['price']).'">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cat" class="form-label">Category:</label>
+                                        <select class="form-control" id="cat" name="cat">';
+                                echo' <option value="'. $product['cat_id']. '">'. $product['cat_name'] .'</option>';
+                                        while ($category = $category_results->fetch_assoc()) {
+                                            if($category['cat_id'] != $product['cat_id']){
+                                                echo '<option value="' . $category['cat_id'] . '">' . $category['cat_name'] . '</option>';
+                                            }
+                                            
+                                        }
+
+                                        $category_results->data_seek(0);
+                                echo '</select>
+
+                                    </div>
+                                    <button type="submit" class="btn btn-custom">Update Listing</button>
+                                </form>
+                            </div>';
                     echo "</td>";
                     echo "</tr>";
                 }

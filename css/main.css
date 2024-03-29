@@ -33,6 +33,10 @@ footer {
     z-index: 1000;
 }
 
+.warning-messages{
+    text-align: center;
+}
+
 .caption {
     color: #fff;
     margin-top: 10px;
@@ -78,7 +82,9 @@ footer {
 }
 
 body {
+    background-color: rgb(238, 226, 226);
     padding-top: 20px;
+
 }
 
 .card-header {
@@ -339,3 +345,64 @@ input[type="submit"]:hover {
     padding-right: 40%;
     padding-bottom: 30%;
 }
+
+h1 {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+h4 {
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: underline;
+  }
+
+  /* FAQ container styles */
+.faq-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* FAQ question styles */
+.faq {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+.faq:hover {
+    background-color: #f1f1f1;
+  }
+  
+.faq-question {
+    font-weight: bold;
+  }
+  
+/* Style the social media container */
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-media a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #fff;
+    background-color: #0c0b0b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.social-media a:hover{
+    transform: translate(-3px);
+}
+  
+

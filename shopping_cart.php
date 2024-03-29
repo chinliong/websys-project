@@ -41,6 +41,7 @@ include 'inc/init.php';
         } else {
             $user_id_cart_name = $_SESSION['userid' ];
                 $stmt = $conn->prepare("SELECT
+                c.cart_id, 
                 pt.product_name,
                 ut.username AS seller_name,
                 pt.product_image,
@@ -88,7 +89,13 @@ include 'inc/init.php';
                                 echo '<td>' . $row["cat_name"] . '</td>';
                                 echo '<td>' . $row["seller_name"] . '</td>';
                                 echo '<td>1</td>'; // Replace this with actual quantity
-                                echo '</tr>';
+                                echo '<td>
+                                    <form action="removeFromCart.php" method="POST">
+                                    <input type="hidden" name="cart_id" value="' . htmlspecialchars($row["cart_id"]) . '">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>';
+                            echo '</tr>';
                             }
                             ?>
                         </tbody>
