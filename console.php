@@ -67,20 +67,28 @@
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Funds</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        foreach($user_table as $user){
-                            echo "<tr>";
-                            echo "<td>".$user['user_id']."</td>";
-                            echo "<td>".$user['username']."</td>";
-                            echo "<td>".$user['email']."</td>";
-                            echo "<td>".$user['user_role']."</td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                </tbody>
+                <?php foreach($user_table as $user): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($user['user_id']) ?></td>
+                        <td><?= htmlspecialchars($user['username']) ?></td>
+                        <td><?= htmlspecialchars($user['email']) ?></td>
+                        <td><?= htmlspecialchars($user['user_role']) ?></td>
+                        <td><?= htmlspecialchars($user['created_at']) ?></td>
+                        <td><?= htmlspecialchars($user['funds']) ?></td>
+                        <td><?= htmlspecialchars($user['status']) ?></td>
+                        <td>
+                            <a href="edit_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-info">Edit</a>
+                            <a href="delete_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
             </table>
         </article>
                         
@@ -91,24 +99,27 @@
                     <tr>
                         <th scope="col">Product ID</th>
                         <th scope="col">Product Name</th>
+                        <th scope="col">Product Image</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Category ID</th>
+                        <th scope="col">User ID</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        foreach($product_table as $product){
-                            echo "<tr>";
-                            echo "<td>".$product['product_id']."</td>";
-                            echo "<td>".$product['product_name']."</td>";
-                            echo "<td>".$product['price']."</td>";
-                            echo "<form action='delete_listing.php' method='post'>
-                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
-                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                            <button type='submit'>Delete</button>
-                            </form>";
-                            echo "</tr>";
-                        }
-                    ?>
+                <?php foreach($product_table as $product): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($product['product_id']) ?></td>
+                        <td><?= htmlspecialchars($product['product_name']) ?></td>
+                        <td><img src="/images/<?= htmlspecialchars($product['product_image']) ?>" style="width: 50px; height: 50px;"></td>
+                        <td><?= htmlspecialchars($product['price']) ?></td>
+                        <td><?= htmlspecialchars($product['cat_id']) ?></td>
+                        <td><?= htmlspecialchars($product['user_id']) ?></td>
+                        <td>
+                            <a href="edit_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-info">Edit</a>
+                            <a href="delete_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </article>
