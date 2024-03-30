@@ -100,17 +100,17 @@ include 'inc/init.php';
                             }
                             ?>
                         </tbody>
-                    </table>
-                </div>
-                <div style="text-align: right;">
+                        </table>
+                    </div>
+                    <div style="text-align: right;">
                     <div style="display: inline-block;">
-                    <p>Subtotal (<?php echo $item_count; ?> items): $<?php echo $subtotal; ?></p> <!-- Display the subtotal -->
-                        <a href="checkout.php" class="btn btn-primary">Checkout</a>
+                            <a href="index.php" class="btn btn-primary">Continue Shopping</a>
+                        </div>
+                        <div style="display: inline-block; margin-left: 20px;">
+                            <p>Subtotal (<span id="item-count"><?php echo $item_count; ?></span> items): $<span><?php echo $subtotal; ?></span></p>
+                            <button id="proceed-to-checkout" class="btn btn-primary">Proceed to Checkout</button>
+                        </div>
                     </div>
-                    <div style="display: inline-block; margin-left: 20px;">
-                        <a href="index.php" class="btn btn-primary">Continue Shopping</a>
-                    </div>
-                </div>
                 <?php
                 $stmt->close();
             }
@@ -122,5 +122,36 @@ include 'inc/init.php';
 <?php
 include "inc/footer.inc.php";
 ?>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="emptyCartModal" tabindex="-1" aria-labelledby="emptyCartModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emptyCartModalLabel">Empty Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Your cart is empty. Please add some items before checking out.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.getElementById('proceed-to-checkout').addEventListener('click', function() {
+    var itemCount = document.getElementById('item-count').innerText;
+    if (itemCount === '0') {
+        var myModal = new bootstrap.Modal(document.getElementById('emptyCartModal'), {});
+        myModal.show();
+    } else {
+        window.location.href = 'checkout.php'; // Proceed to checkout page
+    }
+});
+</script>
 </body>
 </html>
