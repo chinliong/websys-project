@@ -81,41 +81,42 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
                     <h4 class="mb-0">Profile Information</h4>
                 </div>
                 <ul class="list-group list-group-flush">
-
                     <li class="list-group-item"><i class="fas fa-user profile-icon"></i>Username: <strong><?= htmlspecialchars($row['username']); ?></strong></li>
                     <li class="list-group-item"><i class="fas fa-envelope profile-icon"></i>Email: <strong><?= htmlspecialchars($row['email']); ?></strong></li>
                 </ul>
                 <div class="card-body">
                     <button id="editProfileBtn" class="btn btn-custom">Edit Profile</button>
+                    <!-- Ensure that data-bs-toggle and data-bs-target are correct -->
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
                         Delete Profile
                     </button>
+                </div>
+            </div>
 
-                    <!-- Deletion Confirmation Modal -->
-                    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Profile Deletion</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- Deletion Confirmation Modal -->
+            <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Profile Deletion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            To delete your profile, please confirm your password:
+                            <!-- The form action should point to a valid PHP file that processes profile deletion -->
+                            <form id="deleteProfileForm" action="delete_profile.php" method="post">
+                                <div class="mb-3">
+                                    <label for="passwordConfirmation" class="form-label">Password:</label>
+                                    <input type="password" class="form-control" id="passwordConfirmation" name="password" required>
                                 </div>
-                                <div class="modal-body">
-                                    To delete your profile, please confirm your password:
-                                    <form id="deleteProfileForm" action="delete_profile.php" method="post">
-                                        <div class="mb-3">
-                                            <label for="passwordConfirmation" class="form-label">Password:</label>
-                                            <input type="password" class="form-control" id="passwordConfirmation" name="password" required>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" form="deleteProfileForm" class="btn btn-danger" name="confirm_deletion" value="yes">Delete Profile</button>
-                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <!-- The button type should be "submit" -->
+                                <button type="submit" form="deleteProfileForm" class="btn btn-danger" name="confirm_deletion" value="yes">Delete Profile</button>
                             </div>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
 
