@@ -101,6 +101,11 @@
                             echo "<td>".$product['product_id']."</td>";
                             echo "<td>".$product['product_name']."</td>";
                             echo "<td>".$product['price']."</td>";
+                            echo "<form action='delete_listing.php' method='post'>
+                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
+                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
+                            <button type='submit'>Delete</button>
+                            </form>";
                             echo "</tr>";
                         }
                     ?>
