@@ -79,8 +79,6 @@ error_reporting(E_ALL);
         $conn->close();
 
         session_start();
-                echo "<h4>Registration successful!</h4>";
-                echo "<p>Email: " . $email . "</p>";
                 // Registration success
                 $otp = rand(000000,999999); //generate random 6 digit numbers
                 $_SESSION['otp'] = $otp;
@@ -92,8 +90,8 @@ error_reporting(E_ALL);
                   </script>'; // sends user to verification page
 
         // Set session variables
-        $_SESSION['userid'] = $user_result_row['user_id']; 
-        $_SESSION['role'] = $user_result_row["user_role"];
+        // $_SESSION['userid'] = $user_result_row['user_id']; 
+        // $_SESSION['role'] = $user_result_row["user_role"];
         // $_SESSION['loggedin'] = true; // Important: Set logged in status
 
         echo '<section id="success-section">';

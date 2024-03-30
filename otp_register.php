@@ -29,9 +29,9 @@ try {
     $mail->addAddress($_POST["email"]); // set reply address to user's register address
 
     $mail->isHTML(true);
-    $name = htmlspecialchars($_POST['name']);
-    $mail->Subject="Your verify code";
-    $mail->Body = "<p>Dear {$name}, </p><h3>Your verification OTP code is $otp</h3>";
+    $name = htmlspecialchars($_POST['uname']);
+    $mail->Subject="Your verification code";
+    $mail->Body = "<p>Dear {$name}, </p><h3>Your verification code is $otp</h3>";
 
     $mail->send();
 

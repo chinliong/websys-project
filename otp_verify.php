@@ -54,12 +54,7 @@
     if(isset($_POST["verify"])){
         $otp = $_SESSION['otp'];
         $email = $_SESSION['email'];
-        $otp_code = $_POST['otp_code'];
-        if($otp == $otp_code) {
-            echo "<script>alert('Correct OTP');</script>";
-        } else {
-            echo "<script>alert('Incorrect OTP');</script>";
-        }      
+        $otp_code = $_POST['otp_code'];  
         if($otp != $otp_code){
             ?>
            <script>
@@ -67,10 +62,11 @@
            </script>
            <?php
         }else{
+            include 'db_con.php';
             mysqli_query($conn, "UPDATE user_table SET status = '1' WHERE email = '$email'");
             ?>
              <script>
-                 alert("Verfiy account done, you may sign in now");
+                 alert("Verfication done, you may sign in now");
                    window.location.replace("index.php");
              </script>
              <?php

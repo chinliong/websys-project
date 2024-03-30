@@ -122,7 +122,12 @@
                             // need to know which one they got right or wrong. :)
                             $errorMsg = "Email not found or password doesn't match...";
                             $success = false;
-                        } else {   
+                        } 
+                        if($row["status"] == 0){
+                            $errorMsg = "Please verify your account";
+                            $success = false;
+                        }
+                        else {   
                             $_SESSION['loggedin'] = true;
                             $_SESSION['userid'] = $row["user_id"];
                             $_SESSION['role'] = $row["user_role"];
