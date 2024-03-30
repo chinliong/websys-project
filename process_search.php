@@ -12,6 +12,7 @@
     error_reporting(E_ALL);
     ?>
     <?php 
+    include 'inc/header.inc.php';
     include 'inc/head.inc.php';
     ?>
     <script src="js/async.js"></script>
