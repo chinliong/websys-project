@@ -120,7 +120,7 @@
                 echo '<p class="card-text">Category: ' . $row["cat_name"] . '</p>';
                 echo '<p class="card-text">Seller: ' . $row["seller_name"] . '</p>';
 
-                if (isset(($_SESSION['loggedin']) && $_SESSION['loggedin']) && ($_SESSION['userid'] != $row["user_id"])) {
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['userid'] != $row["user_id"]) {
                     echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
                 }
                 echo '</div>';
