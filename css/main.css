@@ -405,4 +405,21 @@ h4 {
     transform: translate(-3px);
 }
   
+.transaction-card {
+    transition: transform .2s; /* Animation for hover effect */
+}
+
+.transaction-card:hover {
+    transform: scale(1.05); /* Slightly enlarge cards on hover */
+}
+
+.text-success {
+    color: #28a745; /* Bright green for positive wallet effect */
+}
+
+.text-danger {
+    color: #dc3545; /* Bright red for negative wallet effect */
+}
+
+
 

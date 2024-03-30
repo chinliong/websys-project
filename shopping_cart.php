@@ -65,6 +65,7 @@ include 'inc/init.php';
             } else {
                 $result = $stmt->get_result();
                 ?>
+                
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
