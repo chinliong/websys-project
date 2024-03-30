@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $current_user_balance = $result->fetch_assoc()['funds'];
         
         // Retrieve items from the cart table for the current user
-        $stmt = $conn->prepare("SELECT pt.product_id, pt.price, pt.user_id AS seller_id FROM cart_table ct JOIN product_table pt ON ct.product_id = pt.product_id WHERE ct.user_id = ?");
+        $stmt = $conn->prepare("SELECT pt.product_id, pt.price, pt.user_id AS seller_id, pt.cat_id FROM cart_table ct JOIN product_table pt ON ct.product_id = pt.product_id WHERE ct.user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -74,6 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare("UPDATE user_table SET funds = funds - ? WHERE user_id = ?");
         $stmt->bind_param("di", $totalAmountToDeduct, $userId);
         $stmt->execute();
+
+        // Insert transaction details into the transaction_history table
+        $insertTransactionStmt = $conn->prepare("INSERT INTO transaction_table (buyer_id, seller_id, category_id, products_id, price) VALUES (?, ?, ?, ?, ?)");
+        foreach ($products as $product) {
+            $insertTransactionStmt->bind_param("iiisd", $userId, $product['seller_id'], $product['cat_id'], $product['product_id'], $product['price']);
+            $insertTransactionStmt->execute();
+        }
 
         // Commit the transaction
         $conn->commit();

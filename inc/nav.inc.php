@@ -54,7 +54,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
                 echo '<li><a class="dropdown-item" href="../finance.php"><i class="fa fa-university" aria-hidden="true"></i> Balance</a></li>';
               }
               ?>
-              
+              <li><a class="dropdown-item" href="../transaction_history.php"><i class="fas fa-history"></i> Transaction History</a></li>
               <li><a class="dropdown-item" href="../logout.php"> Logout</a></li>
             </ul>
 
