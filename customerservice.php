@@ -6,6 +6,7 @@
 <head>
 <title>Little Haven Shopee Customer Service</title>
 <?php
+  include 'inc/header.inc.php'; 
   include 'inc/head.inc.php';
 ?>
 </head>

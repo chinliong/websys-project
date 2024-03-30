@@ -3,7 +3,8 @@
 
 <head>
   <title>Ferris Wheel - Register</title>
-  <?php include 'inc/head.inc.php'; ?>
+  <?php   include 'inc/header.inc.php'; 
+          include 'inc/head.inc.php'; ?>
 </head>
 
 <body>
