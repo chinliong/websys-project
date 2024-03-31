@@ -40,8 +40,7 @@
       <h4>Additional Resources</h4>
       <ul class="list-group">
         <li class="list-group-item"><a href="faq.php">Frequently Asked Questions (FAQ)</a></li>
-        <li class="list-group-item"><a href="#">Order Tracking</a></li>
-        <li class="list-group-item"><a href="#">Return & Refund Policy</a></li>
+        <li class="list-group-item"><a href="returnpolicy.php">Return & Refund Policy</a></li>
       </ul>
     </div>
   </div>
