@@ -40,89 +40,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php
-        include 'inc/head.inc.php';
-    ?>
+    <?php include 'inc/head.inc.php'; ?>
     <title>Admin Console</title>
 </head>
 <body>
-
-    <?php 
-        include 'inc/nav.inc.php';
-
-    ?>
-    <section id="admin-console">
+    <?php include 'inc/nav.inc.php'; ?>
+    <main class="container my-4">
+        <h1 class="mb-4 text-center">Admin Console</h1>
         <div class="row">
-            <article class="col-sm-12">
-                <h2 id="admin-header">Admin Console</h2>
-                <p id="welcome-messsage-admin">Welcome to the admin console</p>
-            </article>
+            <div class="col-12 col-md-6 mb-3">
+                <h2>Users</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="text-nowrap">
+                                <th scope="col" class="col-1">User ID</th>
+                                <th scope="col" class="col-2">Username</th>
+                                <th scope="col" class="col-3" >Email Address</th>
+                                <th scope="col" class="col-1">Role</th>
+                                <th scope="col" class="col-2">Created</th>
+                                <th scope="col" class="col-1">Funds</th>
+                                <th scope="col" class="col-1">Status</th>
+                                <th scope="col" class="col-1">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($user_table as $user): ?>
+                            <tr class="text-nowrap" style="text-align: center;">
+                                <td class="col-1"><?= htmlspecialchars($user['user_id']) ?></td>
+                                <td class="col-2"><?= htmlspecialchars($user['username']) ?></td>
+                                <td class="col-3"><?= htmlspecialchars($user['email']) ?></td>
+                                <td class="col-1"><?= $user['user_role'] == 'a' ? 'Admin' : 'User' ?></td>
+                                <td class="col-2"><?= htmlspecialchars($user['created_at']) ?></td>
+                                <td class="col-1"><?= htmlspecialchars($user['funds']) ?></td>
+                                <td class="col-1"><?= $user['status'] == 1 ? 'Verified' : 'Not Verified' ?></td>
+                                <td class="col-1">
+                                    <a href="edit_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-info">Edit</a>
+                                    <a href="delete_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>Products</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="text-nowrap">
+                                <th scope="col" class="col-1">Product ID</th>
+                                <th scope="col" class="col-2">Product Name</th>
+                                <th scope="col" class="col-3">Product Image</th>
+                                <th scope="col" class="col-1">Price</th>
+                                <th scope="col" class="col-2">Category ID</th>
+                                <th scope="col" class="col-1">User ID</th>
+                                <th scope="col" class="col-1">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($product_table as $product): ?>
+                            <tr class="text-nowrap" style="text-align: center;">
+                                <td class="col-1"><?= htmlspecialchars($product['product_id']) ?></td>
+                                <td class="col-2"><?= htmlspecialchars($product['product_name']) ?></td>
+                                <td class="col-3"><img src="/images/<?= htmlspecialchars($product['product_image']) ?>" class="img-fluid rounded" style="width: 50px; height: 50px;"></td>
+                                <td class="col-1"><?= htmlspecialchars($product['price']) ?></td>
+                                <td class="col-2"><?= htmlspecialchars($product['cat_id']) ?></td>
+                                <td class="col-1"><?= htmlspecialchars($product['user_id']) ?></td>
+                                <td class="col-1">
+                                    <a href="edit_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-sm btn-info">Edit</a>
+                                    <a href="delete_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <article class="col-md-6 col-sm-12">
-            <h3>Users</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">User ID</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Funds</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach($user_table as $user): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($user['user_id']) ?></td>
-                        <td><?= htmlspecialchars($user['username']) ?></td>
-                        <td><?= htmlspecialchars($user['email']) ?></td>
-                        <td><?= htmlspecialchars($user['user_role']) ?></td>
-                        <td><?= htmlspecialchars($user['created_at']) ?></td>
-                        <td><?= htmlspecialchars($user['funds']) ?></td>
-                        <td><?= htmlspecialchars($user['status']) ?></td>
-                        <td>
-                            <a href="edit_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-info">Edit</a>
-                            <a href="delete_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-            </table>
-        </article>
-                        
-        <article class="col-sm-12">
-            <h3>Products</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Product ID</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Product Image</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Category ID</th>
-                        <th scope="col">User ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach($product_table as $product): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($product['product_id']) ?></td>
-                        <td><?= htmlspecialchars($product['product_name']) ?></td>
-                        <td><img src="/images/<?= htmlspecialchars($product['product_image']) ?>" style="width: 50px; height: 50px;"></td>
-                        <td><?= htmlspecialchars($product['price']) ?></td>
-                        <td><?= htmlspecialchars($product['cat_id']) ?></td>
-                        <td><?= htmlspecialchars($product['user_id']) ?></td>
-                        <td>
-                            <a href="edit_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-info">Edit</a>
-                            <a href="delete_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </article>
-    </section>  
+    </main>
+    <?php include "inc/footer.inc.php"; ?>
 </body>
 </html>
