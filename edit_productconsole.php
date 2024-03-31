@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_id'])) {
 
     $sql = "UPDATE product_table SET product_name = ?, price = ?, cat_id = ?, user_id = ?, product_image = ? WHERE product_id = ?";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("sdiiis", $product_name, $price, $cat_id, $user_id, $uploadedFileName, $product_id);
+        $stmt->bind_param("sdiiss", $product_name, $price, $cat_id, $user_id, $uploadedFileName, $product_id);
         if (!$stmt->execute()) {
             echo "Error updating record: " . $conn->error;
         } else {
@@ -83,7 +83,7 @@ if (isset($_GET['product_id'])) {
     <?php include "inc/nav.inc.php"; ?>
     <main class="container">
         <h2>Edit Product</h2>
-        <form action="edit_productconsole.php" method="post">
+        <form action="edit_productconsole.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']); ?>">
             <div class="form-group">
                 <label for="product_name">Product Name:</label>
