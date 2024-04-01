@@ -423,14 +423,13 @@ h4 {
 }
 
 .nav-link {
-    color: #fff !important; /* High contrast text */
-    transition: color 0.3s ease-in-out; /* Smooth transition for hover effect */
+    color: #fff !important; /* Sets the default text color to white */
+    transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
 }
 
-.nav-link:hover,
-.nav-link:focus {
-    color: #0062cc !important; /* Change color on hover */
-    text-decoration: none;
+.nav-link:hover {
+    color: #0062cc !important; /* Changes text color to blue on hover */
+    text-decoration: none; /* Optional: Removes underline from links on hover */
 }
 
 .navbar-brand img {

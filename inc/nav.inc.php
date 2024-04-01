@@ -117,7 +117,7 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
               $conn->close();
               ?>
             </select>
-            <button type="submit" class="btn btn-primary" style="background-color: #007bff;"><i class="bi bi-search"></i></button>
+            <button type="submit" class="btn btn-primary" style="background-color: #007bff;"><i class="fas fa-search"></i></button>
           </form>
         </li>
 
