@@ -422,15 +422,63 @@ h4 {
     color: #dc3545; /* Bright red for negative wallet effect */
 }
 
-.navbar-nav .nav-link {
-    transition: color 0.2s;
+.nav-link {
+    color: #fff !important; /* High contrast text */
+    transition: color 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
-.navbar-nav .nav-link:hover {
-    color: #f0ad4e; /* Change hover color here */
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #0062cc !important; /* Change color on hover */
+    text-decoration: none;
 }
+
 .navbar-brand img {
     max-height: 50px; /* Adjust logo size */
 }
+
+/* Search Box Styling */
+.navbar .form-control {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .form-control:focus {
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    border-color: #0056b3;
+}
+
+/* Search Icon */
+.navbar .form-inline .fas.fa-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .form-inline {
+        width: 100%;
+    }
+    .navbar .form-inline input[type="text"] {
+        width: calc(100% - 20px); /* Full width minus padding */
+    }
+}
+
+.rounded-select, .rounded-input {
+    border-radius: 20px !important; /* Adjust this value to control roundness */
+}
+
+/* Optionally, to ensure the button aligns nicely with the rounded inputs */
+.btn-primary {
+    border-radius: 20px !important;
+}
+
 
 /* for product_page*/
 
