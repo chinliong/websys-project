@@ -456,6 +456,12 @@ h4 {
     height: 300px; /* Adjust the height to make the image smaller */
 }
 
+/* table for shopping_cart*/
+.table.align-middle tbody td{
+    vertical-align: middle;
+    text-align: center;
+}
+
 
 
 

@@ -67,14 +67,14 @@ include 'inc/init.php';
                 ?>
                 
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table align-middle">
                         <thead>
                             <tr>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Seller Name</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,7 +89,6 @@ include 'inc/init.php';
                                 echo '<td>$' . $row["price"] . '</td>';
                                 echo '<td>' . $row["cat_name"] . '</td>';
                                 echo '<td>' . $row["seller_name"] . '</td>';
-                                echo '<td>1</td>'; // Replace this with actual quantity
                                 echo '<td>
                                     <form action="removeFromCart.php" method="POST">
                                     <input type="hidden" name="cart_id" value="' . htmlspecialchars($row["cart_id"]) . '">
