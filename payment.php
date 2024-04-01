@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Commit the transaction
         $conn->commit();
-        echo "Payment successful and funds transferred to sellers.";
+        echo "Order placed successfully and funds transferred to sellers. <br> Please refer to your Transaction History for more details.";
 
         // Clear the cart after successful payment
         $stmt = $conn->prepare("DELETE FROM cart_table WHERE user_id = ?");

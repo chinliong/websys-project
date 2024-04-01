@@ -276,7 +276,7 @@ document.querySelector('.pay-with-funds-btn').addEventListener('click', function
 <script> 
 $('#paymentStatusModal').on('hidden.bs.modal', function () {
   // This code will run after the modal has been hidden
-  window.location.reload(true); // Force reload from the server
+  window.location.href = 'index.php'; // Redirect to index.php
 });
 </script>
 
