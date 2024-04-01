@@ -42,7 +42,7 @@
     </ul>
 
     <h2>Connect with Us</h2>
-    <div class="social-media">
+    <div class="social-media text-center">
       <a href="https://www.facebook.com/YourCompanyGraz/events/"><i class="fab fa-facebook-f"></i></a>
       <a href="https://twitter.com/CompanyYouKeep"><i class="fab fa-twitter"></i></a>
       <a href="https://www.instagram.com/company/"><i class="fab fa-instagram"></i></a>

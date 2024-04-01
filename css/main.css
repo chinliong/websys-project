@@ -385,6 +385,7 @@ h4 {
 /* Style the social media container */
 .social-media {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .social-media a{
