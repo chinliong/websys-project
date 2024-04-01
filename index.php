@@ -50,13 +50,13 @@ session_start();
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/Rari.jpg" class="d-block w-100" alt="car">
+                    <img src="images/iphone.jpg" class="d-block w-100" alt="Phone">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/Rari.jpg" class="d-block w-100" alt="car">
+                    <img src="images/ps5.jpg" class="d-block w-100" alt="ps5">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/Rari.jpg" class="d-block w-100" alt="car">
+                    <img src="images/ipad.jpg" class="d-block w-100" alt="ipad">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -72,7 +72,7 @@ session_start();
     </div>
 
     <div class="content mt-5">
-        <h1>Welcome To Our Little Haven Shopee Online Store</h1>
+        <h1>Welcome To Our Little Haven Shoppe Online Store</h1>
         <h4>Featured Products</h4>
 
         <div class="container">
@@ -92,83 +92,6 @@ session_start();
         <?php endwhile; ?>
         </div>
     </div>
-    <!-- <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product2.jpg" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <hh3 class="card-title">Product 2</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product3.jpg" class="card-img-top" alt="Product 3">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 3</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product4.jpg" class="card-img-top" alt="Product 4">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 4</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="images/logo.png" class="card-img-top" alt="Product 5">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 5</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product4.jpg" class="card-img-top" alt="Product 6">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 6</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product4.jpg" class="card-img-top" alt="Product 7">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 7</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product4.jpg" class="card-img-top" alt="Product 8">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 8</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="path/to/product4.jpg" class="card-img-top" alt="Product 9">
-                    <div class="card-body">
-                        <h3 class="card-title">Product 9</h3>
-                        <p class="card-text">$19.99</p>
-                    </div>
-                </div>
-            </div> -->
-    <!-- Repeat for other products, adjusting col-md-4 as necessary for your design -->
-    <!-- </div>
-    </div>
-</div> -->
     <script>
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
@@ -182,7 +105,7 @@ session_start();
         });
     </script>
     <footer>
-        <p><em>Copyright &copy; 2024 Little Haven Shopee Pte. Ltd.</em></p>
+        <p><em>Copyright &copy; 2024 Little Haven Shoppe Pte. Ltd.</em></p>
     </footer>
 
 

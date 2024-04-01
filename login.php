@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Little Haven Shopee Login</title>
+  <title>Little Haven Shoppe Login</title>
   <?php
   include 'inc/header.inc.php';
   include 'inc/head.inc.php';
