@@ -6,6 +6,7 @@
 <head>
 <title>Little Haven Shoppe Customer Service</title>
 <?php
+  include 'inc/header.inc.php';
   include 'inc/head.inc.php';
 ?>
 </head>
@@ -19,9 +20,10 @@
 
     // Define FAQ data (replace with your data)
     $faqs = array(
-      "What is this FAQ page about?" => "This is an interactive FAQ page built using PHP and JavaScript.",
-      "How can I customize this page?" => "You can edit the questions and answers in the PHP code. Consider using a CMS for large-scale FAQ management.",
-      "Are there other ways to create FAQ pages?" => "Yes, databases and CMS with built-in FAQ functionalities are popular options."
+      "Is it safe to buy and sell on Little Haven Shoppe?" => "Absolutely! We prioritize creating a trustworthy environment and offer features to ensure a safe shopping experience for everyone.",
+      "How do I find the products I'm looking for?" => "You can browse through our categories, use the search bar, or explore curated collections.",
+      "How do I start selling on Little Haven Shoppe?" => "Creating an account and setting up your shop is easy! We provide a user-friendly platform to manage your listings and sales.",
+      "What payment methods do we accept?" => "We offer a variety of secure payment options for your convenience."
     );
 
     ?>
