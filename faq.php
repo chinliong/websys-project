@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Little Haven Shopee Customer Service</title>
+<title>Little Haven Shoppe Customer Service</title>
 <?php
   include 'inc/head.inc.php';
 ?>
