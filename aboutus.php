@@ -37,7 +37,7 @@
 
     <ul>
       <li>Curated Selection: We go beyond the mass-produced items and feature unique products from independent sellers and artisans.</li>
-      <li>Exceptional Customer Service:** We believe in personalized customer support. Our team is always happy to assist you with any queries.</li>
+      <li>Exceptional Customer Service: We believe in personalized customer support. Our team is always happy to assist you with any queries.</li>
       <li>Special Initiatives: We regularly host events, contests, and promotions that make shopping at Little Haven Shoppe an even more rewarding experience.</li>
     </ul>
 
