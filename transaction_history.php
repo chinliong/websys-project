@@ -20,7 +20,8 @@ SELECT
     seller.username AS seller_username,
     pc.cat_name,
     pt.product_name,
-    t.price
+    t.price,
+    t.created_at
 FROM
     transaction_table t
 JOIN
@@ -60,32 +61,28 @@ $result = $stmt->get_result();
     <?php if ($result->num_rows > 0): ?>
         <div class="row">
             <?php while($row = $result->fetch_assoc()): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card transaction-card <?= $row['user_role'] === 'Buyer' ? 'border-danger' : 'border-success'; ?>">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card transaction-card h-100 <?= $row['user_role'] === 'Buyer' ? 'border-danger' : 'border-success'; ?>">
+                        <div class="card-header <?= $row['user_role'] === 'Buyer' ? 'bg-danger text-white' : 'bg-success text-white'; ?>">
+                            Transaction #<?= htmlspecialchars($row["transaction_id"]) ?>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($row["product_name"]) ?></h5>
-                            <p class="card-text"><strong>Role:</strong> <?= $row['user_role'] === 'Buyer' ? '<i class="fas fa-shopping-cart"></i>' : '<i class="fas fa-cash-register"></i>'; ?> <?= htmlspecialchars($row["user_role"]) ?></p>
-                            <p class="card-text"><?= $row['wallet_effect'] === 'Added to Wallet' ? '<span class="text-success">' : '<span class="text-danger">'; ?><?= htmlspecialchars($row["wallet_effect"]) ?></span></p>
-                            <p class="card-text"><strong>Price:</strong> $<?= number_format(htmlspecialchars($row["price"]), 2) ?></p>
+                            <p class="card-text">
+                                <strong>Role:</strong> <?= $row['user_role'] === 'Buyer' ? '<i class="fas fa-shopping-cart"></i> Buyer' : '<i class="fas fa-store"></i> Seller'; ?>
+                            </p>
+                            <p class="card-text">
+                                <strong>Price:</strong> <span class="<?= $row['wallet_effect'] === 'Added to Wallet' ? 'text-success' : 'text-danger'; ?>">
+                                    $<?= number_format(htmlspecialchars($row["price"]), 2) ?>
+                                </span>
+                            </p>
                             <p class="card-text"><strong>Category:</strong> <?= htmlspecialchars($row["cat_name"]) ?></p>
-                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#transactionModal<?= $row['transaction_id']; ?>">Details</button>
+                            <p class="card-text">
+                                <strong>Date:</strong> <?= date("F j, Y", strtotime($row["created_at"])) ?>
+                            </p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Modal for Transaction Details -->
-                <div class="modal fade" id="transactionModal<?= $row['transaction_id']; ?>" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="transactionModalLabel">Transaction Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Populate this with detailed transaction info -->
-                                <p>Transaction ID: <?= $row['transaction_id']; ?></p>
-                                <!-- Add more detailed information here -->
-                            </div>
+                        <div class="card-footer text-muted">
+                            <?= $row['wallet_effect'] ?>
                         </div>
                     </div>
                 </div>
@@ -95,6 +92,7 @@ $result = $stmt->get_result();
         <p class="text-center">No transactions found.</p>
     <?php endif; ?>
 </main>
+
 
 
 
