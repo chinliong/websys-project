@@ -77,7 +77,7 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
 
             <!-- Profile Information -->
             <div class="card mb-4">
-                <div class="card-header">
+                <div class="card-header text-white" style="background-color: black;">
                     <h4 class="mb-0">Profile Information</h4>
                 </div>
                 <ul class="list-group list-group-flush">

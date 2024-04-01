@@ -61,26 +61,17 @@
         }
 
         if ($success) {
-            echo '<section id="success-section">';
-            echo '<article">';
-           // echo '<form action="index.php" method="post">';
-            echo "<h4 id='login-welcome-banner'>Login successful!</h4>";
-            echo "<p id='login-welcome-message-with-name'>Welcome back, " . $uname . "</p>";
-            echo '<a id="return-home-button" href="index.php" class="btn btn-success">Return to Home</a>';
-            echo '</article>';
-            echo '</section>';
+            // Redirect to homepage on successful login with success message
+            $_SESSION['successMsg'] = "Login successful! Welcome back, " . htmlspecialchars($uname) . ".";
+            header("Location: index.php");
+            exit();
         } else {
-            echo '<section id="error-section">';
-            echo '<article">';
-           // echo '<form action="login.php" method="post">';
-            echo "<h3 id='error-h3'>Oops!</h3>";
-            echo "<h4 id='error-h4'>Here's what went wrong: </h4>";
-            echo "<p id='error-p'>" . $errorMsg . "</p>";
-           // echo '<button id="login-return-button" type="submit" class="btn btn-warning">Return to Login</button>';
-            echo '<a id="login-return-button" href="login.php" type="submit" class="btn btn-warning">Return to Login</a>';
-            echo '</article>';
-            echo '</section>';
+            // Redirect back to login on failure with error message
+            $_SESSION['errorMsg'] = $errorMsg;
+            header("Location: login.php");
+            exit();
         }
+
 
         /*
         * Helper function to authenticate the login.
