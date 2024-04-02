@@ -57,6 +57,7 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
 
     <title>User Profile</title>
     <?php include 'inc/head.inc.php'; ?>
+    <script src="js/edit_profile.js" defer></script>
 </head>
 
 <body>
