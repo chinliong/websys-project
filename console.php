@@ -85,21 +85,28 @@ JOIN
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'inc/head.inc.php'; ?>
+    <script src="js/console.js" defer></script>
     <title>Admin Console</title>
 </head>
-
 <body>
     <?php include 'inc/nav.inc.php'; ?>
     <main class="container my-4">
-        <h1 class="mb-4 text-center">Admin Console</h1>
-        <div class="row">
-            <div class="col-12 col-md-6 mb-3">
-                <h2>Users</h2>
+        <h1 class="mb-4 text-center" style="margin-top: 100px">Admin Console</h1>
+        
+        <!-- Buttons to toggle tables -->
+        <div class="text-center mb-3">
+            <button onclick="showTable('usersTable')" class="btn admin-btn">Show Users</button>
+            <button onclick="showTable('productsTable')" class="btn admin-btn">Show Products</button>
+            <button onclick="showTable('transactionsTable')" class="btn admin-btn">Show Transaction History</button>
+        </div>
+
+        <div id="usersTable" style="display:none;">
+            <!-- Users Table -->
+            <h2>Users</h2>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -125,7 +132,7 @@ JOIN
                                     <td class="col-1"><?= htmlspecialchars($user['funds']) ?></td>
                                     <td class="col-1"><?= $user['status'] == 1 ? 'Verified' : 'Not Verified' ?></td>
                                     <td class="col-1">
-                                        <a href="edit_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-info">Edit</a>
+                                        <a href="edit_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm" style="background-color: #0069d9; color: white;">Edit</a>
                                         <a href="delete_userconsole.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                                     </td>
                                 </tr>
@@ -133,9 +140,11 @@ JOIN
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <h2>Products</h2>
+        </div>
+        
+        <div id="productsTable" style="display:none;">
+            <!-- Products Table -->
+            <h2>Products</h2>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -159,7 +168,7 @@ JOIN
                                     <td class="col-2"><?= htmlspecialchars($product['cat_name']) ?></td>
                                     <td class="col-1"><?= htmlspecialchars($product['username']) ?></td>
                                     <td class="col-1">
-                                        <a href="edit_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-sm btn-info">Edit</a>
+                                        <a href="edit_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-sm " style="background-color: #0069d9; color: white;">Edit</a>
                                         <a href="delete_productconsole.php?product_id=<?= $product['product_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
                                     </td>
                                 </tr>
@@ -167,37 +176,40 @@ JOIN
                         </tbody>
                     </table>
                 </div>
-            </div>
+        </div>
+
+        <div id="transactionsTable" style="display:none;">
+            <!-- Transaction History Table -->
             <h1>Transaction History</h1>
-        <div class="table-responsive">
-            <table class="table">
+            <div class="table-responsive">
+            <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <th>Transaction ID</th>
-                        <th>Date</th>
-                        <th>Buyer</th>
-                        <th>Seller</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
+                    <tr class="text-nowrap">
+                        <th scope="col" class="col-1">Transaction ID</th>
+                        <th scope="col" class="col-2">Date</th>
+                        <th scope="col" class="col-3">Buyer</th>
+                        <th scope="col" class="col-1">Seller</th>
+                        <th scope="col" class="col-1">Product Name</th>
+                        <th scope="col" class="col-1">Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($transaction_history_table as $row) : ?>
-                        <tr>
-                            <td><?= htmlspecialchars($row['transaction_id']) ?></td>
-                            <td><?= htmlspecialchars($row['created_at']) ?></td>
-                            <td><?= htmlspecialchars($row['buyer_username']) ?></td>
-                            <td><?= htmlspecialchars($row['seller_username']) ?></td>
-                            <td><?= htmlspecialchars($row['product_name']) ?></td>
-                            <td>$<?= htmlspecialchars(number_format($row['price'], 2)) ?></td>
+                        <tr class="text-nowrap" style="text-align: center;">
+                            <td class="col-1"><?= htmlspecialchars($row['transaction_id']) ?></td>
+                            <td class="col-2"><?= htmlspecialchars($row['created_at']) ?></td>
+                            <td class="col-3"><?= htmlspecialchars($row['buyer_username']) ?></td>
+                            <td class="col-1"><?= htmlspecialchars($row['seller_username']) ?></td>
+                            <td class="col-1"><?= htmlspecialchars($row['product_name']) ?></td>
+                            <td class="col-1">$<?= htmlspecialchars(number_format($row['price'], 2)) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
         </div>
+        
     </main>
     <?php include "inc/footer.inc.php"; ?>
 </body>
-
 </html>
