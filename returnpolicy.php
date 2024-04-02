@@ -14,15 +14,14 @@
 <?php
   include 'inc/nav.inc.php';
 ?>
-<div class="return-policy">  <h2>Return Eligibility</h2>  
-<ul>
+<div class="return-policy">  <h2>Return Eligibility</h2>  <ul>
     <li>Products: You can return any unopened, unused, and undamaged product within [Number] days of purchase.</li>
     <li>Receipt: You must include a copy of your receipt with your return.</li>
     <li>Exceptions: Some products, such as digital downloads or perishable items, may not be eligible for return. These exceptions will be clearly marked on the product page.</li>
   </ul>
 </div>
 
-<div class="information"> <h2>Refund Process</h2>
+<div class="return"> <h2>Refund Process</h2>
 
 <ol>
   <li>Contact Us:  To initiate a return, please contact us at [Email Address] or by phone at [Phone Number] within the return eligibility timeframe.</li>
