@@ -121,7 +121,7 @@ include 'inc/init.php';
 <?php
 include "inc/footer.inc.php";
 ?>
-
+<!-- If user tries to check out with an empty cart, show this modal -->
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="emptyCartModal" tabindex="-1" aria-labelledby="emptyCartModalLabel" aria-hidden="true">
   <div class="modal-dialog">

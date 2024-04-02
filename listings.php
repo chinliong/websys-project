@@ -29,7 +29,7 @@ foreach ($products_of_viewing_user as $product) {
     $categories[$product['cat_name']] = isset($categories[$product['cat_name']]) ? $categories[$product['cat_name']] + 1 : 1;
 }
 
-
+    //
     $stmt = $conn->prepare("SELECT * from product_category");
     $stmt->execute();
     $category_results = $stmt->get_result();
@@ -127,8 +127,13 @@ foreach ($products_of_viewing_user as $product) {
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false
+                    maintainAspectRatio: false,
+                    legend: {
+                        labels: {
+                            fontColor: 'red'
+                    }
                 }
+            }
             });
         </script>
         </section>  
