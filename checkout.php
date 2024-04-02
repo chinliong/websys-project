@@ -71,14 +71,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     $result = $stmt->get_result();
         ?>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table align-middle">
                             <thead>
                                 <tr>
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Seller Name</th>
-                                    <th scope="col">Quantity</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,7 +92,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                     echo '<td>$' . $row["price"] . '</td>';
                                     echo '<td>' . $row["cat_name"] . '</td>';
                                     echo '<td>' . $row["seller_name"] . '</td>';
-                                    echo '<td>1</td>'; // Replace this with actual quantity
                                     echo '</tr>';
                                 }
                                 ?>
@@ -114,84 +112,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 </select>
             </div>
         </div>
-
-
-
-
-                    <!-- [NOTICE] Just gonna hide this for the time being :-) ~ Lucas -->
-
-
-
-
-
-
-                    <!-- <hr> Add a horizontal line -->
-                    <!-- <h4>Payment Method</h4>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="paymentMethod" id="payNow" value="payNow">
-                                <label class="form-check-label" for="payNow">
-                                    PayNow
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="paymentMethod" id="payLah" value="payLah">
-                                <label class="form-check-label" for="payLah">
-                                    PayLah
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="paymentMethod" id="creditDebitCard" value="creditDebitCard" data-toggle="modal" data-target="#cardDetailsModal">
-                                <label class="form-check-label" for="creditDebitCard">
-                                    Credit Card/Debit Card
-                                </label>
-                            </div> -->
-
-                    <!-- Modal -->
-                    <!-- <div class="modal fade" id="cardDetailsModal" tabindex="-1" role="dialog" aria-labelledby="cardDetailsModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="cardDetailsModalLabel">Enter Card Details</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <h5>Card Details</h5>
-                                                <div class="form-group">
-                                                    <label for="cardNumber">Card Number</label>
-                                                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="cardExpiry">Expiry Date (MM/YY)</label>
-                                                    <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="cardCVV">CVV</label>
-                                                    <input type="text" class="form-control" id="cardCVV" placeholder="123">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="cardName">Name on Card</label>
-                                                    <input type="text" class="form-control" id="cardName" placeholder="John Doe">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="address">Address</label>
-                                                    <input type="text" class="form-control" id="address" placeholder="123 Main St">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="postalCode">Postal Code</label>
-                                                    <input type="text" class="form-control" id="postalCode" placeholder="123456">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
 
                     <script>
                         // Listen for change event on the radio button

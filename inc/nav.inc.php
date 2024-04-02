@@ -15,8 +15,10 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
   $conn->close();
 }
 ?>
-<nav
-class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<style> 
+
+</style>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <div class="container-fluid">
 
     <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Brand Logo"></a>
@@ -94,8 +96,8 @@ class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
         <li class="nav-item d-flex">
           <form action="../process_search.php" method="post" class="d-flex">
-            <input maxlength="55" type="text" class="form-control me-2" id="search" name="search" placeholder="Search something...  ">
-            <select name="cat" class="form-select">
+            <input maxlength="55" type="text" class="form-control me-2 rounded-input" id="search" name="search" placeholder="Search something...  ">
+            <select name="cat" class="form-select rounded-select">
               <option value="all_cats_in_db">All Categories</option>
               <?php
               include "db_con.php";
@@ -115,7 +117,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
               $conn->close();
               ?>
             </select>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #007bff;"><i class="fas fa-search"></i></button>
           </form>
         </li>
 

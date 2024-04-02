@@ -78,6 +78,9 @@ $result = $stmt->get_result();
                             </p>
                             <p class="card-text"><strong>Category:</strong> <?= htmlspecialchars($row["cat_name"]) ?></p>
                             <p class="card-text">
+                                <strong><?= $row['user_role'] === 'Buyer' ? 'Seller: ' : 'Buyer: ' ?></strong> <?= htmlspecialchars($row['user_role'] === 'Buyer' ? $row["seller_username"] : $row["buyer_username"]) ?>
+                            </p>
+                            <p class="card-text">
                                 <strong>Date:</strong> <?= date("F j, Y", strtotime($row["created_at"])) ?>
                             </p>
                         </div>

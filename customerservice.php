@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Little Haven Shopee Customer Service</title>
+<title>Little Haven Shoppe Customer Service</title>
 <?php
   include 'inc/header.inc.php'; 
   include 'inc/head.inc.php';
@@ -17,7 +17,7 @@
 
 <div class="customer-service-container d-flex justify-content-center align-items-center min-vh-100">
   <div class="customer-service-content card p-4 text-center">
-    <h2 class="text-center mb-4">Welcome to Little Haven Shopee Customer Service</h2>
+    <h2 class="text-center mb-4">Welcome to Little Haven Shoppe Customer Service</h2>
     <p>We're happy to help with any questions you may have.<br></span> Choose an option below to get started:</p>
    <div class="container"> <!-- Ensure it's within a container for proper alignment -->
   <div class="row justify-content-center"> <!-- This makes the child elements center aligned -->

@@ -10,7 +10,7 @@
 <body>
   <?php include "inc/nav.inc.php"; ?>
 
-  <<main class="container py-5">
+  <main class="container py-5">
   <div class="row d-flex justify-content-center">
     <div class="col-md-8">
       <h1 class="text-center mb-4">Join the Ferris Wheel Family!</h1>
