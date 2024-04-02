@@ -5,7 +5,6 @@ session_start();
 <html lang="en">
 
 <head>
-    <title>Shoe-seller</title>
     <?php
     include 'inc/head.inc.php';
     ?>
@@ -104,15 +103,15 @@ session_start();
                             </a>
                             <p class="card-title black-words"><?php echo htmlspecialchars($product['product_name']); ?></p>
                             <p class="card-text black-words">$<?php echo htmlspecialchars($product['price']); ?></p>
-                        </div>
+                            </div>
                     </div>
-                
             </div>
         <?php endwhile; ?>
         </div>
     </div>
     <section id="deals">
         <h4 id="dh4">Upcoming Deals</h4>
+        <div class="container">
         <article class="row parent">
             <div class="col-md-4 col-sm-12 dealcard">
                 <h5 class="dh5"><i class="fa fa-money" aria-hidden="true"></i>Start Spending September</h5>
@@ -127,6 +126,7 @@ session_start();
                 <p class="dmsg">Any amount of money deposited will be doubly credited to your wallet this December!</p>
             </div>
         </article>
+        </div>
     </section>
     <script>
         window.addEventListener('scroll', () => {

@@ -3,7 +3,6 @@
 <head>
     <?php       
         include 'inc/head.inc.php';
-        include 'inc/nav.inc.php'; 
         include 'inc/header.inc.php';
     ?>
     <script src="js/async.js"></script>
@@ -12,6 +11,7 @@
 <body>
     <main class="container">
         <?php 
+            include 'inc/nav.inc.php'; 
             include 'db_con.php';
             session_start();
             $product_id = $_GET['id'];
@@ -27,10 +27,10 @@
                 }
                 foreach ($products as $product) {
                     echo "<div class='product-page-image'>";
-                    echo "<img src='/images/" . htmlspecialchars($product['product_image']) . "' alt='" . htmlspecialchars($product['product_name']) . "' />";
+                    echo "<img src='/images/" . htmlspecialchars($product['product_image']) . "' class='lcard' alt='" . htmlspecialchars($product['product_name']) . "' />";
                     echo "<div class='product-details'>";
                     echo "<h2>" . htmlspecialchars($product['product_name']) . "</h2>";
-                    echo "<p'>Price: $" . htmlspecialchars($product['price']) . "</p>";
+                    echo "<p>Price: $" . htmlspecialchars($product['price']) . "</p>";
                     echo "<p>Seller: " . htmlspecialchars($product['user_id']) . "</p>";
                     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['userid'] != $row["user_id"]) {
                         echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
