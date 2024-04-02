@@ -11,7 +11,14 @@ session_start();
 </head>
 
 <body>
-
+    <div class="intro">
+        <h1 class="logo-header">
+            <img src="images/cat.gif" alt="Loading" class="splash-gif">
+            <span class="logo">Shoppe</span>
+            <span class="logo">Haven</span>
+            <img src="images/cat.gif" alt="Loading" class="splash-gif">
+        </h1>
+    </div>
     <?php
     include 'inc/nav.inc.php';
     include 'db_con.php';
@@ -128,6 +135,35 @@ session_start();
         </article>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const intro = document.querySelector('.intro');
+            const logos = document.querySelectorAll('.logo');
+
+                // Animate each logo span
+                logos.forEach((logo, idx) => {
+                    setTimeout(() => {
+                        logo.classList.add('active');
+                    }, (idx + 1) * 400);
+                });
+
+                // Animate fade-out
+                setTimeout(() => {
+                    logos.forEach((logo, idx) => {
+                        setTimeout(() => {
+                            logo.classList.add('fade');
+                        }, (idx + 1) * 50);
+                    });
+                }, 2000);
+
+                // Hide splash screen
+                setTimeout(() => {
+                    intro.style.opacity = '0';
+                    intro.style.visibility = 'hidden';
+                }, 3000);
+            });
+    </script>
     <script>
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
