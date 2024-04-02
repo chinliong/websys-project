@@ -15,10 +15,7 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
   $conn->close();
 }
 ?>
-<style> 
-
-</style>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
   <div class="container-fluid">
 
     <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Brand Logo"></a>

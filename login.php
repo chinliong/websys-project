@@ -5,6 +5,8 @@
   <title>Little Haven Shoppe Login</title>
   <?php
   include 'inc/header.inc.php';
+  ?>
+  <?php
   include 'inc/head.inc.php';
   ?>
   <script src="scripts.js" defer></script>
