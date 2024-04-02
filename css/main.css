@@ -25,12 +25,10 @@ main h2 {
     color: black;
 }
 
-.g-captcha{
-    margin: auto;
-}
-
-.submitt-btn{
-    margin: auto;
+.centered-item {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .parent{
