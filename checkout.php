@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: login.php");
-    exit;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,8 +61,42 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     $success = false;
                 } else {
                     $result = $stmt->get_result();
-        ?>
-                    <div class="table-responsive">
+                    ?>
+                    <!-- Table for Mobile Phones -->
+                    <div class="table-responsive d-block d-sm-none">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="font-size: 10px;">Product Name</th>
+                                    <th scope="col" style="font-size: 10px;">Price</th>
+                                    <th scope="col" style="font-size: 10px;">Category</th>
+                                    <th scope="col" style="font-size: 10px;">Seller Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $subtotal = 0;
+                                $item_count = 0;
+                                while ($row = $result->fetch_assoc()) {
+                                    $subtotal += $row["price"]; // Add the price of each product to the subtotal
+                                    $item_count++;
+                                    echo '<tr>';
+                                    echo '<td style="font-size: 10px;"><img src="/images/' . $row["product_image"] . '" style="width: 30px; height: 30px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td style="font-size: 10px;">$' . $row["price"] . '</td>';
+                                    echo '<td style="font-size: 10px;">' . $row["cat_name"] . '</td>';
+                                    echo '<td style="font-size: 10px;">' . $row["seller_name"] . '</td>';
+                                    echo '</tr>';
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php
+                    // Reset result set pointer
+                    $result->data_seek(0);
+                    ?>
+                    <!-- Normal Table for Larger Screens -->
+                    <div class="table-responsive d-none d-sm-block">
                         <table class="table align-middle">
                             <thead>
                                 <tr>
@@ -99,19 +125,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         </table>
                     </div>
                     <!-- Voucher and Shipping Options -->
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label for="voucherCode" class="form-label">Voucher Code</label>
-                <input type="text" class="form-control" id="voucherCode" placeholder="Enter voucher code">
-            </div>
-            <div class="col-md-6">
-                <label for="shippingOption" class="form-label">Shipping Option</label>
-                <select class="form-select" id="shippingOption">
-                    <option>Doorstep Delivery</option>
-                    <option>Self-Collection</option>
-                </select>
-            </div>
-        </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="voucherCode" class="form-label">Voucher Code</label>
+                            <input type="text" class="form-control" id="voucherCode" placeholder="Enter voucher code">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shippingOption" class="form-label">Shipping Option</label>
+                            <select class="form-select" id="shippingOption">
+                                <option>Doorstep Delivery</option>
+                                <option>Self-Collection</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <!-- <hr> Add a horizontal line -->
                     <div style="text-align: right;">
@@ -122,29 +148,27 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <button type="button" class="btn btn-primary pay-with-funds-btn">
                                     Pay with Funds
                                 </button>
+                            </form>
                         </div>
                     </div>
 
                     <!-- Modal -->
-                <div class="modal fade" id="paymentStatusModal" tabindex="-1" aria-labelledby="paymentStatusModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="paymentStatusModalLabel">Payment Status</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        </button>
-                    </div>
-                    <div class="modal-body" id="paymentStatusMessage">
-                        <!-- Payment status message will be displayed here -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-
+                    <div class="modal fade" id="paymentStatusModal" tabindex="-1" aria-labelledby="paymentStatusModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paymentStatusModalLabel">Payment Status</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="paymentStatusMessage">
+                                    <!-- Payment status message will be displayed here -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
         <?php
                     $stmt->close();
@@ -159,33 +183,33 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     ?>
 </body>
 <script>
-document.querySelector('.pay-with-funds-btn').addEventListener('click', function() {
-  // Make an AJAX request to payment.php
-  $.ajax({
-    url: 'payment.php',
-    type: 'POST',
-    data: {
-      // Include any data you need to send to payment.php
-      amount: <?php echo $subtotal; ?>,
-    },
-    success: function(response) {
-      // On success, display the payment status in the modal
-      $('#paymentStatusMessage').html(response);
-      $('#paymentStatusModal').modal('show');
-    },
-    error: function() {
-      // Handle error
-      $('#paymentStatusMessage').html('Payment failed. Please try again.');
-      $('#paymentStatusModal').modal('show');
-    }
-  });
-});
+    document.querySelector('.pay-with-funds-btn').addEventListener('click', function () {
+        // Make an AJAX request to payment.php
+        $.ajax({
+            url: 'payment.php',
+            type: 'POST',
+            data: {
+                // Include any data you need to send to payment.php
+                amount: <?php echo $subtotal; ?>,
+            },
+            success: function (response) {
+                // On success, display the payment status in the modal
+                $('#paymentStatusMessage').html(response);
+                $('#paymentStatusModal').modal('show');
+            },
+            error: function () {
+                // Handle error
+                $('#paymentStatusMessage').html('Payment failed. Please try again.');
+                $('#paymentStatusModal').modal('show');
+            }
+        });
+    });
 </script>
-<script> 
-$('#paymentStatusModal').on('hidden.bs.modal', function () {
-  // This code will run after the modal has been hidden
-  window.location.href = 'index.php'; // Redirect to index.php
-});
+<script>
+    $('#paymentStatusModal').on('hidden.bs.modal', function () {
+        // This code will run after the modal has been hidden
+        window.location.href = 'index.php'; // Redirect to index.php
+    });
 </script>
 
 </html>

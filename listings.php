@@ -38,6 +38,8 @@ foreach ($products_of_viewing_user as $product) {
     $conn->close();
 ?>
 
+
+<!-- front end -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +50,15 @@ foreach ($products_of_viewing_user as $product) {
     <?php   include 'inc/header.inc.php'; 
             include 'inc/head.inc.php'; 
             ?>
+     <style>
+        .table-smaller th {
+            font-size: 8px;
+        }
+
+        .table-smaller td {
+            font-size: 8px;
+        }
+    </style>
 </head>
 <body>
     <?php include 'inc/nav.inc.php'; ?>
@@ -55,13 +66,50 @@ foreach ($products_of_viewing_user as $product) {
         <h1> Manage My Listings </h1>
         <section>
         <?php
-            echo "<div class='flex-container'>";
+            echo "<div class='container'>";
             if($have_products){
                 echo "<h2> You have no products listed. </h2>";
             } else {
-                echo "<div class='table-responsive product-management'>";
-                echo "<table class='table table-hover'>";
-                echo "<thead class='thead-light'>";
+                // Mobile phone table
+                echo "<div class='d-block d-sm-none'>"; // Only visible on XS screens
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-smaller'>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>Product Name</th>";
+                echo "<th>Product Image</th>";
+                echo "<th>Price</th>";
+                echo "<th>Category</th>";
+                echo "<th>Actions</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+
+                foreach($products_of_viewing_user as $product){
+                    echo "<tr>";
+                    echo "<td >" . $product['product_name'] . "</td>";
+                    echo "<td ><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 50px; height: 50px;'></td>";
+                    echo "<td >&dollar;" . $product['price'] . "</td>";
+                    echo "<td>" . $product['cat_name'] . "</td>";
+                    echo "<td>";
+                    echo "<form action='delete_listing.php' method='post'>
+                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
+                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
+                            <button class='delete-button' type='submit'>Delete</button>
+                        </form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+                echo "</div>";
+                echo "</div>";
+
+                // Main table for larger screens
+                echo "<div class='d-none d-sm-block'>"; // Hidden on XS screens
+                echo "<div class='table-responsive'>";
+                echo "<table class='table'>";
+                echo "<thead>";
                 echo "<tr>";
                 echo "<th>Product Name</th>";
                 echo "<th>Product Image</th>";
@@ -75,7 +123,6 @@ foreach ($products_of_viewing_user as $product) {
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
                     echo "<td class='product-name'>" . $product['product_name'] . "</td>";
-                   //echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
                     echo "<td class='product-name'><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
                     echo "<td class='product-name'>&dollar;" . $product['price'] . "</td>";
                     echo "<td class='product-name'>" . $product['cat_name'] . "</td>";
@@ -83,13 +130,14 @@ foreach ($products_of_viewing_user as $product) {
                     echo "<form action='delete_listing.php' method='post'>
                             <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                            <button class = 'delete-button' type='submit'>Delete</button>
+                            <button class='delete-button' type='submit'>Delete</button>
                         </form>";
                     echo "</td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";
                 echo "</table>";
+                echo "</div>";
                 echo "</div>";
             }
         ?>
@@ -136,6 +184,7 @@ foreach ($products_of_viewing_user as $product) {
             }
             });
         </script>
+        
         </section>  
     </main>
 </body>
