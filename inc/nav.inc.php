@@ -2,7 +2,7 @@
 session_start();
 if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
   include 'db_con.php';
-
+  echo "<script>console.log({$_SESSION['loggedin']});</script>";
   $stmt = $conn->prepare("SELECT username FROM user_table WHERE user_id = ?");
   $stmt->bind_param("i", $_SESSION['userid']);
   $stmt->execute();
