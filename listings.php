@@ -39,6 +39,7 @@
     $stmt->close();
     $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,44 +77,15 @@
                     echo "<tr>";
                     echo "<td class='product-name'>" . $product['product_name'] . "</td>";
                    //echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
-                    echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
-                    echo "<td>&dollar;" . $product['price'] . "</td>";
-                    echo "<td>" . $product['cat_name'] . "</td>";
+                    echo "<td class='product-name'><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
+                    echo "<td class='product-name'>&dollar;" . $product['price'] . "</td>";
+                    echo "<td class='product-name'>" . $product['cat_name'] . "</td>";
                     echo "<td>";
                     echo "<form action='delete_listing.php' method='post'>
                             <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
                             <button type='submit'>Delete</button>
                         </form>";
-                    echo "<button id='editListingBtn' class='btn btn-custom' data-toggle='collapse' data-target='#editListingForm'>Edit Listing (work in progress)</button>";
-                    echo  '<div id="editListingForm" class="collapse">
-                                <form action="edit_listing.php" method="post" class="card p-3">
-                                    <div class="form-group">
-                                        <label for="Product Name">Product Name:</label>
-                                        <input type="text" class="form-control" id="pname" name="pname" value="'.htmlspecialchars($product['product_name']).'">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">Price (&dollar;):</label>
-                                        <input type="text" class="form-control" id="price" name="price" value="'.htmlspecialchars($product['price']).'">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cat" class="form-label">Category:</label>
-                                        <select class="form-control" id="cat" name="cat">';
-                                echo' <option value="'. $product['cat_id']. '">'. $product['cat_name'] .'</option>';
-                                        while ($category = $category_results->fetch_assoc()) {
-                                            if($category['cat_id'] != $product['cat_id']){
-                                                echo '<option value="' . $category['cat_id'] . '">' . $category['cat_name'] . '</option>';
-                                            }
-                                            
-                                        }
-
-                                        $category_results->data_seek(0);
-                                echo '</select>
-
-                                    </div>
-                                    <button type="submit" class="btn btn-custom">Update Listing</button>
-                                </form>
-                            </div>';
                     echo "</td>";
                     echo "</tr>";
                 }
