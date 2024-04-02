@@ -116,7 +116,6 @@
                 echo '<p class="card-text black-words">$' . $row["price"] . '</p>';
                 echo '<p class="card-text black-words">Category: ' . $row["cat_name"] . '</p>';
                 echo '<p class="card-text black-words">Seller: ' . $row["seller_name"] . '</p>';
-                //echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                     echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
                 }

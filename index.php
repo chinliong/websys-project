@@ -5,7 +5,6 @@ session_start();
 <html lang="en">
 
 <head>
-    <title>Shoe-seller</title>
     <?php
     include 'inc/head.inc.php';
     ?>
@@ -105,7 +104,6 @@ session_start();
                             <p class="card-title black-words"><?php echo htmlspecialchars($product['product_name']); ?></p>
                             <p class="card-text black-words">$<?php echo htmlspecialchars($product['price']); ?></p>
                             </div>
-                        </div>
                     </div>
             </div>
         <?php endwhile; ?>
