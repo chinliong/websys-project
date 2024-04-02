@@ -21,6 +21,7 @@ main h2 {
 
 }
 .parent{
+    max-width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -33,6 +34,7 @@ main h2 {
     border-radius:15px;
 }
 .dh5{
+    max-width: 100%;
     color: white;
     text-align: center;
 }
