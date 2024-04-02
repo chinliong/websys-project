@@ -57,8 +57,8 @@ session_start();
     </div>
 
     <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
+            <div id="carouselExampleIndicators" class="carousel-slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -115,15 +115,15 @@ session_start();
         <h4 id="dh4">Upcoming Deals</h4>
         <article class="row parent">
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5">Start Spending September</h5>
+                <h5 class="dh5"><i class="fa fa-money" aria-hidden="true"></i>Start Spending September</h5>
                 <p class="dmsg">Get 10% off all produts listed this September!</p>
             </div>
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5">No Nike November</h5>
+                <h5 class="dh5"><i class="fa fa-check" aria-hidden="true"></i> No Nike November</h5>
                 <p class="dmsg">Get 100% off all Nike products this November!</p>
             </div>
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5">Double Deposit December</h5>
+                <h5 class="dh5"><i class="fa fa-credit-card" aria-hidden="true"></i> Double Deposit December</h5>
                 <p class="dmsg">Any amount of money deposited will be doubly credited to your wallet this December!</p>
             </div>
         </article>
@@ -141,7 +141,7 @@ session_start();
         });
     </script>
     <footer>
-        <p><em>Copyright &copy; 2024 Little Haven Shoppe Pte. Ltd.</em></p>
+        <p id="feet"><em>Copyright &copy; 2024 Little Haven Shoppe Pte. Ltd.</em></p>
     </footer>
 
 

@@ -3,6 +3,7 @@ main h2 {
 }
 
 .linefeed{
+    color: white;
     width: 40%;
     margin: auto;
 }
@@ -27,13 +28,16 @@ main h2 {
     max-width:80%;
 }
 .dh5{
+    color: white;
     text-align: center;
 }
 
 .dmsg{
+    color: white;
     text-align: center;
 }
 #fmsg{
+    color: white;
     text-align: center;
 }
 
@@ -118,11 +122,13 @@ footer {
 }
 
 body {
-    background-color: rgb(238, 226, 226);
+    background-color: rgb(0,0,0);
     padding-top: 20px;
 
 }
-
+#feet{
+    color:white;
+}
 .card-header {
     background-color: #007bff;
     color: #fff;
@@ -394,11 +400,13 @@ input[type="submit"]:hover {
 }
 
 h1 {
+    color: white;
     text-align: center;
     padding: 10px 0;
   }
 
 h4 {
+    color: white;
     text-align: center;
     padding: 10px 0;
     text-decoration: underline;
@@ -490,6 +498,8 @@ h4 {
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
     transition: all 0.3s ease-in-out;
 }
+
+
 
 .navbar .form-control:focus {
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
