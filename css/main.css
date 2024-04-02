@@ -193,7 +193,7 @@ body {
   }
 
 .btn-primary {
-    background-color: #388E3C; /* Change this to your desired color */
+    background-color: #0069d9; /* Change this to your desired color */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -203,7 +203,7 @@ body {
   }
   
 .btn-primary:hover {
-    background-color: #2E602F; /* Change this to your desired hover color */
+    background-color: #0056b3; /* Change this to your desired hover color */
   }
 
 
@@ -597,3 +597,23 @@ h4 {
     vertical-align: middle;
     text-align: center;
 }
+
+
+/* General Button for console */
+.admin-btn {
+    background-color: #0069d9; /* Change this to your desired color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+.admin-btn:hover {
+    background-color: #0056b3; /* Change this to your desired hover color */
+  }
+
+
+
+
