@@ -11,6 +11,28 @@ main h2 {
     text-decoration: none;
 }
 
+#dh4{
+    text-decoration: none;
+
+}
+.parent{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.dealcard{
+    background-color: rgba(189, 195, 199, 0.4);
+    margin: 10px; /* This adds space around each card */
+    border-radius:15px;
+    max-width:80%;
+}
+.dh5{
+    text-align: center;
+}
+
+.dmsg{
+    text-align: center;
+}
 #fmsg{
     text-align: center;
 }

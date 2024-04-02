@@ -85,7 +85,7 @@ session_start();
         </div>
 
     </div>
-
+        
     <div class="content mt-5">
         <h1>Welcome To Our Little Haven Shoppe Online Store</h1>
         <h4 id="fh4">Featured</h4>
@@ -111,6 +111,23 @@ session_start();
         <?php endwhile; ?>
         </div>
     </div>
+    <section id="deals">
+        <h4 id="dh4">Upcoming Deals</h4>
+        <article class="row parent">
+            <div class="col-md-4 col-sm-12 dealcard">
+                <h5 class="dh5">Start Spending September</h5>
+                <p class="dmsg">Get 10% off all produts listed this September!</p>
+            </div>
+            <div class="col-md-4 col-sm-12 dealcard">
+                <h5 class="dh5">No Nike November</h5>
+                <p class="dmsg">Get 100% off all Nike products this November!</p>
+            </div>
+            <div class="col-md-4 col-sm-12 dealcard">
+                <h5 class="dh5">Double Deposit December</h5>
+                <p class="dmsg">Any amount of money deposited will be doubly credited to your wallet this December!</p>
+            </div>
+        </article>
+    </section>
     <script>
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
