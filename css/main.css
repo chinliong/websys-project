@@ -417,6 +417,10 @@ h1 {
     padding-top: 100px;
   }
 
+.hero h1 {
+    font-family: 'Playfair Display', serif;  /* Replace 'your-desired-font' with your chosen font */
+  }
+
 h4 {
     color: white;
     text-align: center;
