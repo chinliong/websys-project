@@ -8,10 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['user_id'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $funds = $_POST['funds']; // Retrieve the funds from the form
+    $role = $_POST['role'];
     // Perform input validation and sanitization here
 
-    $stmt = $conn->prepare("UPDATE user_table SET username = ?, email = ?, funds = ? WHERE user_id = ?");
-    $stmt->bind_param("ssdi", $username, $email, $funds, $user_id); // 'd' for double (funds)
+    $stmt = $conn->prepare("UPDATE user_table SET username = ?, email = ?, funds = ?, user_role = ? WHERE user_id = ?");
+    $stmt->bind_param("ssdsi", $username, $email, $funds, $role, $user_id); // 'd' for double (funds)
     
     if ($stmt->execute()) {
         header('Location: console.php?message=User updated successfully');
@@ -62,8 +63,19 @@ if (isset($_GET['user_id'])) {
                 <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']); ?>" required>
             </div>
             <div class="form-group">
+                <label for="role">Role:</label>
+                <select name="role" id="role" class="form-control">
+                    <option value="a" <?= $user['user_role'] == 'a' ? 'selected' : ''; ?>>Admin</option>
+                    <option value="u" <?= $user['user_role'] == 'u' ? 'selected' : ''; ?>>User</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="funds">Funds:</label>
                 <input type="number" step="0.01" name="funds" id="funds" value="<?= htmlspecialchars($user['funds']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="text" id="status" value="<?= $user['status'] == 1 ? 'Verified' : 'Not Verified'; ?>" class="form-control" disabled>
             </div>
             <button type="submit" class="btn btn-primary">Update User</button>
         </form>

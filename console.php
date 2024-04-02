@@ -47,6 +47,39 @@ if ((!($_SESSION['role'] == 'a')) || ($_SESSION['loggedin'] != true)) {
 
     $stmt->close();
 
+    // SQL to fetch transaction history
+    $query = "SELECT
+    t.transaction_id,
+    buyer.username AS buyer_username,
+    seller.username AS seller_username,
+    pc.cat_name,
+    pt.product_name,
+    t.price,
+    t.created_at
+FROM
+    transaction_table t
+JOIN
+    user_table buyer ON t.buyer_id = buyer.user_id
+JOIN
+    user_table seller ON t.seller_id = seller.user_id
+JOIN
+    product_table pt ON t.products_id = pt.product_id
+JOIN
+    product_category pc ON t.category_id = pc.cat_id
+";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $transaction_history_table_result = $stmt->get_result();
+
+    if ($transaction_history_table_result ) {
+        $transaction_history_table = $transaction_history_table_result ->fetch_all(MYSQLI_ASSOC);
+    } else {
+        echo "Error fetching transaction history";
+    }
+
+    $stmt->close();
+
     $conn->close();
 }
 ?>
@@ -135,6 +168,33 @@ if ((!($_SESSION['role'] == 'a')) || ($_SESSION['loggedin'] != true)) {
                     </table>
                 </div>
             </div>
+            <h1>Transaction History</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Buyer</th>
+                        <th>Seller</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($transaction_history_table as $row) : ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['transaction_id']) ?></td>
+                            <td><?= htmlspecialchars($row['created_at']) ?></td>
+                            <td><?= htmlspecialchars($row['buyer_username']) ?></td>
+                            <td><?= htmlspecialchars($row['seller_username']) ?></td>
+                            <td><?= htmlspecialchars($row['product_name']) ?></td>
+                            <td>$<?= htmlspecialchars(number_format($row['price'], 2)) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
         </div>
     </main>
     <?php include "inc/footer.inc.php"; ?>
