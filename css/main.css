@@ -1,3 +1,7 @@
+    *{
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
 main h2 {
     text-decoration: underline;
 }
@@ -7,7 +11,11 @@ main h2 {
     width: 40%;
     margin: auto;
 }
-
+.carousel-item img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
 #fh4{
     text-decoration: none;
 }
@@ -20,14 +28,16 @@ main h2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    overflow-x: hidden;
 }
 .dealcard{
+    max-width:100%;
     background-color: rgba(189, 195, 199, 0.4);
     margin: 10px; /* This adds space around each card */
     border-radius:15px;
-    max-width:80%;
 }
 .dh5{
+    max-width: 100px;
     color: white;
     text-align: center;
 }
