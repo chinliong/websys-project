@@ -306,6 +306,9 @@ body {
     text-align: center;
 }
 
+.admin-btn{
+    color: white;
+}
 
 th{
     font-size: 160%;
