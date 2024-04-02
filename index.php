@@ -102,8 +102,8 @@ session_start();
                                 <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <div class="card-body">
                             </a>
-                            <p class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></p>
-                            <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
+                            <p class="card-title black-words"><?php echo htmlspecialchars($product['product_name']); ?></p>
+                            <p class="card-text black-words">$<?php echo htmlspecialchars($product['price']); ?></p>
                         </div>
                     </div>
                 
@@ -119,7 +119,7 @@ session_start();
                 <p class="dmsg">Get 10% off all produts listed this September!</p>
             </div>
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5"><i class="fa fa-check" aria-hidden="true"></i> No Nike November</h5>
+                <h5 class="dh5"><i class="fa fa-times" aria-hidden="true"></i> No Nike November</h5>
                 <p class="dmsg">Get 100% off all Nike products this November!</p>
             </div>
             <div class="col-md-4 col-sm-12 dealcard">

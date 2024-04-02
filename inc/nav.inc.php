@@ -26,12 +26,6 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
 
     <div class="collapse navbar-collapse" id="navbarNav">
 
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="../index.php">Home</a>
-        </li>
-        </ul>
-
       <ul class="navbar-nav ms-auto">
 
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
