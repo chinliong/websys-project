@@ -76,6 +76,7 @@ $api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; //Google Maps API key
       </li>
     </ul>
   </section>
+  <?php include "inc/footer.inc.php"; ?>
 </body>
 
 </html>
