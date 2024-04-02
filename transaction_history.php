@@ -68,19 +68,19 @@ $result = $stmt->get_result();
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($row["product_name"]) ?></h5>
-                            <p class="card-text">
+                            <p class="card-text black-words">
                                 <strong>Role:</strong> <?= $row['user_role'] === 'Buyer' ? '<i class="fas fa-shopping-cart"></i> Buyer' : '<i class="fas fa-store"></i> Seller'; ?>
                             </p>
-                            <p class="card-text">
+                            <p class="card-text black-words">
                                 <strong>Price:</strong> <span class="<?= $row['wallet_effect'] === 'Added to Wallet' ? 'text-success' : 'text-danger'; ?>">
                                     $<?= number_format(htmlspecialchars($row["price"]), 2) ?>
                                 </span>
                             </p>
-                            <p class="card-text"><strong>Category:</strong> <?= htmlspecialchars($row["cat_name"]) ?></p>
-                            <p class="card-text">
+                            <p class="card-text black-words"><strong>Category:</strong> <?= htmlspecialchars($row["cat_name"]) ?></p>
+                            <p class="card-text black-words">
                                 <strong><?= $row['user_role'] === 'Buyer' ? 'Seller: ' : 'Buyer: ' ?></strong> <?= htmlspecialchars($row['user_role'] === 'Buyer' ? $row["seller_username"] : $row["buyer_username"]) ?>
                             </p>
-                            <p class="card-text">
+                            <p class="card-text black-words">
                                 <strong>Date:</strong> <?= date("F j, Y", strtotime($row["created_at"])) ?>
                             </p>
                         </div>
