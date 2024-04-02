@@ -18,22 +18,22 @@
 
       <form action="process_register.php" method="post" class="row g-3">
 
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12">
           <label for="uname" class="form-label">Username</label>
           <input maxlength="45" type="text" class="form-control" id="uname" name="uname" placeholder="Enter a unique username (max 45 characters)">
         </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12">
             <label for="email" class="form-label">Email Address</label>
             <input maxlength="45" type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12">
             <label for="pwd" class="form-label">Password</label>
             <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Create a strong password">
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12">
             <label for="pwd_confirm" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" placeholder="Re-enter your password">
           </div>

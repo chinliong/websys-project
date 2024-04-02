@@ -42,8 +42,9 @@
       <div class="faq-answer"><?php echo $answer; ?></div>
     <?php endforeach; ?>
   </div>
-
+  <?php include "inc/footer.inc.php"; ?>
 </body>
+
 </html>
 
 
