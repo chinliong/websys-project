@@ -50,7 +50,7 @@ if (isset($_GET['user_id'])) {
 </head>
 <body>
     <?php include "inc/nav.inc.php"; ?>
-    <main class="container">
+    <main class="container custom-form-container">
         <h2>Edit User</h2>
         <form action="edit_userconsole.php" method="post">
             <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['user_id']); ?>">

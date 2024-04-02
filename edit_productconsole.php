@@ -102,11 +102,12 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
     <?php include 'inc/head.inc.php'; ?>
+    <script src="js/console.js" defer></script>
 </head>
 
 <body>
     <?php include "inc/nav.inc.php"; ?>
-    <main class="container">
+    <main class="container custom-form-container">
         <h2>Edit Product</h2>
         <form action="edit_productconsole.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']); ?>">
@@ -141,7 +142,7 @@ $stmt->close();
                 <label for="product_image">Product Image:</label>
                 <input type="file" class="form-control" name="product_image" id="product_image" onchange="previewImage();">
                 <small class="form-text text-muted">Current Image:</small>
-                <img id="currentImage" src="images/<?= htmlspecialchars($product['product_image']); ?>" alt="Product Image" style="max-width: 300px; height: auto;">
+                <img id="currentImage" src="images/<?= htmlspecialchars($product['product_image']); ?>" alt="Product Image" style="max-width: 300px; height: auto; margin-top:20px; margin: left 50px;">
                 <input type="hidden" name="existing_image" value="<?= htmlspecialchars($product['product_image']); ?>">
                 <!-- Image Preview Placeholder -->
                 <div id="imagePreview"></div>
@@ -150,21 +151,6 @@ $stmt->close();
         </form>
     </main>
     <?php include "inc/footer.inc.php"; ?>
-    <script>
-        // JavaScript for image preview
-        function previewImage() {
-            var file = document.getElementById("product_image").files;
-            if (file.length > 0) {
-                var fileReader = new FileReader();
-
-                fileReader.onload = function(event) {
-                    document.getElementById("currentImage").setAttribute("src", event.target.result);
-                };
-
-                fileReader.readAsDataURL(file[0]);
-            }
-        }
-    </script>
 </body>
 
 </html>

@@ -629,6 +629,21 @@ h4 {
     background-color: #0056b3; /* Change this to your desired hover color */
   }
 
+  /* For console edit form*/
+  .custom-form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-control:disabled {
+    background-color: #9fa2a6;
+    opacity: 10;
+}
 
 
 
