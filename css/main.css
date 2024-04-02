@@ -25,6 +25,14 @@ main h2 {
     color: black;
 }
 
+.g-captcha{
+    margin: auto;
+}
+
+.submitt-btn{
+    margin: auto;
+}
+
 .parent{
     max-width: 100%;
     display: flex;
