@@ -23,14 +23,12 @@
         echo "<h1>Error fetching product table</h1>";
     }
     $categories = [];
-    $counts = [];
-    foreach ($products_of_viewing_user as $product) {
-        if (!isset($categories[$product['cat_name']])) {
-            $categories[$product['cat_name']] = 0;
-        }
-        $categories[$product['cat_name']]++;
-        $categories[$product['cat_id']]++;
-    }
+    
+//this loop is for the chart
+foreach ($products_of_viewing_user as $product) {
+    $categories[$product['cat_name']] = isset($categories[$product['cat_name']]) ? $categories[$product['cat_name']] + 1 : 1;
+}
+
 
     $stmt = $conn->prepare("SELECT * from product_category");
     $stmt->execute();
@@ -73,6 +71,7 @@
                 echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
+
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
                     echo "<td class='product-name'>" . $product['product_name'] . "</td>";
@@ -80,11 +79,11 @@
                     echo "<td class='product-name'><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
                     echo "<td class='product-name'>&dollar;" . $product['price'] . "</td>";
                     echo "<td class='product-name'>" . $product['cat_name'] . "</td>";
-                    echo "<td>";
+                    echo "<td class='product-name'>";
                     echo "<form action='delete_listing.php' method='post'>
                             <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                            <button type='submit'>Delete</button>
+                            <button class = 'delete-button' type='submit'>Delete</button>
                         </form>";
                     echo "</td>";
                     echo "</tr>";
@@ -94,7 +93,7 @@
                 echo "</div>";
             }
         ?>
-        <div class="chart-container" style="position: relative; height:80; width:120">
+        <div class="chart-container">
             <canvas id="chart"></canvas>
         </div>
         <script>
