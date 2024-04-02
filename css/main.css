@@ -414,6 +414,7 @@ h1 {
     color: white;
     text-align: center;
     padding: 10px 0;
+    padding-top: 100px;
   }
 
 h4 {
@@ -500,6 +501,7 @@ h4 {
 
 .navbar-brand img {
     max-height: 50px; /* Adjust logo size */
+    border-radius: 30px;
 }
 
 /* Search Box Styling */
