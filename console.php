@@ -180,7 +180,7 @@ JOIN
 
         <div id="transactionsTable" style="display:none;">
             <!-- Transaction History Table -->
-            <h1>Transaction History</h1>
+            <h2>Transaction History</h2>
             <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
