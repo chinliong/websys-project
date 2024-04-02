@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,11 +114,12 @@
                             $errorMsg = "Email not found or password doesn't match...";
                             $success = false;
                         } 
-                        if($row["status"] == 0){
+                        else if($row["status"] == 0){
                             $errorMsg = "Please verify your account";
                             $success = false;
                         }
                         else {   
+                            session_start();
                             $_SESSION['loggedin'] = true;
                             $_SESSION['userid'] = $row["user_id"];
                             $_SESSION['role'] = $row["user_role"];

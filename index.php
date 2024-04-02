@@ -18,7 +18,22 @@ session_start();
     include 'db_con.php';
     include 'inc/header.inc.php';
 
-    $sql = $conn->prepare("SELECT product_id, product_name, product_image, price FROM ferris_wheel.product_table");
+    $sql = $conn->prepare("SELECT 
+    p.product_id, 
+    p.product_name, 
+    p.product_image, 
+    p.price, 
+    p.cat_id, 
+    p.user_id
+  FROM 
+    product_table p
+  INNER JOIN 
+    (SELECT MIN(product_id) AS min_product_id, cat_id
+     FROM product_table
+     GROUP BY cat_id) AS subquery
+  ON 
+    p.product_id = subquery.min_product_id
+  ");
     $sql->execute();
     $result = $sql->get_result();
     ?>
@@ -73,21 +88,25 @@ session_start();
 
     <div class="content mt-5">
         <h1>Welcome To Our Little Haven Shoppe Online Store</h1>
-        <h4>Featured Products</h4>
-
+        <h4 id="fh4">Featured</h4>
+        <hr class="linefeed">
+        <p id="fmsg">Take a look at the highlighted products showcased below!</p>
         <div class="container">
             <div class="row mt-4">
-                <?php while ($product = $result->fetch_assoc()) : ?>
-                    <div class="col-md-4">
+                <?php
+                while ($product = $result->fetch_assoc()) :
+                ?>
+                    <div class="col-md-4 lcard">
                         <div class="card">
                             <a href="product_page.php?id=<?php echo htmlspecialchars($product['product_id']); ?>">
                                 <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <div class="card-body">
-                                    <h3 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h3>
                             </a>
+                            <p class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></p>
                             <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
                         </div>
                     </div>
+                
             </div>
         <?php endwhile; ?>
         </div>

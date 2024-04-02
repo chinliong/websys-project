@@ -2,6 +2,18 @@ main h2 {
     text-decoration: underline;
 }
 
+.linefeed{
+    width: 40%;
+    margin: auto;
+}
+
+#fh4{
+    text-decoration: none;
+}
+
+#fmsg{
+    text-align: center;
+}
 
 figcaption {
     font-style: italic;
@@ -45,11 +57,13 @@ footer {
 
 
 .card-header h2 {
+    text-align: center;
     margin-bottom: 0;
     /* Adjusts spacing inside the card header */
 }
 
 .card-text {
+    text-align: center;
     font-size: 1.1rem;
     /* Makes the text slightly larger for readability */
 }
@@ -106,7 +120,9 @@ body {
     background-color: #0056b3;
     color: white;
 }
-
+.lcard{
+    padding-bottom: 15px;
+}
 #editProfileForm {
     margin-top: 20px;
     display: none;
@@ -120,10 +136,14 @@ body {
     from { transform: translateY(0); }
     to { transform: translateY(-5px); }
   }
+.card-title{
+    text-align: center;
 
+}
 .card {
     transition: transform 0.2s, box-shadow 0.2s;
-  }
+    /* padding-top: 15px; */
+}
   
 .card:hover {
     transform: scale(1.02);
@@ -427,15 +447,62 @@ h4 {
     color: #dc3545; /* Bright red for negative wallet effect */
 }
 
-.navbar-nav .nav-link {
-    transition: color 0.2s;
+.nav-link {
+    color: #fff !important; /* Sets the default text color to white */
+    transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
 }
-.navbar-nav .nav-link:hover {
-    color: #f0ad4e; /* Change hover color here */
+
+.nav-link:hover {
+    color: #0062cc !important; /* Changes text color to blue on hover */
+    text-decoration: none; /* Optional: Removes underline from links on hover */
 }
+
 .navbar-brand img {
     max-height: 50px; /* Adjust logo size */
 }
+
+/* Search Box Styling */
+.navbar .form-control {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .form-control:focus {
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    border-color: #0056b3;
+}
+
+/* Search Icon */
+.navbar .form-inline .fas.fa-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .form-inline {
+        width: 100%;
+    }
+    .navbar .form-inline input[type="text"] {
+        width: calc(100% - 20px); /* Full width minus padding */
+    }
+}
+
+.rounded-select, .rounded-input {
+    border-radius: 20px !important; /* Adjust this value to control roundness */
+}
+
+/* Optionally, to ensure the button aligns nicely with the rounded inputs */
+.btn-primary {
+    border-radius: 20px !important;
+}
+
 
 /* for product_page*/
 
@@ -460,6 +527,8 @@ h4 {
 .card-img-top{
     width: 300px; /* Adjust the width to make the image smaller */
     height: 300px; /* Adjust the height to make the image smaller */
+    display: block;
+    margin: auto;
 }
 
 /* table for shopping_cart*/
