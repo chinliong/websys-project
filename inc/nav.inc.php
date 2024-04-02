@@ -93,7 +93,7 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
 
         <li class="nav-item d-flex">
           <form action="../process_search.php" method="post" class="d-flex">
-            <input maxlength="55" type="text" class="form-control me-2 rounded-input" id="search" name="search" placeholder="Search something...  ">
+            <input maxlength="55" type="text" class="form-control me-2 rounded-input" id="search" name="search" placeholder="Search">
             <select name="cat" class="form-select rounded-select">
               <option value="all_cats_in_db">All Categories</option>
               <?php

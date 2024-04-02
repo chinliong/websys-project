@@ -57,8 +57,8 @@ session_start();
     </div>
 
     <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -85,7 +85,7 @@ session_start();
         </div>
 
     </div>
-
+        
     <div class="content mt-5">
         <h1>Welcome To Our Little Haven Shoppe Online Store</h1>
         <h4 id="fh4">Featured</h4>
@@ -96,14 +96,14 @@ session_start();
                 <?php
                 while ($product = $result->fetch_assoc()) :
                 ?>
-                    <div class="col-md-4 lcard">
+                    <div class="col-md-4 col-sm-12 lcard">
                         <div class="card">
                             <a href="product_page.php?id=<?php echo htmlspecialchars($product['product_id']); ?>">
                                 <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <div class="card-body">
                             </a>
-                            <p class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></p>
-                            <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
+                            <p class="card-title black-words"><?php echo htmlspecialchars($product['product_name']); ?></p>
+                            <p class="card-text black-words">$<?php echo htmlspecialchars($product['price']); ?></p>
                         </div>
                     </div>
                 
@@ -111,6 +111,23 @@ session_start();
         <?php endwhile; ?>
         </div>
     </div>
+    <section id="deals">
+        <h4 id="dh4">Upcoming Deals</h4>
+        <article class="row parent">
+            <div class="col-md-4 col-sm-12 dealcard">
+                <h5 class="dh5"><i class="fa fa-money" aria-hidden="true"></i>Start Spending September</h5>
+                <p class="dmsg">Get 10% off all produts listed this September!</p>
+            </div>
+            <div class="col-md-4 col-sm-12 dealcard">
+                <h5 class="dh5"><i class="fa fa-times" aria-hidden="true"></i> No Nike November</h5>
+                <p class="dmsg">Get 100% off all Nike products this November!</p>
+            </div>
+            <div class="col-md-4 col-sm-12 dealcard">
+                <h5 class="dh5"><i class="fa fa-credit-card" aria-hidden="true"></i> Double Deposit December</h5>
+                <p class="dmsg">Any amount of money deposited will be doubly credited to your wallet this December!</p>
+            </div>
+        </article>
+    </section>
     <script>
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');

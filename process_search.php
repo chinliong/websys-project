@@ -105,6 +105,7 @@
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+                if (!isset($_SESSION['userid']) || $_SESSION['userid'] != $row["user_id"]){
                 echo '<article class="col-sm-4 product">';
                 echo '<div class="card">';
                 echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
@@ -112,11 +113,11 @@
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $row["product_name"] . '</h5>';
                 echo '</a>';
-                echo '<p class="card-text">$' . $row["price"] . '</p>';
-                echo '<p class="card-text">Category: ' . $row["cat_name"] . '</p>';
-                echo '<p class="card-text">Seller: ' . $row["seller_name"] . '</p>';
-
-                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['userid'] != $row["user_id"]) {
+                echo '<p class="card-text black-words">$' . $row["price"] . '</p>';
+                echo '<p class="card-text black-words">Category: ' . $row["cat_name"] . '</p>';
+                echo '<p class="card-text black-words">Seller: ' . $row["seller_name"] . '</p>';
+                //echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                     echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
                 }
                 echo '</div>';
@@ -129,6 +130,7 @@
                     $prices[$price] = 0;
                 }
                 $prices[$price]++;
+            }
             }
      } else {
         echo "<h3 class='warning-messages'>No results found</h3>";

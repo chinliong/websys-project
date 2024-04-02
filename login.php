@@ -26,17 +26,18 @@
   </div>
 
   <main>
+    <section id="login">
     <div class="login-container d-flex justify-content-center align-items-center min-vh-100">
       <section>
-        <div class="login-form card p-4">
-          <h2 class="text-center mb-4">Login to Your Account</h2>
+        <div class="login-form card p-4 black-words">
+          <h2 class="text-center mb-4 black-words">Login to Your Account</h2>
           <form action="process_login.php" method="post">
             <div class="form-group">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label black-words">Email</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
             </div>
             <div class="form-group">
-              <label for="pwd" class="form-label">Password</label>
+              <label for="pwd" class="form-label black-words">Password</label>
               <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter your password" required>
             </div>
             <div class="form-check mb-3">
@@ -64,7 +65,7 @@
     include 'inc/footer.inc.php';
     ?>
 
-
+  </section>
   </main>
 </body>
 

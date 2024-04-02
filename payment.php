@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $current_user_balance = $result->fetch_assoc()['funds'];
         
         // Retrieve items from the cart table for the current user
-        $stmt = $conn->prepare("SELECT pt.product_id, pt.price, pt.user_id AS seller_id, pt.cat_id FROM cart_table ct JOIN product_table pt ON ct.product_id = pt.product_id WHERE ct.user_id = ?");
+        $stmt = $conn->prepare("SELECT pt.product_id, pt.product_name, pt.price, pt.user_id AS seller_id, pt.cat_id FROM cart_table ct JOIN product_table pt ON ct.product_id = pt.product_id WHERE ct.user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -51,7 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             while ($product = $result->fetch_assoc()) {
                 $totalAmountToDeduct += $product['price'];
-                $products[] = $product;
+                $products[] = array(
+                    'name' => $product['product_name'],
+                    'price' => $product['price'],
+                    'seller_id' => $product['seller_id'],
+                    'cat_id' => $product['cat_id'],
+                    'product_id' => $product['product_id']
+                );
             }
         } else {
             throw new Exception("Cart is empty.");
@@ -81,6 +87,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insertTransactionStmt->bind_param("iiisd", $userId, $product['seller_id'], $product['cat_id'], $product['product_id'], $product['price']);
             $insertTransactionStmt->execute();
         }
+        $transactionId = $conn->insert_id;
+
+        $stmt = $conn->prepare("SELECT email, username FROM user_table WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $userResult = $stmt->get_result();
+        $userDetails = $userResult->fetch_assoc();
+
+        $product_name = array_map(function ($product) {
+            return $product['name'];
+        }, $products);
+
+        $transactionDetails = [
+            'buyer_email' => $userDetails['email'],
+            'buyer_name' => $userDetails['username'], 
+            'products' => $product_name, 
+            'total' => $totalAmountToDeduct, 
+        ];  
+        include 'receipt_email.php';
 
         // Commit the transaction
         $conn->commit();

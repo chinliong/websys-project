@@ -17,15 +17,15 @@
 
 <div class="customer-service-container d-flex justify-content-center align-items-center min-vh-100">
   <div class="customer-service-content card p-4 text-center">
-    <h2 class="text-center mb-4">Welcome to Little Haven Shoppe Customer Service</h2>
-    <p>We're happy to help with any questions you may have.<br></span> Choose an option below to get started:</p>
+    <h2 class="text-center mb-4 black-words">Welcome to Little Haven Shoppe Customer Service</h2>
+    <p class="black-words">We're happy to help with any questions you may have.<br></span> Choose an option below to get started:</p>
    <div class="container"> <!-- Ensure it's within a container for proper alignment -->
   <div class="row justify-content-center"> <!-- This makes the child elements center aligned -->
     <div class="col-md-6">
       <div class="service-option text-center"> <!-- Added text-center for text alignment -->
         <i class="fas fa-envelope"></i>
-        <h3>Email Support</h3>
-        <p>Send us an email and we'll get back to you as soon as possible.</p>
+        <h3 class="black-words">Email Support</h3>
+        <p class="black-words">Send us an email and we'll get back to you as soon as possible.</p>
         <a href="email_support.php" class="btn btn-secondary">Send Email</a>
       </div>
     </div>
@@ -34,7 +34,7 @@
 
     <hr>
     <div class="additional-resources">
-      <h4>Additional Resources</h4>
+      <h4 class="black-words">Additional Resources</h4>
       <ul class="list-group">
         <li class="list-group-item"><a href="faq.php">Frequently Asked Questions (FAQ)</a></li>
         <li class="list-group-item"><a href="returnpolicy.php">Return & Refund Policy</a></li>
