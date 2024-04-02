@@ -120,7 +120,9 @@ body {
     background-color: #0056b3;
     color: white;
 }
-
+.lcard{
+    padding-bottom: 15px;
+}
 #editProfileForm {
     margin-top: 20px;
     display: none;
@@ -140,7 +142,8 @@ body {
 }
 .card {
     transition: transform 0.2s, box-shadow 0.2s;
-  }
+    /* padding-top: 15px; */
+}
   
 .card:hover {
     transform: scale(1.02);
