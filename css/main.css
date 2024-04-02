@@ -1,7 +1,3 @@
-    *{
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
 main h2 {
     text-decoration: underline;
 }
@@ -31,18 +27,18 @@ main h2 {
     overflow-x: hidden;
 }
 .dealcard{
-    max-width:100%;
+    max-width:20%;
     background-color: rgba(189, 195, 199, 0.4);
     margin: 10px; /* This adds space around each card */
     border-radius:15px;
 }
 .dh5{
-    max-width: 100px;
     color: white;
     text-align: center;
 }
 
 .dmsg{
+    max-width: 100%;
     color: white;
     text-align: center;
 }
