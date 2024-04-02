@@ -113,18 +113,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </div>
         </div>
 
-                    <script>
-                        // Listen for change event on the radio button
-                        document.getElementById('creditDebitCard').addEventListener('change', function() {
-                            if (this.checked) {
-                                // If the "Credit Card/Debit Card" option is selected, show the modal
-                                $('#cardDetailsModal').modal('show');
-                            }
-                        });
-                        document.getElementById('closeModal').addEventListener('click', function() {
-                            $('#cardDetailsModal').modal('hide');
-                        });
-                    </script>
                     <!-- <hr> Add a horizontal line -->
                     <div style="text-align: right;">
                         <div style="display: inline-block;">
