@@ -240,6 +240,11 @@ body {
     text-align: center;
 }
 
+.delete-button{
+    text-align: center;
+}
+
+
 th{
     font-size: 160%;
     text-align: center;
@@ -462,6 +467,8 @@ h4 {
     vertical-align: middle;
     text-align: center;
 }
+
+
 
 
 
