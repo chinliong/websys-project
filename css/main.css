@@ -629,6 +629,15 @@ h4 {
     background-color: #0056b3; /* Change this to your desired hover color */
   }
 
+.return-policy,
+.information,
+.contact-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em auto;
+  }
+
 
 
 
