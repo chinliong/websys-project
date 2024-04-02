@@ -38,13 +38,6 @@
             <input type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" placeholder="Re-enter your password">
           </div>
 
-          <div class="col-md-12">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="agree" id="agree">
-              <label class="form-check-label" for="agree">Agree to Terms & Conditions</label>
-            </div>
-          </div>
-
           <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Join Now!</button>
           </div>
