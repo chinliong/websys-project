@@ -1,18 +1,21 @@
 <?php
-    session_start();
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Little Haven Shoppe Customer Service</title>
-
 <?php
-  include 'inc/head.inc.php';
-  include 'inc/header.inc.php'; 
+ include 'inc/head.inc.php';
 ?>
+</head>
+<body>
+  <main>
 <?php
+  include 'inc/header.inc.php';
   include 'inc/nav.inc.php';
-?>
+  ?>
+  
 <div class="return-policy">  <h2>Return Eligibility</h2>  <ul>
     <li>Products: You can return any unopened, unused, and undamaged product within [Number] days of purchase.</li>
     <li>Receipt: You must include a copy of your receipt with your return.</li>
@@ -39,4 +42,7 @@
 <?php
   include 'inc/footer.inc.php';
 ?>
+   </main>
+</body>
+
 </html>

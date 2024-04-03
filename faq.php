@@ -10,6 +10,7 @@
 ?>
 </head>
 <body>
+  <main>
 <?php
   include 'inc/header.inc.php';
   include 'inc/nav.inc.php';
@@ -41,6 +42,7 @@
     <?php endforeach; ?>
   </div>
   <?php include "inc/footer.inc.php"; ?>
+    </main>
 </body>
 
 </html>

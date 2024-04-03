@@ -11,6 +11,7 @@ session_start();
     ?>
 </head>
 <body>
+ <main>
     <div class="intro">
         <h1 class="logo-header">
             <img src="images/cat_chipi.gif" alt="Loading" class="splash-gif">
@@ -94,7 +95,7 @@ session_start();
         
     <div class="content mt-5">
         <h1>Welcome To Our Little Haven Shoppe Online Store</h1>
-        <h4 id="fh4">Featured</h4>
+        <h2 id="fh4">Featured</h2>
         <hr class="linefeed">
         <p id="fmsg">Take a look at the highlighted products showcased below!</p>
         <div class="container">
@@ -118,19 +119,19 @@ session_start();
     </div>
     </div>
     <section id="deals">
-        <h4 id="dh4">Upcoming Deals</h4>
+        <h2 id="dh4">Upcoming Deals</h2>
         <div class="container">
         <article class="row parent">
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5"><i class="fa fa-money" aria-hidden="true"></i>Start Spending September</h5>
+                <h3 class="dh5"><i class="fa fa-money" aria-hidden="true"></i>Start Spending September</h5>
                 <p class="dmsg">Get 10% off all produts listed this September!</p>
             </div>
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5"><i class="fa fa-times" aria-hidden="true"></i> No Nike November</h5>
+                <h3 class="dh5"><i class="fa fa-times" aria-hidden="true"></i> No Nike November</h5>
                 <p class="dmsg">Get 100% off all Nike products this November!</p>
             </div>
             <div class="col-md-4 col-sm-12 dealcard">
-                <h5 class="dh5"><i class="fa fa-credit-card" aria-hidden="true"></i> Double Deposit December</h5>
+                <h3 class="dh5"><i class="fa fa-credit-card" aria-hidden="true"></i> Double Deposit December</h5>
                 <p class="dmsg">Any amount of money deposited will be doubly credited to your wallet this December!</p>
             </div>
         </article>
@@ -181,7 +182,7 @@ session_start();
         <p><em>Copyright &copy; 2024 Little Haven Shoppe Pte. Ltd.</em></p>
     </footer>
 
-
+    </main>
 </body>
 
 </html>
