@@ -39,8 +39,9 @@
                   <label for="pwd" class="form-label">Password</label>
                   <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter your password" required>
               </div>
+              <div class="d-flex justify-content-center">
               <div class="g-recaptcha centered-item" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
-
+            </div>
               <button type="submit" class="btn btn-primary centered-item">Login</button>
           </form>
           <p class="mt-3 text-center">Don't have an account? <a href="register.php">Sign Up</a></p>
