@@ -31,6 +31,15 @@ main h2 {
     margin-right: auto;
 }
 
+.return-policy,
+.return,
+.contact-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em auto;
+  }
+
 .parent{
     max-width: 100%;
     display: flex;
