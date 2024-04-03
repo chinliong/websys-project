@@ -102,7 +102,7 @@ session_start();
                 <?php
                 while ($product = $result->fetch_assoc()) :
                 ?>
-                    <div class="col-md-4 col-sm-12 lcard">
+                    <div class="col-lg-4 col-md-6 col-sm-12 lcard">
                         <div class="card">
                             <a href="product_page.php?id=<?php echo htmlspecialchars($product['product_id']); ?>">
                                 <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">

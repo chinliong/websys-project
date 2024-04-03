@@ -17,7 +17,6 @@
 
     <section id="search-results">
     <?php
-
         $search = $_POST["search"];
         $search = sanitize_input($search);     
 
@@ -27,8 +26,6 @@
         } else{
             echo '<h2>Producing Results for "' . htmlspecialchars($search) . '"</h2>';
         }
-        
-
     ?>
     
     <div class="row">
@@ -98,7 +95,7 @@
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 if (!isset($_SESSION['userid']) || $_SESSION['userid'] != $row["user_id"]){
-                echo '<article class="col-sm-4 product">';
+                echo '<article class="col-lg-4 col-md-6 col-sm-12 lcard"">';
                 echo '<div class="card">';
                 echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
                 echo '<img class="card-img-top" src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '">';    
