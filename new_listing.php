@@ -3,7 +3,6 @@
 <head>
 <title>Ferris wheel</title>
     <?php
-        include 'inc/header.inc.php'; 
         include 'inc/head.inc.php';
         include 'inc/init.inc.php'
     ?>
@@ -12,9 +11,11 @@
 <body>
 <?php
 include "inc/nav.inc.php";
+include 'inc/header.inc.php'; 
+
 ?>
 <main class="container">
-    <section id="list-product">
+    <div id="list-product">
     <h1>New Listing</h1>
     <p>
         Upload a new listing here!
@@ -60,7 +61,7 @@ include "inc/nav.inc.php";
                 </div>
             </div>
         </form>
-    </section>
+    </div>
 </main>
 <?php
 include "inc/footer.inc.php";

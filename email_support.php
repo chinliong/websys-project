@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <?php include 'inc/head.inc.php'; ?>
-  <?php include 'inc/header.inc.php'; ?>
-
-
   <title>Contact Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <?php include 'inc/nav.inc.php'; ?>
+  <?php include 'inc/nav.inc.php';
+        include 'inc/header.inc.php'; 
+  ?>
 
   <section id="contact">
     <h2>Contact Us</h2>

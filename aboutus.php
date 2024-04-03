@@ -3,12 +3,12 @@
 <head>
 <title>Little Haven Shoppe | About Us</title>
 <?php
-  include 'inc/header.inc.php'; 
   include 'inc/head.inc.php';
 ?>
 </head>
 <body>
 <?php
+  include 'inc/header.inc.php'; 
   include 'inc/nav.inc.php';
 ?>
 
@@ -22,14 +22,13 @@
 
     <h2>Our Mission</h2>
 
-    <p>Our mission is to empower both buyers and sellers by providing a platform that is: 
+    <p>Our mission is to empower both buyers and sellers by providing a platform that is:</p>
         <ul>
           <li>Friendly and Trustworthy: We prioritize creating a welcoming environment where you can feel confident in your interactions.</li>
           <li>Easy-to-Use: We believe shopping online should be a breeze. We offer intuitive features and a streamlined experience for everyone.</li>
           <li>Community-Focused:  We foster a strong sense of community, where you can connect with fellow Shoppers and sellers who share your passions.</li>
           <li>Personal and Enjoyable: We're committed to making online shopping fun and engaging, a stark contrast to the impersonal feel of some large marketplaces.</li>
         </ul>
-    </p>
 
     <h2>What Makes Us Unique</h2>
 

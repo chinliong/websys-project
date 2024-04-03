@@ -16,9 +16,9 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 </head>
 
 <body>
-    <?php include 'inc/nav.inc.php'; 
-    ?>
-    <?php include 'inc/header.inc.php'; ?>
+    <?php 
+        include 'inc/nav.inc.php'; 
+        include 'inc/header.inc.php'; ?>
 
     <main class="container">
         
@@ -67,7 +67,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
                 $conn->close();
                 }
             ?>
-        <section id="wallet">
+        <div id="wallet">
             <div class="row">
                 <article id="balance" class="col-sm-12">
                     <h3 id="current-balance"><i class="fas fa-wallet"></i> Current Wallet Balance: &dollar;<?php echo $funds; ?></h3>
@@ -79,7 +79,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
                         <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->
                 </article>
             </div>
-        </section>
+            </div>
 
         <?php include 'inc/footer.inc.php'; ?>
     </main>

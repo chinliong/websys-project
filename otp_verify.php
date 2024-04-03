@@ -2,23 +2,24 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>Shoppe Haven Verification</title>
     <?php
-    include 'db_con.php';
     include 'inc/head.inc.php';
-    include 'inc/nav.inc.php';
-      ?>
-    <title>Verification</title>
+    ?>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+<?php
+    include 'inc/nav.inc.php';
+    include 'db_con.php';
+?>
+<!-- <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="#">Verification Account</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-</nav>
+</nav> -->
 
 <main class="login-form">
     <div class="cotainer">
@@ -26,30 +27,27 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Verification Account</div>
-                    <div class="card-body">
-                        <form action="#" method="POST">
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">OTP Code</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="otp" class="form-control" name="otp_code" required autofocus>
+                        <div class="card-body">
+                            <form action="#" method="POST">
+                                <div class="form-group row">
+                                    <label for="otp" class="col-md-4 col-form-label text-md-right">OTP Code</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="otp" class="form-control" name="otp_code" required autofocus>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Verify" name="verify">
-                            </div>
+                                <div class="col-md-6 offset-md-4">
+                                    <input type="submit" value="Verify" name="verify">
+                                </div>
+                            </form>
+                        </div>    
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
     <?php include 'inc/footer.inc.php'?>
-    </div>
 
 </main>
-</body>
-</html>
 <?php 
     if(isset($_POST["verify"])){
         $otp = $_SESSION['otp'];
@@ -75,4 +73,7 @@
     }
 
 ?>
+</body>
+</html>
+
 
