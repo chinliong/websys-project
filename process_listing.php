@@ -35,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $filetype = $_FILES['pimage']['type'];
     $filesize = $_FILES['pimage']['size'];
     $folder = "./images/" . $filename;
-   // echo "<script>console.log('filename is ' . $filename);</script>";
     $cat = sanitize_input($_POST["cat"]);
     if (empty($_POST["pname"])) {
         $errorMsg .= "Product name is required.<br>";
@@ -52,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if(isset($_FILES['pimage']) && $filename != "") {
-       // echo "<script>console.log('The filename is ' . $filename);</script>";
         $errors= array();
         $random1 = rand(10,100);
         $random2 = rand(10,150);
@@ -85,11 +83,9 @@ else
 {
     echo '<section id="error-section">';
     echo '<article">';
-   // echo '<form action="login.php" method="post">';
     echo "<h3 id='error-h3'>Oops&#33;</h3>";
     echo "<h4 id='error-h4'>Here's what went wrong&#58; </h4>";
     echo "<p id='error-p'>" . $errorMsg . "</p>";
-   // echo '<button id="login-return-button" type="submit" class="btn btn-warning">Return to Login</button>';
     echo '<a id="login-return-button" href="new_listing.php" type="submit" class="btn btn-warning">Try again&#63;</a>';
     echo '</article>';
     echo '</section>';
@@ -101,8 +97,6 @@ else
 function placeListing($cat, $folder, $tmpname, $pimage, $pname, $price, $errorMsg, $success)
 {
     
-//global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
-// Create database connection.
 $config = parse_ini_file('/var/www/private/db-config.ini');
 if (!$config)
 {

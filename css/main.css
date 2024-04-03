@@ -2,6 +2,63 @@ main h2 {
     text-decoration: underline;
 }
 
+.linefeed{
+    color: white;
+    width: 40%;
+    margin: auto;
+}
+.carousel-item img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+#fh4{
+    text-decoration: none;
+}
+
+#dh4{
+    text-decoration: none;
+
+}
+
+.black-words{
+    color: black;
+}
+
+.centered-item {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parent{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+}
+.dealcard{
+    max-width:20%;
+    background-color: rgba(189, 195, 199, 0.4);
+    margin: 10px; /* This adds space around each card */
+    border-radius:15px;
+}
+.dh5{
+    max-width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.dmsg{
+    max-width: 100%;
+    color: white;
+    text-align: center;
+}
+#fmsg{
+    color: white;
+    text-align: center;
+}
 
 figcaption {
     font-style: italic;
@@ -45,11 +102,13 @@ footer {
 
 
 .card-header h2 {
+    text-align: center;
     margin-bottom: 0;
     /* Adjusts spacing inside the card header */
 }
 
 .card-text {
+    text-align: center;
     font-size: 1.1rem;
     /* Makes the text slightly larger for readability */
 }
@@ -82,11 +141,13 @@ footer {
 }
 
 body {
-    background-color: rgb(238, 226, 226);
+    background-color: rgb(0,0,0);
     padding-top: 20px;
 
 }
-
+#feet{
+    color:white;
+}
 .card-header {
     background-color: #007bff;
     color: #fff;
@@ -106,7 +167,10 @@ body {
     background-color: #0056b3;
     color: white;
 }
-
+.lcard{
+    padding-bottom: 25px;
+    border-radius: 10px;
+}
 #editProfileForm {
     margin-top: 20px;
     display: none;
@@ -120,10 +184,14 @@ body {
     from { transform: translateY(0); }
     to { transform: translateY(-5px); }
   }
+.card-title{
+    text-align: center;
 
+}
 .card {
     transition: transform 0.2s, box-shadow 0.2s;
-  }
+    border-radius: 15px;
+}
   
 .card:hover {
     transform: scale(1.02);
@@ -131,7 +199,7 @@ body {
   }
 
 .btn-primary {
-    background-color: #388E3C; /* Change this to your desired color */
+    background-color: #0069d9; /* Change this to your desired color */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -141,7 +209,7 @@ body {
   }
   
 .btn-primary:hover {
-    background-color: #2E602F; /* Change this to your desired hover color */
+    background-color: #0056b3; /* Change this to your desired hover color */
   }
 
 
@@ -240,6 +308,14 @@ body {
     text-align: center;
 }
 
+.delete-button{
+    text-align: center;
+}
+
+.admin-btn{
+    color: white;
+}
+
 th{
     font-size: 160%;
     text-align: center;
@@ -256,12 +332,21 @@ th{
     white-space: nowrap;
     border: 0;
 }
+h3{
+    color: white;
+}
 
+label{
+    color: white;
+}
 .product-management{
     width: 60%;
     margin: auto;
 }
+li{
+    color: white;
 
+}
 section#contact {
     margin: 2rem auto;
     padding: 1rem;
@@ -269,8 +354,12 @@ section#contact {
     border-radius: 5px;
     max-width: 500px;
   }
-  
+
+p{
+    color: white;
+}
 h2 {
+    color: white;
     text-align: center;
     margin-bottom: 1rem;
   }
@@ -325,8 +414,8 @@ input[type="submit"]:hover {
 .product img
 {
     text-align: left;
-    width: 450px;
-    height: 450px;
+    width: 300px;
+    height: 300px;
     padding-left: 5%;
     border: 10px;
 }
@@ -335,7 +424,7 @@ input[type="submit"]:hover {
 {
     font-size: 20px;
     float: right;
-    padding-right: 40%;
+    padding-right: 10%;
 }
 
 .product_seller
@@ -343,15 +432,22 @@ input[type="submit"]:hover {
     font-size: 20px;
     float: right;
     padding-right: 40%;
-    padding-bottom: 30%;
+    padding-bottom: 10%;
 }
 
 h1 {
+    color: white;
     text-align: center;
     padding: 10px 0;
+    padding-top: 100px;
+  }
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;  /* Replace 'your-desired-font' with your chosen font */
   }
 
 h4 {
+    color: white;
     text-align: center;
     padding: 10px 0;
     text-decoration: underline;
@@ -385,6 +481,7 @@ h4 {
 /* Style the social media container */
 .social-media {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .social-media a{
@@ -405,4 +502,175 @@ h4 {
     transform: translate(-3px);
 }
   
+.transaction-card {
+    transition: transform .2s; /* Animation for hover effect */
+}
 
+.transaction-card:hover {
+    transform: scale(1.05); /* Slightly enlarge cards on hover */
+}
+
+.text-success {
+    color: #28a745; /* Bright green for positive wallet effect */
+}
+
+.text-danger {
+    color: #dc3545; /* Bright red for negative wallet effect */
+}
+
+.nav-link {
+    color: #fff !important; /* Sets the default text color to white */
+    transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
+}
+
+.nav-link:hover {
+    color: #0062cc !important; /* Changes text color to blue on hover */
+    text-decoration: none; /* Optional: Removes underline from links on hover */
+}
+
+.navbar-brand img {
+    max-height: 50px; /* Adjust logo size */
+    border-radius: 30px;
+}
+
+/* Search Box Styling */
+.navbar .form-control {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.navbar .form-control:focus {
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    border-color: #0056b3;
+}
+.white-words{
+    color: white;
+}
+/* Search Icon */
+.navbar .form-inline .fas.fa-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .form-inline {
+        width: 100%;
+    }
+    .navbar .form-inline input[type="text"] {
+        width: calc(100% - 20px); /* Full width minus padding */
+    }
+}
+
+.rounded-select, .rounded-input {
+    border-radius: 20px !important; /* Adjust this value to control roundness */
+}
+
+/* Optionally, to ensure the button aligns nicely with the rounded inputs */
+.btn-primary {
+    border-radius: 20px !important;
+}
+
+
+/* for product_page*/
+
+.product-page-image{
+    display:flex;
+    align-items:flex-start;
+}
+
+.product-page-image img {
+    margin-right: 20px; /* Adjust as needed */
+    width: 200px; /* Adjust the width to make the image smaller */
+    height: 200px; /* Adjust the height to make the image smaller */
+    border: 10px;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+  }
+.card-img-top{
+    width: 300px; /* Adjust the width to make the image smaller */
+    height: 300px; /* Adjust the height to make the image smaller */
+    display: block;
+    margin: auto;
+}
+
+/* table for shopping_cart*/
+.table.align-middle tbody td{
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+/* General Button for console */
+.admin-btn {
+    background-color: #0069d9; /* Change this to your desired color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+.admin-btn:hover {
+    background-color: #0056b3; /* Change this to your desired hover color */
+  }
+
+  .center-text {
+    text-align: center;
+}
+
+.intro {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #161616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.logo-header {
+    color: white;
+}
+
+.logo {
+    display: inline-block;
+    margin: 0 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.logo.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo.fade {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.splash-gif {
+    max-width: 50px;  /* Adjust size as needed */
+    height: auto;
+}

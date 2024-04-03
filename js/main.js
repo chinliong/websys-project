@@ -58,9 +58,3 @@ function displayBiggerImage(imageName) {
         }
     });
 }
-
-$(document).ready(function() {
-    $("#editProfileBtn").click(function() {
-        $("#editProfileForm").slideToggle();
-    });
-});

@@ -1,7 +1,8 @@
 <?php
+session_start();
 if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
   include 'db_con.php';
-
+  echo "<script>console.log({$_SESSION['loggedin']});</script>";
   $stmt = $conn->prepare("SELECT username FROM user_table WHERE user_id = ?");
   $stmt->bind_param("i", $_SESSION['userid']);
   $stmt->execute();
@@ -14,23 +15,16 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
   $conn->close();
 }
 ?>
-<nav
-class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+  <div class="container-fluid text">
 
-    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Brand Logo"></a>
+    <a class="navbar-brand" href="../index.php"><img src="images/logo.png" alt="Brand Logo"></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="../index.php">Home</a>
-        </li>
-        </ul>
 
       <ul class="navbar-nav ms-auto">
 
@@ -54,7 +48,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
                 echo '<li><a class="dropdown-item" href="../finance.php"><i class="fa fa-university" aria-hidden="true"></i> Balance</a></li>';
               }
               ?>
-              
+              <li><a class="dropdown-item" href="../transaction_history.php"><i class="fas fa-history"></i> Transaction History</a></li>
               <li><a class="dropdown-item" href="../logout.php"> Logout</a></li>
             </ul>
 
@@ -93,8 +87,8 @@ class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
         <li class="nav-item d-flex">
           <form action="../process_search.php" method="post" class="d-flex">
-            <input maxlength="55" type="text" class="form-control me-2" id="search" name="search" placeholder="Search something...  ">
-            <select name="cat" class="form-select">
+            <input maxlength="55" type="text" class="form-control me-2 rounded-input" id="search" name="search" placeholder="Search">
+            <select name="cat" class="form-select rounded-select">
               <option value="all_cats_in_db">All Categories</option>
               <?php
               include "db_con.php";
@@ -114,7 +108,7 @@ class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
               $conn->close();
               ?>
             </select>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #007bff;"><i class="fas fa-search"></i></button>
           </form>
         </li>
 

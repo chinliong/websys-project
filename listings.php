@@ -23,15 +23,13 @@
         echo "<h1>Error fetching product table</h1>";
     }
     $categories = [];
-    $counts = [];
-    foreach ($products_of_viewing_user as $product) {
-        if (!isset($categories[$product['cat_name']])) {
-            $categories[$product['cat_name']] = 0;
-        }
-        $categories[$product['cat_name']]++;
-        $categories[$product['cat_id']]++;
-    }
+    
+//this loop is for the chart
+foreach ($products_of_viewing_user as $product) {
+    $categories[$product['cat_name']] = isset($categories[$product['cat_name']]) ? $categories[$product['cat_name']] + 1 : 1;
+}
 
+    //
     $stmt = $conn->prepare("SELECT * from product_category");
     $stmt->execute();
     $category_results = $stmt->get_result();
@@ -39,13 +37,28 @@
     $stmt->close();
     $conn->close();
 ?>
+
+
+<!-- front end -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferriswheel</title>
-    <?php include 'inc/head.inc.php'; ?>
+
+    <?php   include 'inc/header.inc.php'; 
+            include 'inc/head.inc.php'; 
+            ?>
+     <style>
+        .table-smaller th {
+            font-size: 8px;
+        }
+
+        .table-smaller td {
+            font-size: 8px;
+        }
+    </style>
 </head>
 <body>
     <?php include 'inc/nav.inc.php'; ?>
@@ -53,13 +66,15 @@
         <h1> Manage My Listings </h1>
         <section>
         <?php
-            echo "<div class='flex-container'>";
+            echo "<div class='container'>";
             if($have_products){
                 echo "<h2> You have no products listed. </h2>";
             } else {
-                echo "<div class='table-responsive product-management'>";
-                echo "<table class='table table-hover'>";
-                echo "<thead class='thead-light'>";
+                // Mobile phone table
+                echo "<div class='d-block d-sm-none'>"; // Only visible on XS screens
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-smaller'>";
+                echo "<thead>";
                 echo "<tr>";
                 echo "<th>Product Name</th>";
                 echo "<th>Product Image</th>";
@@ -69,57 +84,64 @@
                 echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
+
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
-                    echo "<td class='product-name'>" . $product['product_name'] . "</td>";
-                   //echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img'></td>";
-                    echo "<td><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
-                    echo "<td>&dollar;" . $product['price'] . "</td>";
+                    echo "<td >" . $product['product_name'] . "</td>";
+                    echo "<td ><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 50px; height: 50px;'></td>";
+                    echo "<td >&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
                     echo "<td>";
                     echo "<form action='delete_listing.php' method='post'>
                             <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
                             <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                            <button type='submit'>Delete</button>
+                            <button class='delete-button' type='submit'>Delete</button>
                         </form>";
-                    echo "<button id='editListingBtn' class='btn btn-custom' data-toggle='collapse' data-target='#editListingForm'>Edit Listing (work in progress)</button>";
-                    echo  '<div id="editListingForm" class="collapse">
-                                <form action="edit_listing.php" method="post" class="card p-3">
-                                    <div class="form-group">
-                                        <label for="Product Name">Product Name:</label>
-                                        <input type="text" class="form-control" id="pname" name="pname" value="'.htmlspecialchars($product['product_name']).'">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">Price (&dollar;):</label>
-                                        <input type="text" class="form-control" id="price" name="price" value="'.htmlspecialchars($product['price']).'">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cat" class="form-label">Category:</label>
-                                        <select class="form-control" id="cat" name="cat">';
-                                echo' <option value="'. $product['cat_id']. '">'. $product['cat_name'] .'</option>';
-                                        while ($category = $category_results->fetch_assoc()) {
-                                            if($category['cat_id'] != $product['cat_id']){
-                                                echo '<option value="' . $category['cat_id'] . '">' . $category['cat_name'] . '</option>';
-                                            }
-                                            
-                                        }
-
-                                        $category_results->data_seek(0);
-                                echo '</select>
-
-                                    </div>
-                                    <button type="submit" class="btn btn-custom">Update Listing</button>
-                                </form>
-                            </div>';
                     echo "</td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";
                 echo "</table>";
                 echo "</div>";
+                echo "</div>";
+
+                // Main table for larger screens
+                echo "<div class='d-none d-sm-block'>"; // Hidden on XS screens
+                echo "<div class='table-responsive'>";
+                echo "<table class='table'>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>Product Name</th>";
+                echo "<th>Product Image</th>";
+                echo "<th>Price</th>";
+                echo "<th>Category</th>";
+                echo "<th>Actions</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+
+                foreach($products_of_viewing_user as $product){
+                    echo "<tr>";
+                    echo "<td class='product-name'>" . $product['product_name'] . "</td>";
+                    echo "<td class='product-name'><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
+                    echo "<td class='product-name'>&dollar;" . $product['price'] . "</td>";
+                    echo "<td class='product-name'>" . $product['cat_name'] . "</td>";
+                    echo "<td class='product-name'>";
+                    echo "<form action='delete_listing.php' method='post'>
+                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
+                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
+                            <button class='delete-button' type='submit'>Delete</button>
+                        </form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+                echo "</div>";
+                echo "</div>";
             }
         ?>
-        <div class="chart-container" style="position: relative; height:80; width:120">
+        <div class="chart-container">
             <canvas id="chart"></canvas>
         </div>
         <script>
@@ -153,10 +175,16 @@
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false
+                    maintainAspectRatio: false,
+                    legend: {
+                        labels: {
+                            fontColor: 'red'
+                    }
                 }
+            }
             });
         </script>
+        
         </section>  
     </main>
 </body>

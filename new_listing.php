@@ -3,6 +3,7 @@
 <head>
 <title>Ferris wheel</title>
     <?php
+        include 'inc/header.inc.php'; 
         include 'inc/head.inc.php';
         include 'inc/init.inc.php'
     ?>
@@ -38,7 +39,6 @@ include "inc/nav.inc.php";
                     <label for="cat" class="form-label">Category</label>
                     <select class="form-control" id="cat" name="cat">
                     <?php
-                    // Replace with your actual database connection and query
                     include "db_con.php";
                     $stmt = $conn->prepare("SELECT * from product_category");
                     $stmt->execute();

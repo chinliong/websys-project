@@ -2,8 +2,6 @@
 //Check if user logged in
     session_start();
     if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
-        echo '<h1> You are not logged in bro??????? </h1>';
-        echo '<p> <a href="login.php">Login here if u wanna log out or smth</a> </p>';
     } else {
         $_SESSION = array();
         session_destroy();

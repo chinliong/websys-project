@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <?php include 'inc/head.inc.php'; ?>
+  <?php include 'inc/header.inc.php'; ?>
+
+
   <title>Contact Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,9 +13,9 @@
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <form method="POST" action="send_email.php" id="contact-form">
+    <form method="POST" id="contact-form">
       <fieldset>
-        <legend>Your Information</legend>
+        <legend style="color: white;">Your Information</legend>
         <div class="form-group">
           <label for="name">First Name:</label>
           <input type="text" id="name" name="name" required>
@@ -23,7 +26,7 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend>Your Message</legend>
+        <legend style="color: white;">Your Message</legend>
         <div class="form-group">
           <label for="message">Message:</label>
           <textarea id="message" name="message" required></textarea>
