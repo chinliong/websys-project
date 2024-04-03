@@ -1,28 +1,29 @@
 <?php
     session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<title>Little Haven Shoppe Customer Service</title>
+
 <?php
 $latitude = 1.3778101623320074; // latitude
 $longitude = 103.84886987401006; //longitude
 
 $api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; //Google Maps API key
 ?>
-
-<!DOCTYPE html>
-<html>
   <style>
     #map {
       height: 600px;
       width: 100%;
     }
   </style>
-<body>
+
 <?php
-  include 'inc/header.inc.php'; 
   include 'inc/head.inc.php';
+  include 'inc/header.inc.php'; 
 ?>
-</head>
-<body>
+
+
   <?php
     include 'inc/nav.inc.php';
   ?>
@@ -66,7 +67,7 @@ $api_key = 'AIzaSyBVgoKLVNax1NGb2nb8zU8HP2XOOXJMKtw'; //Google Maps API key
       </li>
       <li>
         <i class="fas fa-clock"></i>
-        <span>Open hours: <br>Monday: 0700-1700 <br>
+        Open hours: <br>Monday: 0700-1700 <br>
                            <span>Tuesday: 0700-1700 <br></span>
                            <span>Wednesday: 0700-1700 <br></span>
                            <span>Thursday: 0700-1700 <br></span>
