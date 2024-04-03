@@ -612,7 +612,7 @@ h4 {
   }
 .card-img-top{
     width: 300px; /* Adjust the width to make the image smaller */
-    height: 300px; /* Adjust the height to make the image smaller */
+    height: auto; /* Adjust the height to make the image smaller */
     display: block;
     margin: auto;
 }
