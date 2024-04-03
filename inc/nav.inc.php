@@ -88,7 +88,7 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
         <li class="nav-item d-flex">
           <form action="../process_search.php" method="post" class="d-flex">
             <input maxlength="55" type="text" class="form-control me-2 rounded-input" id="search" name="search" placeholder="Search">
-            <select name="cat" class="form-select rounded-select">
+            <select name="cat" aria-label="category" class="form-select rounded-select">
               <option value="all_cats_in_db">All Categories</option>
               <?php
               include "db_con.php";
@@ -108,7 +108,7 @@ if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
               $conn->close();
               ?>
             </select>
-            <button type="submit" class="btn btn-primary" style="background-color: #007bff;"><i class="fas fa-search"></i></button>
+            <button type="submit" class="btn btn-primary" style="background-color: #007bff;" aria-label="Search"><i class="fas fa-search"></i></button>
           </form>
         </li>
 
