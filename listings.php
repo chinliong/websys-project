@@ -43,28 +43,21 @@ foreach ($products_of_viewing_user as $product) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Ferriswheel</title>
 
-    <?php   include 'inc/header.inc.php'; 
-            include 'inc/head.inc.php'; 
+    <?php
+    include 'inc/head.inc.php';             
             ?>
-     <style>
-        .table-smaller th {
-            font-size: 8px;
-        }
-
-        .table-smaller td {
-            font-size: 8px;
-        }
-    </style>
-</head>
+    </head>
 <body>
-    <?php include 'inc/nav.inc.php'; ?>
+    <?php include 'inc/nav.inc.php'; 
+        include 'inc/header.inc.php'; 
+        ?>
+    
     <main id="container">
         <h1> Manage My Listings </h1>
-        <section>
+        <div>
         <?php
             echo "<div class='container'>";
             if($have_products){
@@ -92,11 +85,11 @@ foreach ($products_of_viewing_user as $product) {
                     echo "<td >&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
                     echo "<td>";
-                    echo "<form action='delete_listing.php' method='post'>
-                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
-                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                            <button class='delete-button' type='submit'>Delete</button>
-                        </form>";
+                    echo "<form action='delete_listing.php' method='post'>";
+echo "<input type='hidden' name='product_id_small' value='" . $product['product_id'] . "'>";
+echo "<button class='delete-button' type='submit'>Delete</button>";
+echo "</form>";
+
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -127,13 +120,11 @@ foreach ($products_of_viewing_user as $product) {
                     echo "<td class='product-name'>&dollar;" . $product['price'] . "</td>";
                     echo "<td class='product-name'>" . $product['cat_name'] . "</td>";
                     echo "<td class='product-name'>";
-                    echo "<form action='delete_listing.php' method='post'>
-                            <label for='product_id_" . $product['product_id'] . "' class='visually-hidden'>Delete " . $product['product_id'] . "</label>
-                            <input type='hidden' id='product_id_" . $product['product_id'] . "' name='product_id' value='" . $product['product_id'] . "'>
-                            <button class='delete-button' type='submit'>Delete</button>
-                        </form>";
-                    echo "</td>";
-                    echo "</tr>";
+                    echo "<form action='delete_listing.php' method='post'>";
+echo "<input type='hidden' name='product_id_small' value='" . $product['product_id'] . "'>";
+echo "<button class='delete-button' type='submit'>Delete</button>";
+echo "</form>";
+
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -144,6 +135,10 @@ foreach ($products_of_viewing_user as $product) {
         <div class="chart-container">
             <canvas id="chart"></canvas>
         </div>
+        </div>
+        </div>
+    </main>
+
         <script>
             // Initialize the chart
             var ctx = document.getElementById('chart').getContext('2d');
@@ -185,7 +180,5 @@ foreach ($products_of_viewing_user as $product) {
             });
         </script>
         
-        </section>  
-    </main>
 </body>
 </html>
