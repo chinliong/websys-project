@@ -107,6 +107,9 @@
                 echo '<p class="card-text black-words">Seller: ' . $row["seller_name"] . '</p>';
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                     echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+                } else {
+                    // User is not logged in, prompt to log in
+                    echo '<a href="login.php" class="btn btn-primary">Log in to Purchase</a>';
                 }
                 echo '</div>';
                 echo '</div>';
