@@ -1,3 +1,3 @@
-        <footer class="container">
-            <p>Copyright &copy; 2023 World of Pets Pte. Ltd.</p>
-            </footer> 
+<footer>
+    <p>&copy; 2024 Little Haven Shopee. All Rights Reserved.</p>
+  </footer>

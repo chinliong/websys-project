@@ -1,4 +1,6 @@
-    <header class="jumbotron text-center text-white bg-dark">
-        <h1 class="display-4">Welcome to World of Pets!</h1>
-        <h2>Home of Singapore's Pet Lovers</h2>
-    </header>
+<header class="jumbotron jumbotron-fluid d-flex align-items-center" style="background-image: url('path/to/your/image.jpg'); background-size: cover; background-position: center;">
+  <div class="container text-black" style = "padding-top: 60px;">
+    <h1 class="display-4 font-weight-bold">~ Little Haven Shopee ~</h1>
+  </div>
+</header>
+

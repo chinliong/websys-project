@@ -1,24 +1,25 @@
-main h2{
+main h2 {
     text-decoration: underline;
 }
 
 
-figcaption{
+figcaption {
     font-style: italic;
     color: gray;
 }
 
-figure{
+figure {
     display: inline-block;
     text-align: center;
 }
 
-footer{
+footer {
     text-align: center;
     font-style: italic;
     border-top: double;
     font-size: 11px;
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -32,11 +33,8 @@ footer{
     z-index: 1000;
 }
 
-.bigger-image {
-    max-width: 100%;
-    max-height: 100%;
-    border-style: double;
-    border-color: black;
+.warning-messages{
+    text-align: center;
 }
 
 .caption {
@@ -44,3 +42,367 @@ footer{
     margin-top: 10px;
     text-align: center;
 }
+
+
+.card-header h2 {
+    margin-bottom: 0;
+    /* Adjusts spacing inside the card header */
+}
+
+.card-text {
+    font-size: 1.1rem;
+    /* Makes the text slightly larger for readability */
+}
+
+.mr-2 {
+    margin-right: 0.5rem;
+    /* Adds some space between the icon and text */
+}
+
+.btn-custom {
+    background-color: #0069d9; /* Primary color */
+    color: white;
+    border: 0; /* Removes default border */
+    padding: 10px 20px; /* Adjust padding to fit your design */
+    border-radius: 25px; /* Rounded corners */
+    transition: background-color 0.3s ease-out, color 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth transition for hover effects */
+}
+
+.btn-custom:hover, .btn-custom:focus {
+    background-color: #0056b3; /* Darker shade for hover state */
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+    text-decoration: none; /* Removes underline from links */
+}
+
+/* Optional: Add a "pressed" effect on active state */
+.btn-custom:active {
+    background-color: #004494; /* Even darker shade for active state */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* Inner shadow for a "pressed" effect */
+}
+
+body {
+    background-color: rgb(238, 226, 226);
+    padding-top: 20px;
+
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.profile-icon {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.btn-custom {
+    background-color: #0069d9;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+#editProfileForm {
+    margin-top: 20px;
+    display: none;
+}
+
+.content h1 {
+    animation: animate-title 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes animate-title {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+  }
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+.btn-primary {
+    background-color: #388E3C; /* Change this to your desired color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+.btn-primary:hover {
+    background-color: #2E602F; /* Change this to your desired hover color */
+  }
+
+
+#wallet {
+    padding: 20px;
+}
+
+#current-balance{
+    text-align: center;
+}
+
+#paypal-button-container{
+    padding-top: 15px;
+}
+
+#deposit{
+    width: 10%;
+}
+
+#Deposit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-welcome-banner{
+    text-align: center;
+}
+
+#login-welcome-message-with-name{
+    text-align: center;
+}
+
+#success-section{
+    padding-bottom: 10px;
+}
+
+#return-home-button{
+    display: block;
+    margin: auto;
+    width: 10%;
+}
+
+#error-h3{
+    text-align: center;
+}
+
+#error-h4{
+    text-align: center;
+}
+
+#error-p{
+    text-align: center;
+}
+
+#login-return-button {
+    display: block;
+    margin: auto;
+    width: 10%;
+}
+
+#error-section{
+    padding-bottom: 10px;
+}
+
+.product-image{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.product{
+    padding-top: 20px;
+}
+
+
+#listing-button{
+    display:block;
+    margin: auto;
+    width: 85%;
+}
+
+.listing-field{
+    padding-bottom: 10px;
+}
+
+.listing-img{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.product-name{
+    font-size: 120%;
+    text-align: center;
+}
+
+th{
+    font-size: 160%;
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.product-management{
+    width: 60%;
+    margin: auto;
+}
+
+section#contact {
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 500px;
+  }
+  
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+fieldset {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 3px;
+  }
+  
+legend {
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+  
+.form-group {
+    margin-bottom: 0.5rem;
+  }
+  
+label {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  
+input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+input[type="submit"]:hover {
+    background-color: #0069d9;
+}
+
+.product h2
+{
+    top: 20%;
+    
+}
+
+.product img
+{
+    text-align: left;
+    width: 450px;
+    height: 450px;
+    padding-left: 5%;
+    border: 10px;
+}
+
+.product_price
+{
+    font-size: 20px;
+    float: right;
+    padding-right: 40%;
+}
+
+.product_seller
+{
+    font-size: 20px;
+    float: right;
+    padding-right: 40%;
+    padding-bottom: 30%;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+h4 {
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: underline;
+  }
+
+  /* FAQ container styles */
+.faq-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* FAQ question styles */
+.faq {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+.faq:hover {
+    background-color: #f1f1f1;
+  }
+  
+.faq-question {
+    font-weight: bold;
+  }
+  
+/* Style the social media container */
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-media a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #fff;
+    background-color: #0c0b0b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.social-media a:hover{
+    transform: translate(-3px);
+}
+  
+
