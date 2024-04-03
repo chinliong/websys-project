@@ -88,7 +88,7 @@ foreach ($products_of_viewing_user as $product) {
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
                     echo "<td >" . $product['product_name'] . "</td>";
-                    echo "<td ><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img-smallertable' style='width: 50px; height: 50px;'></td>";
+                    echo "<td ><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img-smallertable'></td>";
                     echo "<td >&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
                     echo "<td>";
@@ -123,7 +123,7 @@ foreach ($products_of_viewing_user as $product) {
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
                     echo "<td class='product-name'>" . $product['product_name'] . "</td>";
-                    echo "<td class='product-name'><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 80px; height: auto;'></td>";
+                    echo "<td class='product-name'><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img-normal'></td>";
                     echo "<td class='product-name'>&dollar;" . $product['price'] . "</td>";
                     echo "<td class='product-name'>" . $product['cat_name'] . "</td>";
                     echo "<td class='product-name'>";

@@ -87,7 +87,7 @@
                                     $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                     $item_count++;
                                     echo '<tr>';
-                                    echo '<td class = "center-text"><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td class = "center-text listing-img-normal"><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
                                     echo '<td class = "center-text">$' . $row["price"] . '</td>';
                                     echo '<td class = "center-text">' . $row["cat_name"] . '</td>';
                                     echo '<td class = "center-text">' . $row["seller_name"] . '</td>';
@@ -125,14 +125,14 @@
                                 while ($row = $result->fetch_assoc()) {
                                     // Same code as above, but with smaller image and font size
                                     echo '<tr>';
-                                    echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 30px; height: auto;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 15px; height: auto;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
                                     echo '<td class ="center-text">$' . $row["price"] . '</td>';
                                     echo '<td class ="center-text">' . $row["cat_name"] . '</td>';
                                     echo '<td class ="center-text">' . $row["seller_name"] . '</td>';
                                     echo '<td class ="center-text">
                                         <form action="removeFromCart.php" method="POST">
                                         <input type="hidden" name="cart_id" value="' . htmlspecialchars($row["cart_id"]) . '">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
                                     </td>';
                                     echo '</tr>';

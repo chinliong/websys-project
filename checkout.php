@@ -76,7 +76,7 @@
                                     $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                     $item_count++;
                                     echo '<tr>';
-                                    echo '<td style="font-size: 10px;"><img src="/images/' . $row["product_image"] . '" style="width: 30px; height: 30px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td class ="listing-img-smallercheckout"><img src="/images/' . $row["product_image"] . '" style="width: 30px; height: 30px;"> <span style="font-size: 10px;">' . $row["product_name"] . '</span></td>';
                                     echo '<td style="font-size: 10px;">$' . $row["price"] . '</td>';
                                     echo '<td style="font-size: 10px;">' . $row["cat_name"] . '</td>';
                                     echo '<td style="font-size: 10px;">' . $row["seller_name"] . '</td>';
