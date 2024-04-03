@@ -39,10 +39,11 @@ main h2 {
     overflow-x: hidden;
 }
 .dealcard{
-    max-width:20%;
+    max-width:100%;
     background-color: rgba(189, 195, 199, 0.4);
-    margin: 10px; /* This adds space around each card */
+    padding: 10px;
     border-radius:15px;
+    box-sizing: border-box;
 }
 .dh5{
     max-width: 100%;
