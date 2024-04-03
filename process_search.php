@@ -17,7 +17,6 @@
 
     <section id="search-results">
     <?php
-
         $search = $_POST["search"];
         $search = sanitize_input($search);     
 
@@ -27,8 +26,6 @@
         } else{
             echo '<h2>Producing Results for "' . htmlspecialchars($search) . '"</h2>';
         }
-        
-
     ?>
     
     <div class="row">
