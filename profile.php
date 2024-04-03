@@ -63,7 +63,7 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
     <?php include 'inc/header.inc.php'; ?>
 
     <main class="container">
-        <section id="User Profile">
+        <section id="UserProfile">
             <!-- Success and Error Messages -->
             <div class="alert-area">
                 <?php if ($successMsg) : ?>
