@@ -88,7 +88,7 @@ foreach ($products_of_viewing_user as $product) {
                 foreach($products_of_viewing_user as $product){
                     echo "<tr>";
                     echo "<td >" . $product['product_name'] . "</td>";
-                    echo "<td ><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img' style='width: 50px; height: 50px;'></td>";
+                    echo "<td ><img src='images/" . $product['product_image'] . "' alt='" . $product['product_name'] . "' class='listing-img-smallertable' style='width: 50px; height: 50px;'></td>";
                     echo "<td >&dollar;" . $product['price'] . "</td>";
                     echo "<td>" . $product['cat_name'] . "</td>";
                     echo "<td>";
