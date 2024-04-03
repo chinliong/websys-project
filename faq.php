@@ -6,7 +6,7 @@
 <head>
 <title>Little Haven Shoppe Customer Service</title>
 <?php
-  include 'inc/head.inc.php';
+ include 'inc/head.inc.php';
 ?>
 </head>
 <body>

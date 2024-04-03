@@ -3,14 +3,12 @@
 <head>
     <title>Ferris Wheel</title>
     <?php 
-    include 'inc/header.inc.php';
     include 'inc/head.inc.php';
+    include 'inc/header.inc.php';
     ?>
     <script src="js/async.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-</head>
-<body>    
+   
     <?php
     include "inc/nav.inc.php";
     ?>
@@ -24,13 +22,12 @@
         $search = sanitize_input($search);     
 
         echo '<h2 class="mb-4">';
-
-        if ($search ==""){
+        if ($search == ""){
             echo '<h2>Producing Results for "All Products"</h2>';
         } else{
-            echo '<h2>Producing Results for "' . $search . '"</h2>';
+            echo '<h2>Producing Results for "' . htmlspecialchars($search) . '"</h2>';
         }
-        echo '</h2>';
+        
 
     ?>
     
