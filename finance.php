@@ -70,10 +70,10 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
         <div id="wallet">
             <div class="row">
                 <article id="balance" class="col-sm-12">
-                    <h3 id="current-balance"><i class="fas fa-wallet"></i> Current Wallet Balance: &dollar;<?php echo $funds; ?></h3>
+                    <h2 id="current-balance"><i class="fas fa-wallet"></i> Current Wallet Balance: &dollar;<?php echo $funds; ?></h3>
                     </article>
                 <article id="Deposit" class="col-sm-12">
-                    <h2>Deposit Funds Here</h2>
+                    <h3>Deposit Funds Here</h2>
                         <label for="deposit">Deposit Amount:</label>
                         <input type="text" id="deposit" name="deposit" min="0" placeholder="S&dollar; Deposit">
                         <div id="paypal-button-container"></div> <!-- PayPal button will be rendered here -->

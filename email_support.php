@@ -3,13 +3,12 @@
 <head>
   <?php include 'inc/head.inc.php'; ?>
   <title>Contact Form</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <?php include 'inc/nav.inc.php';
         include 'inc/header.inc.php'; 
   ?>
-
+<main>
   <section id="contact">
     <h2>Contact Us</h2>
     <form method="POST" id="contact-form">
@@ -36,6 +35,7 @@
       </div>
     </form>
   </section>
+</main>
   <script src="js/send_email.js"></script>
   <?php include 'inc/footer.inc.php'; ?>
 </body>

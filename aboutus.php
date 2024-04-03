@@ -7,6 +7,7 @@
 ?>
 </head>
   <body>
+  <main>
     <?php
     include 'inc/header.inc.php';
     include 'inc/nav.inc.php';

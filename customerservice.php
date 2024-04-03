@@ -7,12 +7,14 @@
 <title>Little Haven Shoppe Customer Service</title>
 <?php
  include 'inc/head.inc.php';
-  include 'inc/header.inc.php'; 
 ?>
+</head>
+<body>
 <?php
   include 'inc/nav.inc.php';
+  include 'inc/header.inc.php'; 
 ?>
-
+<main>
 <div class="customer-service-container d-flex justify-content-center align-items-center min-vh-100">
   <div class="customer-service-content card p-4 text-center">
     <h2 class="text-center mb-4 black-words">Welcome to Little Haven Shoppe Customer Service</h2>
@@ -44,7 +46,7 @@
 <?php
   include 'inc/footer.inc.php';
 ?>
-
+</main>
 <script src="scripts.js"></script>
 </body>
 </html>

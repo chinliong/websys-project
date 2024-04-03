@@ -404,7 +404,7 @@ input, textarea {
   }
   
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #2424FF;
     color: white;
     padding: 0.7rem 1rem;
     border: none;
@@ -740,4 +740,34 @@ h4 {
 .table-normal td img{
     width: 50px;
     height: 50px;
+}
+
+.otp-verification-container {
+    text-align: center;
+    width: 100%;
+}
+
+.otp-verification-card {
+    background-color: #fff; /* Card background */
+    color: #000; /* Card text color */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.otp-verification-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.otp-verification-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.verify{
+    color: #000;
 }
