@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Transfer funds to the seller's account
                 $updateSellerStmt = $conn->prepare("UPDATE user_table SET funds = funds + ? WHERE user_id = ?");
                 $updateSellerStmt->bind_param("di", $product['price'], $product['seller_id']);
+                echo "<script>console.log('The price inserted is {$product['price']} and is sent to {$product['seller_id']}');</script>";
                 $updateSellerStmt->execute();
             }
         } else {
