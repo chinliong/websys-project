@@ -5,13 +5,20 @@ session_start();
 <html lang="en">
 
 <head>
+    <title>Shoppe Haven</title>
     <?php
     include 'inc/head.inc.php';
     ?>
 </head>
-
 <body>
-
+    <div class="intro">
+        <h1 class="logo-header">
+            <img src="images/cat_chipi.gif" alt="Loading" class="splash-gif">
+            <span class="logo">Shoppe</span>
+            <span class="logo">Haven</span>
+            <img src="images/cat_chipi.gif" alt="Loading" class="splash-gif">
+        </h1>
+    </div>
     <?php
     include 'inc/nav.inc.php';
     include 'db_con.php';
@@ -24,15 +31,15 @@ session_start();
     p.price, 
     p.cat_id, 
     p.user_id
-  FROM 
+    FROM 
     product_table p
-  INNER JOIN 
+    INNER JOIN 
     (SELECT MIN(product_id) AS min_product_id, cat_id
      FROM product_table
      GROUP BY cat_id) AS subquery
-  ON 
+    ON 
     p.product_id = subquery.min_product_id
-  ");
+    ");
     $sql->execute();
     $result = $sql->get_result();
     ?>
@@ -99,8 +106,8 @@ session_start();
                         <div class="card">
                             <a href="product_page.php?id=<?php echo htmlspecialchars($product['product_id']); ?>">
                                 <img src="/images/<?php echo htmlspecialchars($product['product_image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
-                                <div class="card-body">
-                            </a>
+                                </a>   
+                            <div class="card-body">
                             <p class="card-title black-words"><?php echo htmlspecialchars($product['product_name']); ?></p>
                             <p class="card-text black-words">$<?php echo htmlspecialchars($product['price']); ?></p>
                             </div>
@@ -108,6 +115,7 @@ session_start();
             </div>
         <?php endwhile; ?>
         </div>
+    </div>
     </div>
     <section id="deals">
         <h4 id="dh4">Upcoming Deals</h4>
@@ -128,6 +136,35 @@ session_start();
         </article>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const intro = document.querySelector('.intro');
+            const logos = document.querySelectorAll('.logo');
+
+                // Animate each logo span
+                logos.forEach((logo, idx) => {
+                    setTimeout(() => {
+                        logo.classList.add('active');
+                    }, (idx + 1) * 400);
+                });
+
+                // Animate fade-out
+                setTimeout(() => {
+                    logos.forEach((logo, idx) => {
+                        setTimeout(() => {
+                            logo.classList.add('fade');
+                        }, (idx + 1) * 50);
+                    });
+                }, 2000);
+
+                // Hide splash screen
+                setTimeout(() => {
+                    intro.style.opacity = '0';
+                    intro.style.visibility = 'hidden';
+                }, 3000);
+            });
+    </script>
     <script>
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');

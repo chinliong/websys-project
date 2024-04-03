@@ -45,8 +45,6 @@ $result = $stmt->get_result();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction History</title>
     <?php include 'inc/head.inc.php'; // Include head tags and CSS ?>
 </head>
@@ -57,7 +55,7 @@ $result = $stmt->get_result();
     ?>
 
 <main class="container mt-5">
-    <h3 class="text-center mb-4">Your Transaction History</h3>
+    <h1 class="text-center mb-4">Your Transaction History</h1>
     <?php if ($result->num_rows > 0): ?>
         <div class="row">
             <?php while($row = $result->fetch_assoc()): ?>
@@ -67,7 +65,7 @@ $result = $stmt->get_result();
                             Transaction #<?= htmlspecialchars($row["transaction_id"]) ?>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($row["product_name"]) ?></h5>
+                            <h2 class="card-title"><?= htmlspecialchars($row["product_name"]) ?></h2>
                             <p class="card-text black-words">
                                 <strong>Role:</strong> <?= $row['user_role'] === 'Buyer' ? '<i class="fas fa-shopping-cart"></i> Buyer' : '<i class="fas fa-store"></i> Seller'; ?>
                             </p>

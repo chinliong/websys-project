@@ -142,7 +142,7 @@ $stmt->close();
                 <label for="product_image">Product Image:</label>
                 <input type="file" class="form-control" name="product_image" id="product_image" onchange="previewImage();">
                 <small class="form-text text-muted">Current Image:</small>
-                <img id="currentImage" src="images/<?= htmlspecialchars($product['product_image']); ?>" alt="Product Image" style="max-width: 300px; height: auto; margin-top:20px; margin: left 50px;">
+                <img id="currentImage" src="images/<?= htmlspecialchars($product['product_image']); ?>" alt="Product Image" style="max-width: 300px; height: auto; margin-top:20px; margin: center;">
                 <input type="hidden" name="existing_image" value="<?= htmlspecialchars($product['product_image']); ?>">
                 <!-- Image Preview Placeholder -->
                 <div id="imagePreview"></div>

@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 session_start();
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true)) {
@@ -65,7 +63,7 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
     <?php include 'inc/header.inc.php'; ?>
 
     <main class="container">
-        <section id="User Profile">
+        <section id="UserProfile">
             <!-- Success and Error Messages -->
             <div class="alert-area">
                 <?php if ($successMsg) : ?>
@@ -79,7 +77,7 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
             <!-- Profile Information -->
             <div class="card mb-4">
                 <div class="card-header text-white" style="background-color: black;">
-                    <h4 class="mb-0">Profile Information</h4>
+                    <div class="mb-0" style="text-align:center; font-weight:bold; font-size:24px;">Profile Information</div>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><i class="fas fa-user profile-icon"></i>Username: <strong><?= htmlspecialchars($row['username']); ?></strong></li>
@@ -125,19 +123,19 @@ unset($_SESSION['success_msg'], $_SESSION['error_msg']);
             <div id="editProfileForm">
                 <form action="update_profile.php" method="post" class="card p-3">
                     <div class="form-group">
-                        <label for="username">Username:</label>
+                        <label for="username" style="color: black;">Username:</label>
                         <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($row['username']); ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
+                        <label for="email" style="color: black;">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($row['email']); ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="old_password">Old Password:</label>
+                        <label for="old_password" style="color: black;">Old Password:</label>
                         <input type="password" class="form-control" id="old_password" name="old_password" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">New Password (optional):</label>
+                        <label for="password" style="color: black;">New Password (optional):</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <button type="submit" class="btn btn-custom">Update Profile</button>

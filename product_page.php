@@ -16,8 +16,11 @@
             session_start();
             $product_id = $_GET['id'];
             echo "<script>console.log('we are down');</script>";
-            $sql = $conn->prepare("SELECT product_name, product_image, price, user_id FROM product_table WHERE product_id = ?");
-            $sql->bind_param("i", $product_id); 
+            $sql = $conn->prepare("SELECT p.product_name, p.product_image, p.price, u.username 
+            FROM product_table p 
+            INNER JOIN user_table u ON p.user_id = u.user_id 
+            WHERE p.product_id = ?");
+            $sql->bind_param("i", $product_id);
             $sql->execute();
             $result = $sql->get_result();
 
@@ -31,9 +34,9 @@
                     echo "<div class='product-details'>";
                     echo "<h2>" . htmlspecialchars($product['product_name']) . "</h2>";
                     echo "<p>Price: $" . htmlspecialchars($product['price']) . "</p>";
-                    echo "<p>Seller: " . htmlspecialchars($product['user_id']) . "</p>";
+                    echo "<p>Seller: " . htmlspecialchars($product['username']) . "</p>";
                     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['userid'] != $row["user_id"]) {
-                        echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+                        echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $product_id . '">Add to Cart</button>';
                     }
                     echo "</div>";
                     echo "</div>";
