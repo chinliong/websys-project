@@ -331,6 +331,7 @@ th{
     text-align: center;
 }
 
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -724,4 +725,19 @@ h4 {
 .listing-img-smallercheckout  {
     width: 30px;
     height: 30px;
+}
+
+.table-smaller th,
+.table-smaller td {
+    font-size: 8px;
+}
+
+.table-smaller img {
+    width: 15px;
+    height: auto;
+}
+
+.table-normal td img{
+    width: 50px;
+    height: 50px;
 }

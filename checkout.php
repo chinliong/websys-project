@@ -14,7 +14,7 @@
     include "inc/header.inc.php";
     ?>
     <main class="container">
-        <h3>Checkout Page</h3>
+        <h2>Checkout Page</h2>
         <?php
         $config = parse_ini_file('/var/www/private/db-config.ini');
         if (!$config) {
@@ -76,7 +76,7 @@
                                     $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                     $item_count++;
                                     echo '<tr>';
-                                    echo '<td class ="listing-img-smallercheckout"><img src="/images/' . $row["product_image"] . '" style="width: 30px; height: 30px;"> <span style="font-size: 10px;">' . $row["product_name"] . '</span></td>';
+                                    echo '<td class="listing-img-smallercheckout"><img src="/images/' . $row["product_image"] . '" alt="alt' . $row["product_name"] . '" style="width: 30px; height: 30px;"> <span style="font-size: 10px; display: block;">' . $row["product_name"] . '</span></td>';
                                     echo '<td style="font-size: 10px;">$' . $row["price"] . '</td>';
                                     echo '<td style="font-size: 10px;">' . $row["cat_name"] . '</td>';
                                     echo '<td style="font-size: 10px;">' . $row["seller_name"] . '</td>';
@@ -109,7 +109,7 @@
                                     $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                     $item_count++;
                                     echo '<tr>';
-                                    echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td><img src="/images/' . $row["product_image"] . '" alt="alt' . $row["product_name"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>';
                                     echo '<td>$' . $row["price"] . '</td>';
                                     echo '<td>' . $row["cat_name"] . '</td>';
                                     echo '<td>' . $row["seller_name"] . '</td>';
@@ -176,7 +176,6 @@
     <?php
     include "inc/footer.inc.php";
     ?>
-</body>
 <script>
     document.querySelector('.pay-with-funds-btn').addEventListener('click', function () {
         // Make an AJAX request to payment.php
@@ -200,11 +199,12 @@
         });
     });
 </script>
+
 <script>
     $('#paymentStatusModal').on('hidden.bs.modal', function () {
         // This code will run after the modal has been hidden
         window.location.href = 'index.php'; // Redirect to index.php
     });
 </script>
-
+</body>
 </html>
