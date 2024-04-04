@@ -12,7 +12,6 @@
     include 'inc/header.inc.php';
     include 'inc/nav.inc.php';
     ?>
-    <main>
       <div class="container">
 
         <div class="content mt-5">
@@ -42,9 +41,9 @@
 
           <h2>Connect with Us</h2>
           <div class="social-media text-center">
-            <a href="https://www.facebook.com/YourCompanyGraz/events/" arial-label="Facebook"><i class="fab fa-facebook-f">Facebook</i></a>
-            <a href="https://twitter.com/CompanyYouKeep" arial-label="Twitter"><i class="fab fa-twitter"></i>Twitter</a>
-            <a href="https://www.instagram.com/company/" arial-label="Instagram"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://www.facebook.com/YourCompanyGraz/events/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/CompanyYouKeep" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/company/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 

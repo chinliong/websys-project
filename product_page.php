@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Shoppe Haven Products</title>
     <?php       
         include 'inc/head.inc.php';
         include 'inc/header.inc.php';
