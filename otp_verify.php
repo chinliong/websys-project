@@ -2,54 +2,41 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>Shoppe Haven Verification</title>
     <?php
-    include 'db_con.php';
     include 'inc/head.inc.php';
-    include 'inc/nav.inc.php';
-      ?>
-    <title>Verification</title>
+    ?>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+<?php
+    include 'inc/header.inc.php';
+    include 'inc/nav.inc.php';
+?>
+<!-- <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="#">Verification Account</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-</nav>
+</nav> -->
 
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Verification Account</div>
-                    <div class="card-body">
-                        <form action="#" method="POST">
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">OTP Code</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="otp" class="form-control" name="otp_code" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Verify" name="verify">
-                            </div>
-                    </div>
-                    </form>
-                </div>
+<main class="otp-verification-container">
+    <div class="otp-verification-card">
+        <h1 class="verify">Verify Account</h1>
+        <form action="#" method="POST" class="otp-verification-form">
+            <div class="otp-verification-input-group">
+                <label for="otp">OTP Code</label>
+                <input type="text" id="otp" name="otp_code" required>
             </div>
-        </div>
+            <div class="otp-verification-input-group">
+                <input type="submit" value="Submit" name="verify">
+            </div>
+        </form>
     </div>
-    <?php include 'inc/footer.inc.php'?>
-    </div>
-
+    <?php include 'inc/footer.inc.php'; ?>
 </main>
-</body>
-</html>
+
 <?php 
     if(isset($_POST["verify"])){
         $otp = $_SESSION['otp'];
@@ -75,4 +62,7 @@
     }
 
 ?>
+</body>
+</html>
+
 

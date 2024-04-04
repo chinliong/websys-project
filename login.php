@@ -4,9 +4,6 @@
 <head>
   <title>Little Haven Shoppe Login</title>
   <?php
-  include 'inc/header.inc.php';
-  ?>
-  <?php
   include 'inc/head.inc.php';
   ?>
   <script src="scripts.js" defer></script>
@@ -17,6 +14,7 @@
 <body>
   <?php
   include 'inc/nav.inc.php';
+  include 'inc/header.inc.php';
   ?>
   <div class="alert-area">
     <?php if (!empty($_SESSION['errorMsg'])) : ?>
@@ -41,10 +39,9 @@
             <div class="form-group">
                 <label for="pwd" class="form-label">Password</label>
                 <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter your password" required>
-            </div>  
-            <div class="d-flex justify-content-center">
-            <div class="g-recaptcha centered-item" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
             </div>
+            <div class="g-recaptcha centered-item" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
+
             <button type="submit" class="btn btn-primary centered-item">Login</button>
         </form>
         <p class="mt-3 text-center">Don't have an account? <a href="register.php">Sign Up</a></p>
@@ -53,18 +50,18 @@
     </div>
     </section>
 
-    <script>
-      // Define onSubmit function to handle reCAPTCHA verification
-      function onSubmit(token) {
-        document.querySelector('form').submit(); // Submit the form
-      }
-    </script>
+      <script>
+        // Define onSubmit function to handle reCAPTCHA verification
+        function onSubmit(token) {
+          document.querySelector('form').submit(); // Submit the form
+        }
+      </script>
 
-    <?php
-    include 'inc/footer.inc.php';
-    ?>
+      <?php
+      include 'inc/footer.inc.php';
+      ?>
 
-  </section>
+    </div>
   </main>
 </body>
 

@@ -3,11 +3,10 @@
 
 <head>
   <title>Ferris Wheel - Register</title>
-  <?php   include 'inc/header.inc.php'; 
-          include 'inc/head.inc.php'; ?>
-</head>
-
-<body>
+  <?php    
+  include 'inc/head.inc.php';
+  include 'inc/header.inc.php'; 
+  ?>
   <?php include "inc/nav.inc.php"; ?>
 
   <main class="container py-5">

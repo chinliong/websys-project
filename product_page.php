@@ -37,6 +37,9 @@
                     echo "<p>Seller: " . htmlspecialchars($product['username']) . "</p>";
                     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['userid'] != $row["user_id"]) {
                         echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $product_id . '">Add to Cart</button>';
+                    } else {
+                        // User is not logged in, prompt to log in
+                        echo '<a href="login.php" class="btn btn-primary">Log in to Purchase</a>';
                     }
                     echo "</div>";
                     echo "</div>";

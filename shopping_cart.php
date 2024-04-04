@@ -4,24 +4,15 @@
     <title>Shopping Cart</title>
     <?php
     include 'inc/head.inc.php';
-    include "inc/nav.inc.php";
-    include "inc/header.inc.php";
     ?>
-    <style>
-        .table-smaller th,
-        .table-smaller td {
-            font-size: 8px;
-        }
-
-        .table-smaller img {
-            width: 30px;
-            height: auto;
-        }
-    </style>
-</head>
+    
 <body>
+<?php
+  include 'inc/nav.inc.php';
+  include "inc/header.inc.php";
+?>
 <main class="container">
-    <h3>Your Cart</h3>
+    <h2>Your Cart</h2>
     <?php
     $config = parse_ini_file('/var/www/private/db-config.ini');
     if (!$config) {
@@ -69,7 +60,7 @@
                 <!-- Table for Normal Screens -->
                 <div class="d-none d-sm-block"> <!-- Hidden on XS screens -->
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-normal">
                             <thead>
                                 <tr>
                                     <th scope="col">Product Name</th>
@@ -87,7 +78,7 @@
                                     $subtotal += $row["price"]; // Add the price of each product to the subtotal
                                     $item_count++;
                                     echo '<tr>';
-                                    echo '<td class = "center-text"><img src="/images/' . $row["product_image"] . '" style="width: 50px; height: 50px;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td class="center-text listing-img-normal"><img src="/images/' . $row["product_image"] . '" alt="alt' . $row["product_name"] . '"> ' . $row["product_name"] . '</td>';
                                     echo '<td class = "center-text">$' . $row["price"] . '</td>';
                                     echo '<td class = "center-text">' . $row["cat_name"] . '</td>';
                                     echo '<td class = "center-text">' . $row["seller_name"] . '</td>';
@@ -125,14 +116,14 @@
                                 while ($row = $result->fetch_assoc()) {
                                     // Same code as above, but with smaller image and font size
                                     echo '<tr>';
-                                    echo '<td><img src="/images/' . $row["product_image"] . '" style="width: 30px; height: auto;"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
+                                    echo '<td><img src="/images/' . $row["product_image"] . '" alt="alt' . $row["product_name"] . '"> ' . $row["product_name"] . '</td>'; // Display the product image beside the name
                                     echo '<td class ="center-text">$' . $row["price"] . '</td>';
                                     echo '<td class ="center-text">' . $row["cat_name"] . '</td>';
                                     echo '<td class ="center-text">' . $row["seller_name"] . '</td>';
                                     echo '<td class ="center-text">
                                         <form action="removeFromCart.php" method="POST">
                                         <input type="hidden" name="cart_id" value="' . htmlspecialchars($row["cart_id"]) . '">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
                                     </td>';
                                     echo '</tr>';

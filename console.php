@@ -161,7 +161,7 @@ JOIN
                                 <tr class="text-nowrap" style="text-align: center;">
                                     <td class="col-1"><?= htmlspecialchars($product['product_id']) ?></td>
                                     <td class="col-2"><?= htmlspecialchars($product['product_name']) ?></td>
-                                    <td class="col-3"><img src="/images/<?= htmlspecialchars($product['product_image']) ?>" class="img-fluid rounded" style="width: 50px; height: 50px;"></td>
+                                    <td class="col-3"><img src="/images/<?= htmlspecialchars($product['product_image']) ?>" alt="<?=htmlspecialchars($product['product_name'])?>" class="img-fluid rounded" style="width: 50px; height: 50px;"></td>
                                     <td class="col-1"><?= htmlspecialchars($product['price']) ?></td>
                                     <td class="col-2"><?= htmlspecialchars($product['cat_name']) ?></td>
                                     <td class="col-1"><?= htmlspecialchars($product['username']) ?></td>

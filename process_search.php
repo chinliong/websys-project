@@ -3,14 +3,12 @@
 <head>
     <title>Ferris Wheel</title>
     <?php 
-    include 'inc/header.inc.php';
     include 'inc/head.inc.php';
+    include 'inc/header.inc.php';
     ?>
     <script src="js/async.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-</head>
-<body>    
+   
     <?php
     include "inc/nav.inc.php";
     ?>
@@ -19,19 +17,15 @@
 
     <section id="search-results">
     <?php
-
         $search = $_POST["search"];
         $search = sanitize_input($search);     
 
-        echo '<h2 class="mb-4">';
-
-        if ($search ==""){
+        echo '<h2 class="mb-4" aria-label="Section Title"></h2>';
+        if ($search == ""){
             echo '<h2>Producing Results for "All Products"</h2>';
         } else{
-            echo '<h2>Producing Results for "' . $search . '"</h2>';
+            echo '<h2>Producing Results for "' . htmlspecialchars($search) . '"</h2>';
         }
-        echo '</h2>';
-
     ?>
     
     <div class="row">
@@ -101,18 +95,21 @@
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 if (!isset($_SESSION['userid']) || $_SESSION['userid'] != $row["user_id"]){
-                echo '<article class="col-sm-4 product">';
+                echo '<article class="col-lg-4 col-md-6 col-sm-12 lcard"">';
                 echo '<div class="card">';
                 echo '<a href="product_page.php?id=' . $row["product_id"] . '">';
                 echo '<img class="card-img-top" src="/images/' . $row["product_image"] . '" alt="' . $row["product_name"] . '">';    
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $row["product_name"] . '</h5>';
+                echo '<h3 class="card-title">' . $row["product_name"] . '</h3>';
                 echo '</a>';
                 echo '<p class="card-text black-words">$' . $row["price"] . '</p>';
                 echo '<p class="card-text black-words">Category: ' . $row["cat_name"] . '</p>';
                 echo '<p class="card-text black-words">Seller: ' . $row["seller_name"] . '</p>';
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                     echo '<button type="button" class="btn btn-primary add-to-cart" data-product-id="' . $row["product_id"] . '">Add to Cart</button>';
+                } else {
+                    // User is not logged in, prompt to log in
+                    echo '<a href="login.php" class="btn btn-primary">Log in to Purchase</a>';
                 }
                 echo '</div>';
                 echo '</div>';
