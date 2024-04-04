@@ -24,31 +24,31 @@
   </div>
 
   <main>
-      <div id="login">
-        <div>
-          <div class="container">
-        <div class="row justify-content-center">
-      <article class="col-lg-6">
-          <h2 class="text-center mb-4">Login to Your Account</h2>
-          <form action="process_login.php" method="post">
-              <div class="form-group">
+    <div id="login">
+      <div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <article class="col-lg-6">
+              <h2 class="text-center mb-4">Login to Your Account</h2>
+              <form action="process_login.php" method="post">
+                <div class="form-group">
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
-              </div>
-              <div class="form-group">
+                </div>
+                <div class="form-group">
                   <label for="pwd" class="form-label">Password</label>
                   <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter your password" required>
-              </div>
-              <div class="d-flex justify-content-center">
-              <div class="g-recaptcha centered-item" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
-            </div>
-              <button type="submit" class="btn btn-primary centered-item">Login</button>
-          </form>
-          <p class="mt-3 text-center">Don't have an account? <a href="register.php">Sign Up</a></p>
-      </article>
-    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="g-recaptcha centered-item" data-sitekey="6LfQNJ8pAAAAAJnPvUiOcFTvlB2a2N2xbPZbhC5e"></div>
+                </div>
+                <button type="submit" class="btn btn-primary centered-item">Login</button>
+              </form>
+              <p class="mt-3 text-center">Don't have an account? <a href="register.php">Sign Up</a></p>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
 
       <script>
         // Define onSubmit function to handle reCAPTCHA verification
