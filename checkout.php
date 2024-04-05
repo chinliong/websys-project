@@ -11,6 +11,9 @@
 <body>
     <?php
     include "inc/nav.inc.php";
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        header('Location: ../error.php');
+    }
     include "inc/header.inc.php";
     ?>
     <main class="container">
