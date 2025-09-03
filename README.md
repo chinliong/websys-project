@@ -67,12 +67,6 @@ Main tables:
 
 ---
 
-## Live Demo  
-
-Visit: [Little Haven Shoppe](https://inf1005-ferriswheel.sytes.net)  
-
----
-
 ## License  
 
 This project is part of an academic assignment. All rights reserved.  
